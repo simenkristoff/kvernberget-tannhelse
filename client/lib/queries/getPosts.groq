@@ -1,0 +1,8 @@
+import groq from 'groq'
+groq`
+  *[_type == "post"] | order(_createdAt desc) {
+    ...,
+    author->,
+    categories[]->
+  }
+`

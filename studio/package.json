@@ -1,0 +1,27 @@
+{
+  "name": "@app/studio",
+  "main": "package.json",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "sanity start",
+    "build": "sanity build",
+    "lint": "eslint ./** --fix"
+  },
+  "dependencies": {
+    "@sanity/base": "^2.27.0",
+    "@sanity/core": "^2.27.0",
+    "@sanity/default-layout": "^2.27.0",
+    "@sanity/default-login": "^2.27.0",
+    "@sanity/desk-tool": "^2.27.0",
+    "@sanity/eslint-config-studio": "^2.0.0",
+    "@sanity/vision": "^2.27.0",
+    "prop-types": "^15.7",
+    "react": "^17.0",
+    "react-dom": "^17.0",
+    "styled-components": "^5.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.2",
+    "eslint-config-sanity": "^5.1.0"
+  }
+}
