@@ -1,10 +1,9 @@
 {
-  "name": "@app/client",
+  "name": "client",
   "version": "1.0.0",
   "main": "package.json",
   "scripts": {
     "dev": "next dev",
-    "prebuild": "echo 'Building Sanity to public/studio' && cd ../studio && yarn && npx @sanity/cli build ../client/public/studio -y && echo 'Done'",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

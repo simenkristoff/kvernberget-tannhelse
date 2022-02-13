@@ -11,22 +11,27 @@
     "url": "https://github.com/simenkristoff/kvernberget-tannhelse.git"
   },
   "workspaces": [
-    "studio",
-    "client"
+    "apps/*",
+    "packages/*"
   ],
   "scripts": {
-    "dev": "concurrently \"lerna exec --scope @app/studio -- yarn start\" \"lerna exec --scope @app/client -- yarn dev\"",
-    "lint": "lerna run lint --stream",
-    "build": "echo 'Building Sanity to public/studio…' && cd studio && sanity build ../client/public/studio -y && cd ../client && yarn build",
-    "postinstall": "lerna bootstrap"
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel --no-cache",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md}\""
   },
   "devDependencies": {
-    "concurrently": "^7.0.0",
     "eslint": "^8.9.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.4",
     "husky": "^7.0.4",
-    "lerna": "^4.0.0",
-    "lint-staged": "^12.3.3"
-  }
+    "lint-staged": "^12.3.3",
+    "turbo": "latest"
+  },
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=14.0.0"
+  },
+  "packageManager": "yarn@1.22.17"
 }

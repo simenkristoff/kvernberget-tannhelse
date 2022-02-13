@@ -1,10 +1,10 @@
 {
-  "name": "@app/studio",
+  "name": "studio",
   "main": "package.json",
   "version": "1.0.0",
   "scripts": {
-    "start": "sanity start",
-    "build": "sanity build",
+    "dev": "sanity start",
+    "build": "echo 'Building Sanity to public/studio' && npx @sanity/cli build ../client/public/studio -y",
     "lint": "eslint ./** --fix"
   },
   "dependencies": {
