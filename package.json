@@ -36,5 +36,6 @@
     "prettier": "^2.5.1",
     "sanity-codegen": "^0.9.8",
     "turbo": "latest"
-  }
+  },
+  "packageManager": "yarn@1.22.17"
 }
