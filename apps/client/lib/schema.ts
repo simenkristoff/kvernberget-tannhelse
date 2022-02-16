@@ -14,8 +14,8 @@ import type {
   SanityImageMetadata,
   SanityImageDimensions,
   SanityImagePalette,
-  SanityImagePaletteSwatch,
-} from "sanity-codegen";
+  SanityImagePaletteSwatch
+} from 'sanity-codegen'
 
 export type {
   SanityReference,
@@ -33,8 +33,8 @@ export type {
   SanityImageMetadata,
   SanityImageDimensions,
   SanityImagePalette,
-  SanityImagePaletteSwatch,
-};
+  SanityImagePaletteSwatch
+}
 
 /**
  * Innstillinger
@@ -42,7 +42,7 @@ export type {
  *
  */
 export interface SiteSettings extends SanityDocument {
-  _type: "siteSettings";
+  _type: 'siteSettings';
 
   /**
    * Site Title — `string`
@@ -64,7 +64,7 @@ export interface SiteSettings extends SanityDocument {
    *
    */
   logo?: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
@@ -112,7 +112,7 @@ export interface SiteSettings extends SanityDocument {
  *
  */
 export interface Employees extends SanityDocument {
-  _type: "employees";
+  _type: 'employees';
 
   /**
    * Bilde — `image`
@@ -120,7 +120,7 @@ export interface Employees extends SanityDocument {
    *
    */
   image?: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
@@ -132,7 +132,7 @@ export interface Employees extends SanityDocument {
    *
    */
   name?: {
-    _type: "name";
+    _type: 'name';
     /**
      * Fornavn — `string`
      *
@@ -166,7 +166,7 @@ export interface Employees extends SanityDocument {
 export type BlockContent = Array<
   | SanityKeyed<SanityBlock>
   | SanityKeyed<{
-      _type: "image";
+      _type: 'image';
       asset: SanityReference<SanityImageAsset>;
       crop?: SanityImageCrop;
       hotspot?: SanityImageHotspot;
@@ -174,20 +174,20 @@ export type BlockContent = Array<
 >;
 
 export type DayAndTime = {
-  _type: "dayAndTime";
+  _type: 'dayAndTime';
   /**
    * Day — `string`
    *
    * Select day of week
    */
   day?:
-    | "Mandag"
-    | "Tirsdag"
-    | "Onsdag"
-    | "Torsdag"
-    | "Fredag"
-    | "Lørdag"
-    | "Søndag";
+    | 'Mandag'
+    | 'Tirsdag'
+    | 'Onsdag'
+    | 'Torsdag'
+    | 'Fredag'
+    | 'Lørdag'
+    | 'Søndag';
 
   /**
    * Stengt — `boolean`
