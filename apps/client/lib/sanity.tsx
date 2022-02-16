@@ -42,7 +42,7 @@ export const client = createClient(config)
 
 export const previewClient = createClient({
   ...config,
-  useCdn: false
+  useCdn: true
 })
 
 export const getClient = (usePreview: boolean) =>

@@ -9,7 +9,12 @@
 // }
 
 const nextConfig = {
-  reactStrictMode: true
+  reactStrictMode: true,
+  images: {
+    domains: [
+      'cdn.sanity.io'
+    ]
+  }
   // rewrites: () => [STUDIO_REWRITE]
 }
 

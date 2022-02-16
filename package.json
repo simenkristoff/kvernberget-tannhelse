@@ -10,10 +10,16 @@
     "type": "git",
     "url": "https://github.com/simenkristoff/kvernberget-tannhelse.git"
   },
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "workspaces": {
+    "nohoist": [
+      "@tailwindcss/forms",
+      "@tailwindcss/forms/**"
+    ],
+    "packages": [
+      "apps/*",
+      "packages/*"
+    ]
+  },
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel --no-cache",
@@ -27,11 +33,8 @@
     "eslint-plugin-import": "^2.25.4",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.3",
+    "prettier": "^2.5.1",
+    "sanity-codegen": "^0.9.8",
     "turbo": "latest"
-  },
-  "engines": {
-    "npm": ">=7.0.0",
-    "node": ">=14.0.0"
-  },
-  "packageManager": "yarn@1.22.17"
+  }
 }

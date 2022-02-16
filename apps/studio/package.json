@@ -1,6 +1,7 @@
 {
   "name": "studio",
   "main": "package.json",
+  "license": "MIT",
   "version": "1.0.0",
   "scripts": {
     "dev": "sanity start",
@@ -15,9 +16,11 @@
     "@sanity/desk-tool": "^2.27.0",
     "@sanity/eslint-config-studio": "^2.0.0",
     "@sanity/vision": "^2.27.0",
+    "lodash": "^4.17.21",
     "prop-types": "^15.7",
     "react": "^17.0",
     "react-dom": "^17.0",
+    "react-timepicker": "^2.0.2",
     "styled-components": "^5.2.0"
   },
   "devDependencies": {
