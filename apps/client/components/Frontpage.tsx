@@ -1,4 +1,7 @@
 import { GetEmployeesQueryResult } from '@lib/queries/getEmployees'
+import { GetLatestPostQueryResult } from '@lib/queries/getLatestPost'
+import client, { PortableText } from '@lib/sanity'
+import { useNextSanityImage } from 'next-sanity-image'
 import Image from 'next/image'
 import React from 'react'
 import EmployeeCard from './EmployeeCard'
@@ -52,10 +55,12 @@ const treatments: string[] = [
 ]
 
 interface IProps {
+  latestPost: GetLatestPostQueryResult;
   employees: GetEmployeesQueryResult;
 }
 
-export default function Frontpage ({ employees }: IProps) {
+export default function Frontpage ({ latestPost, employees }: IProps) {
+  console.log(latestPost)
   return (
     <React.Fragment>
       <section className="relative py-16 flex h-full max-h-screen bg-gradient-to-b from-sky-100 via-gray-100">
@@ -98,11 +103,38 @@ export default function Frontpage ({ employees }: IProps) {
         </div>
       </section>
 
-      <section className="relative pb-8 flex h-full w-full">
+      <section className="relative py-16">
+        <div className="wrapper">
+          <article className="flex flex-col md:flex-row border max-w-4xl mx-auto border-gray-300 rounded-lg overflow-hidden shadow-md">
+            <div className="md:h-[300px] lg:h-[400px]">
+              <div className="relative w-full h-full aspect-square">
+                <Image
+                  src={useNextSanityImage(client, latestPost.mainImage!)}
+                  alt={latestPost.title}
+                  layout="fill"
+                  objectFit="cover"
+                  sizes="(max-width: 800px) 100vw, 800px"
+                />
+              </div>
+            </div>
+            <div className="relative py-8 px-4 my-auto">
+              <div className="flex flex-col flex-grow h-full">
+                <h3 className="text-gray-700 text-2xl font-medium">
+                  {latestPost.title}
+                </h3>
+                <PortableText blocks={latestPost.excerpt} />
+                <p className='font-bold text-teal-700 hover:text-teal-600 duration-300'>Les mer...</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section className="relative py-16 flex h-full w-full">
         <div className="wrapper">
           <div className="flex flex-col justify-center mb-4">
-            <div className='block mx-auto'>
-            <h2 className="section-title text-center mb-2">Behandlinger</h2>
+            <div className="block mx-auto">
+              <h2 className="section-title text-center mb-2">Behandlinger</h2>
             </div>
             <p className="font-medium text-gray-800 text-center">
               Vi utfører både spesialist- og allmennbehandling!
@@ -127,8 +159,8 @@ export default function Frontpage ({ employees }: IProps) {
         </div>
       </section>
 
-      <section className="relative w-full h-full py-8 bg-gradient-to-b from-sky-50 via-gray-50 to-gray-100">
-        <div className="wrapper relative flex flex-1 w-full min-h-[10rem] justify-center items-center">
+      <section className="relative w-full h-full py-16 bg-gradient-to-b from-sky-50 via-gray-50 to-gray-100">
+        <div className="wrapper px-0 relative flex flex-1 w-full min-h-[10rem] justify-center items-center">
           <div className="relative hidden md:flex w-1/3 h-full aspect-square">
             <Image
               className="block"
@@ -137,7 +169,7 @@ export default function Frontpage ({ employees }: IProps) {
               objectFit="contain"
             />
           </div>
-          <div className="block w-full max-w-xs xs:max-w-sm sm:max-w-md py-8 lg:py-0">
+          <div className="block w-full max-w-sm sm:max-w-md py-8 lg:py-0">
             <h2 className="section-title text-center md:text-left">
               Omtalelser
             </h2>
@@ -146,13 +178,13 @@ export default function Frontpage ({ employees }: IProps) {
         </div>
       </section>
       {/* Employees */}
-      <section className="relative py-8">
+      <section className="relative py-16">
         <div className="wrapper">
           <div className="flex justify-center">
             <h2 className="section-title text-center">Våre ansatte</h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
             {employees.length > 0 &&
               employees.map((emp) => <EmployeeCard key={emp._id} data={emp} />)}
           </div>

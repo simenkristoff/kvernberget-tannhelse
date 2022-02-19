@@ -9,6 +9,7 @@ import dayAndTime from './objects/dayAndTime'
 import blockContent from './objects/blockContent'
 
 import siteSettings from './documents/siteSettings'
+import post from './documents/post'
 import employees from './documents/employees'
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -22,7 +23,8 @@ export default createSchema({
     dayAndTime,
 
     siteSettings,
-    employees
+    employees,
+    post
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
   ])

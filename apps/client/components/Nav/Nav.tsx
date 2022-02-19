@@ -27,6 +27,8 @@ function Nav ({ fixed, className, children }: NavProps) {
 
     if (window.innerWidth > breakpoints.md) {
       setToggle(true)
+    } else {
+      setToggle(false)
     }
   }
 

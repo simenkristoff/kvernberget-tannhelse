@@ -10,6 +10,7 @@ import {
   PhoneIcon,
   MailIcon
 } from '@heroicons/react/outline'
+import formatPhoneNumber from './utils/formatPhoneNumber'
 
 export default function Header () {
   const settings = useSettings()
@@ -68,7 +69,7 @@ export default function Header () {
                 Telefon:
               </p>
               <p className="mt-1 group-hover:text-slate-700">
-                (+47) {settings.phone}
+                (+47) {formatPhoneNumber(settings.phone!)}
               </p>
             </a>
 
@@ -93,13 +94,16 @@ export default function Header () {
           <Nav fixed={fixed} className={classNames('flex flex-auto justify-end md:justify-start items-center', { 'border-t border-transparent md:border-gray-100': !fixed })}>
             <Nav.NavItem to="/">Hjem</Nav.NavItem>
             <Nav.NavDropdown label="Behandlinger">
-              <Nav.NavItem to="/contact">Hjem</Nav.NavItem>
-              <Nav.NavItem to="/">Hjem</Nav.NavItem>
-              <Nav.NavItem to="/">Hjem</Nav.NavItem>
+              <Nav.NavItem to="/fyllinger">Fyllinger</Nav.NavItem>
+              <Nav.NavItem to="/tannbleking">Tannbleking</Nav.NavItem>
+              <Nav.NavItem to="/tannregulering">Tannregulering</Nav.NavItem>
+              <Nav.NavItem to="/krone-og-bro">Krone og bro</Nav.NavItem>
+              <Nav.NavItem to="/implantater">Implantater</Nav.NavItem>
+              <Nav.NavItem to="/visdomstenner">Visdomstenner</Nav.NavItem>
             </Nav.NavDropdown>
-            <Nav.NavItem to="/contact">Priser</Nav.NavItem>
-            <Nav.NavItem to="/">Om oss</Nav.NavItem>
-            <Nav.NavItem to="/">Kontakt oss</Nav.NavItem>
+            <Nav.NavItem to="/priser">Priser</Nav.NavItem>
+            <Nav.NavItem to="/om-oss">Om oss</Nav.NavItem>
+            <Nav.NavItem to="/kontakt-oss">Kontakt oss</Nav.NavItem>
             <button className={classNames('btn btn-primary md:py-0', { 'h-full rounded-none self-stretch md:absolute md:right-0 md:bottom-0': !fixed, 'rounded-none md:rounded-md': fixed })}>
               Bestill time
             </button>

@@ -2,17 +2,18 @@ import client from '@lib/sanity'
 import Image from 'next/image'
 import { Employees } from '@lib/schema'
 import { useNextSanityImage } from 'next-sanity-image'
+import { DetailedHTMLProps, HTMLAttributes } from 'react'
 
-interface IProps {
+interface IProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   data: Employees;
 }
 
-export default function EmployeeCard ({ data }: IProps) {
+export default function EmployeeCard ({ data, ...props }: IProps) {
   const employeeName = `${data.name?.firstName} ${data.name?.lastName}`
   return (
     <div
+     {...props}
       className="relative block"
-      key={data._id}
     >
       <div className="rounded-full overflow-hidden border border-teal-600 drop-shadow-lg">
         <div className="relative w-full mx-auto aspect-square">

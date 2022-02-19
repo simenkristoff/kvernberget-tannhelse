@@ -13,8 +13,9 @@ import { useSettings } from 'context/SettingsContext'
 import { getEmployees } from '@lib/queries/getEmployees'
 import { useWindow } from 'context/WindowContext'
 import { ChevronDoubleUpIcon } from '@heroicons/react/outline'
+import { getLatestPost } from '@lib/queries/getLatestPost'
 
-export default function Home ({ employees, preview }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Home ({ employees, latestPost, preview }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { fixed } = useWindow()
   const settings = useSettings()
 
@@ -42,7 +43,7 @@ export default function Home ({ employees, preview }: InferGetStaticPropsType<ty
 
       <Header/>
       <main>
-      <Frontpage employees={employees}/>
+      <Frontpage employees={employees} latestPost={latestPost}/>
       <div className='py-10'></div>
       {/* {posts &&
         posts.map((post: any, idx:any) => (
@@ -66,9 +67,11 @@ export default function Home ({ employees, preview }: InferGetStaticPropsType<ty
 
 export async function getStaticProps ({ params, preview = false }: GetStaticPropsContext) {
   const employees = await getEmployees(preview)
+  const latestPost = await getLatestPost(preview)
   return {
     props: {
       employees,
+      latestPost,
       preview
     },
     revalidate: 10

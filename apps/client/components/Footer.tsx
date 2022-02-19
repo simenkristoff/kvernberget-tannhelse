@@ -8,6 +8,7 @@ import client from '@lib/sanity'
 
 import { useSettings } from 'context/SettingsContext'
 import { useNextSanityImage } from 'next-sanity-image'
+import formatPhoneNumber from './utils/formatPhoneNumber'
 
 export default function Footer () {
   const settings = useSettings()
@@ -29,7 +30,7 @@ export default function Footer () {
                   </div>
                 </div>
               )}
-              <p
+              <p className='max-w-xl sm:mx-auto m-0'
                 dangerouslySetInnerHTML={{
                   __html: settings.siteDescription || ''
                 }}
@@ -70,7 +71,7 @@ export default function Footer () {
                     Telefon:
                   </p>
                   <p className="mt-1 group-hover:text-slate-700">
-                    (+47) {settings.phone}
+                    (+47) {formatPhoneNumber(settings.phone!)}
                   </p>
                 </a>
 

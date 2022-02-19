@@ -54,7 +54,7 @@ export default function ReviewSlider ({ reviews, className }: ReviewSliderProps)
   }
 
   return (
-    <div className={classNames('w-full max-w-xs xs:max-w-sm sm:max-w-md', className)}>
+    <div className={classNames('w-full max-w-sm sm:max-w-md', className)}>
 
         <div className={'transition-all w-full aspect-4/3 sm:aspect-video relative overflow-hidden duration-1000'}>
           {reviews.map((review, i) => (
@@ -73,7 +73,7 @@ export default function ReviewSlider ({ reviews, className }: ReviewSliderProps)
                 e.stopPropagation()
               }}
               key={review.title}
-              className={'absolute min-h-max max-h-72 block w-full max-w-xs xs:max-w-sm sm:max-w-md transition-all -translate-x-full duration-300 drop-shadow-md select-none'}
+              className={'absolute min-h-max max-h-72 block w-full max-w-sm sm:max-w-md transition-all -translate-x-full duration-300 drop-shadow-md select-none'}
               style={{
                 transform: `translate3d(${i * width + currTrans}px, 0px, 0px )`,
                 width

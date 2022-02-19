@@ -163,6 +163,62 @@ export interface Employees extends SanityDocument {
   description?: BlockContent;
 }
 
+/**
+ * Post
+ *
+ *
+ */
+export interface Post extends SanityDocument {
+  _type: 'post';
+
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Slug — `slug`
+   *
+   *
+   */
+  slug?: { _type: 'slug'; current: string };
+
+  /**
+   * Main image — `image`
+   *
+   *
+   */
+  mainImage?: {
+    _type: 'image';
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Published at — `datetime`
+   *
+   *
+   */
+  publishedAt?: string;
+
+  /**
+   * Utdrag — `blockContent`
+   *
+   *
+   */
+  excerpt?: BlockContent;
+
+  /**
+   * Body — `blockContent`
+   *
+   *
+   */
+  body?: BlockContent;
+}
+
 export type BlockContent = Array<
   | SanityKeyed<SanityBlock>
   | SanityKeyed<{
@@ -211,4 +267,4 @@ export type DayAndTime = {
   closesAt?: string;
 };
 
-export type Documents = SiteSettings | Employees;
+export type Documents = SiteSettings | Employees | Post;
