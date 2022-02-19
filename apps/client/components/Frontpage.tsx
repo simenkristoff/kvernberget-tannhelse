@@ -171,7 +171,7 @@ export default function Frontpage ({ latestPost, employees }: IProps) {
           </div>
           <div className="block w-full max-w-sm sm:max-w-md py-8 lg:py-0">
             <h2 className="section-title text-center md:text-left">
-              Omtalelser
+              Våre omtaler
             </h2>
             <ReviewSlider className="ml-auto" reviews={reviews} />
           </div>
