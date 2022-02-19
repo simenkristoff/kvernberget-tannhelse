@@ -1,59 +1,64 @@
-import { useForm } from 'react-hook-form'
+import React from 'react'
+import { useForm, Controller, ControllerProps } from 'react-hook-form'
+
+function InputText (
+  props: Omit<ControllerProps & { label?: string }, 'render'>
+) {
+  return (
+    <Controller
+      {...props}
+      render={({ field, fieldState }) => {
+        console.log(fieldState)
+        return (
+          <div className="mb-6">
+            {props.label && (
+              <label
+                htmlFor={props.name}
+                className="block mb-1  font-semibold text-gray-900"
+              >
+                {props.label}
+              </label>
+            )}
+            <input
+              {...field}
+              type="text"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg active:ring-cyan-600 active:border-cyan-600 focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+            />
+            {fieldState.error && fieldState.error.message}
+          </div>
+        )
+      }}
+    />
+  )
+}
 
 export default function AppointmentForm () {
   const {
-    register,
-    handleSubmit,
-    formState: { errors }
+    control,
+    handleSubmit
   } = useForm()
   const onSubmit = (data: any) => console.log(data)
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="mb-6">
-          <label
-            htmlFor="firstName"
-            className="block mb-2 text-sm font-medium text-gray-900"
-          >
-            Fornavn
-          </label>
+        <InputText
+          control={control}
+          name="firstName"
+          label="Fornavn"
+          rules={{
+            required: 'Dette feltet må fylles'
+          }}
+        />
 
-          <input
-            type="text"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg active:ring-cyan-600 active:border-cyan-600 focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-            {...register('firstName')}
-          />
-        </div>
+        <InputText
+          control={control}
+          name="lastName"
+          label="Etternavn"
+          rules={{
+            required: 'Dette feltet må fylles'
+          }}
+        />
 
-        <div className="mb-6">
-          <label
-            htmlFor="lastName"
-            className="block mb-2 text-sm font-medium text-gray-900"
-          >
-            Etternavn
-          </label>
-          <input type="text"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg active:ring-cyan-600 active:border-cyan-600 focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-            {...register('lastName', { required: true })}
-          />
-
-          {errors.lastName && <p>Last name is required</p>}
-        </div>
-        <div className="mb-6">
-          <label
-            htmlFor="age"
-            className="block mb-2 text-sm font-medium text-gray-900"
-          >
-            Alder
-          </label>
-          <input
-            type="number"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg active:ring-cyan-600 active:border-cyan-600 focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-            {...register('age', { pattern: /\d+/ })}
-          />
-
-          {errors.age && <p>Please enter number for age.</p>}
-        </div>
         <input type="submit" />
       </form>
     </div>

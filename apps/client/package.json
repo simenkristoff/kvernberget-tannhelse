@@ -21,12 +21,14 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-hook-form": "^7.27.0",
+    "react-stars": "^2.2.5",
     "react-tooltip": "^4.2.21"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.178",
     "@types/node": "17.0.17",
     "@types/react": "17.0.39",
+    "@types/react-stars": "^2.2.1",
     "@typescript-eslint/eslint-plugin": "^5.11.0",
     "@typescript-eslint/parser": "^5.11.0",
     "autoprefixer": "^10.4.2",

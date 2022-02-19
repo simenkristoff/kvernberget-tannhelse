@@ -4,6 +4,7 @@ import React from 'react'
 import { getSiteSettings, GetSiteSettingsQueryResult } from '@lib/queries/getSettings'
 
 import { SettingsProvider } from 'context/SettingsContext'
+import { WindowProvider } from 'context/WindowContext'
 
 export const SettingsContext = React.createContext({})
 
@@ -15,9 +16,11 @@ type InitialAppProps = AppInitialProps & SettingsProps
 
 function App ({ Component, pageProps, siteSettings }: AppProps & SettingsProps) {
   return (
+    <WindowProvider>
     <SettingsProvider value={siteSettings[0]}>
       <Component {...pageProps} />
     </SettingsProvider>
+    </WindowProvider>
   )
 }
 

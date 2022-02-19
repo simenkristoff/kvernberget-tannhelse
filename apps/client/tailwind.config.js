@@ -12,16 +12,17 @@ module.exports = {
     },
     extend: {
       aspectRatio: {
-        '4/3': '4 / 3'
+        '4/3': '4 / 3',
+        '3/1': '3 / 1'
       },
       keyframes: {
         'full-pulse': {
           '0%, 100%': { opacity: 0.2 },
-          '50%': { opacity: 0.9 }
+          '50%': { opacity: 0.8 }
         }
       },
       animation: {
-        'full-pulse': 'full-pulse 3s linear infinite'
+        'full-pulse': 'full-pulse 5s linear infinite'
       }
     }
   },

@@ -3,19 +3,41 @@ import {
   PhoneIcon,
   MailIcon
 } from '@heroicons/react/outline'
+import Image from 'next/image'
+import client from '@lib/sanity'
 
 import { useSettings } from 'context/SettingsContext'
+import { useNextSanityImage } from 'next-sanity-image'
 
 export default function Footer () {
   const settings = useSettings()
   return (
-    <footer>
-      <div className="bg-sky-800 border-t border-b border-gray-200 dark:border-gray-700 pt-16 text-white">
-        <section className="mx-auto mb-4 container px-4 xl:px-12 2xl:px-4">
-          <div className="w-full mb-16 lg:mb-0 lg:flex">
+    <footer className=''>
+      <div className="border-t border-gray-300 pt-16 text-gray-800">
+        <section className="wrapper">
+          <div className="w-full flex-wrap mb-0 sm:mb-16 md:flex">
+            <div className="w-full lg:w-1/3 lg:px-6 pb-6 mb-6 lg:pb-0 lg:mb-0 border-b border-gray-200 border-opacity-25 text-left md:border-none last:border-none">
+              {settings.logo?.asset && (
+                <div className="h-20 relative pb-2 lg:mb-0">
+                  <div className="h-full aspect-3/1 mx-auto lg:mx-0">
+                    <Image
+                      src={useNextSanityImage(client, settings.logo)}
+                      alt={settings.logo?.alt || settings.siteTitle}
+                      layout="responsive"
+                      sizes="(max-width: 800px) 100vw, 800px"
+                    />
+                  </div>
+                </div>
+              )}
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: settings.siteDescription || ''
+                }}
+              />
+            </div>
 
-          {/* Address */}
-          <div className="w-full lg:w-1/2 px-6">
+            {/* Address */}
+            <div className="w-full md:w-1/2 lg:w-1/3 lg:px-6 pb-6 mb-6 lg:pb-0 lg:mb-0 border-b border-gray-200 border-opacity-25 md:border-none last:border-none">
               <h3 className="text-xl font-medium">Kontaktinformasjon:</h3>
               <div className="ml-7 mt-2">
                 <a
@@ -23,14 +45,14 @@ export default function Footer () {
                   className="relative group hover:translate-x-2 duration-300 my-2 block"
                 >
                   <LocationMarkerIcon
-                    className="absolute -left-7 top-0 group-hover:text-slate-200 duration-300"
+                    className="absolute -left-7 top-0 text-teal-600 group-hover:text-teal-700 duration-300"
                     height={24}
                     width={24}
                   />
-                  <p className="font-medium group-hover:text-slate-200 duration-300">
+                  <p className="font-bold text-teal-600 group-hover:text-teal-700 duration-300">
                     Addresse:
                   </p>
-                  <p className="mt-1 text-slate-200 group-hover:text-slate-200">
+                  <p className="mt-1 group-hover:text-slate-700">
                     {settings.address}
                   </p>
                 </a>
@@ -40,14 +62,14 @@ export default function Footer () {
                   className="relative group hover:translate-x-2 duration-300 my-2 block"
                 >
                   <PhoneIcon
-                    className="absolute -left-7 top-0 group-hover:text-slate-200 duration-300"
+                    className="absolute -left-7 top-0 text-teal-600 group-hover:text-teal-700 duration-300"
                     height={24}
                     width={24}
                   />
-                  <p className="font-medium group-hover:text-slate-200 duration-300">
+                  <p className="font-bold text-teal-600 group-hover:text-teal-700 duration-300">
                     Telefon:
                   </p>
-                  <p className="mt-1 text-slate-200 group-hover:text-slate-200">
+                  <p className="mt-1 group-hover:text-slate-700">
                     (+47) {settings.phone}
                   </p>
                 </a>
@@ -57,48 +79,50 @@ export default function Footer () {
                   className="relative group hover:translate-x-2 duration-300 my-2 block"
                 >
                   <MailIcon
-                    className="absolute -left-7 top-0 group-hover:text-slate-200 duration-300"
+                    className="absolute -left-7 top-0 text-teal-600 group-hover:text-teal-700 duration-300"
                     height={24}
                     width={24}
                   />
-                  <p className="font-medium group-hover:text-slate-200 duration-300">
+                  <p className="font-bold text-teal-600 group-hover:text-teal-700 duration-300">
                     Email:
                   </p>
-                  <p className="mt-1 text-slate-200 group-hover:text-slate-200">
+                  <p className="mt-1 group-hover:text-slate-700">
                     {settings.email}
                   </p>
                 </a>
               </div>
             </div>
 
-            <div className="w-full lg:w-1/2 px-6">
-
-          </div>
-
-          <div className="w-full lg:w-1/2 px-6">
+            <div className="w-full md:w-1/2 lg:w-1/3 lg:px-6 pb-6 mb-6 lg:pb-0 lg:mb-0 border-b border-gray-200 border-opacity-25 md:border-none last:border-none">
               <h3 className="text-xl font-medium">Åpningstider:</h3>
               <ul>
                 {settings.openingHours &&
                   settings.openingHours.map((item) => {
-                    const state = item.closed ? 'Stengt' : `${item.opensAt}-${item.closesAt}`
+                    const state = item.closed
+                      ? 'Stengt'
+                      : `${item.opensAt}-${item.closesAt}`
                     return (
                       <li key={item._key}>
-                        {item.day}:{' '}
-                        <span className="font-medium text-slate-200">{state}</span>
+                        <span className='font-medium'>{item.day}</span>:&nbsp;
+                        <span className="font-semibold text-teal-600">
+                          {state}
+                        </span>
                       </li>
                     )
                   })}
               </ul>
             </div>
-
           </div>
         </section>
-        <section className="mx-auto container px-4 xl:px-12 2xl:px-4 py-8 border-t border-gray-200 border-opacity-25 text-center text-sm">
+        <section className="wrapper flex-col py-2 border-t border-gray-300 text-center text-sm">
           <p>
-            &copy; {new Date().getFullYear()} Kvernberget Tannhelse AS. Alle
-            rettigheter reservert.
+            &copy; {new Date().getFullYear()}&nbsp;
+            <span className="font-medium text-teal-600">
+              Kvernberget Tannhelse AS
+            </span>
+            . Alle rettigheter reservert.
           </p>
-          <p className='mt-1'>Utviklet av Simen Kristoffersen</p>
+          <p className="mt-1">Utviklet av Simen Kristoffersen</p>
         </section>
       </div>
     </footer>

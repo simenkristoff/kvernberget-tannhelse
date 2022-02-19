@@ -11,9 +11,20 @@ import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 
 import { useSettings } from 'context/SettingsContext'
 import { getEmployees } from '@lib/queries/getEmployees'
+import { useWindow } from 'context/WindowContext'
+import { ChevronDoubleUpIcon } from '@heroicons/react/outline'
 
 export default function Home ({ employees, preview }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const { fixed } = useWindow()
   const settings = useSettings()
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
+
   // const router = useRouter()
   // console.log(siteSettings[0])
   // const { data: posts } = usePreviewSubscription<any>(query, {
@@ -41,6 +52,12 @@ export default function Home ({ employees, preview }: InferGetStaticPropsType<ty
           </article>
         ))} */}
       </main>
+
+      {fixed && (
+        <button className='btn btn-primary fixed bottom-2 right-2 z-50 p-2 drop-shadow-lg hover:bottom-4 active:bottom-4 transition-all duration-300' onClick={scrollToTop}>
+          <ChevronDoubleUpIcon className='w-6 h-6'/>
+        </button>
+      )}
 
       <Footer/>
     </div>
