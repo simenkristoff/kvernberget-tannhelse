@@ -3,7 +3,7 @@ import Nav from './Nav/Nav'
 import Image from 'next/image'
 import { useSettings } from 'context/SettingsContext'
 import { useNextSanityImage } from 'next-sanity-image'
-import classNames from 'classNames'
+import classNames from 'classnames'
 import { useWindow } from 'context/WindowContext'
 import {
   LocationMarkerIcon,

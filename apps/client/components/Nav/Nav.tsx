@@ -1,6 +1,6 @@
 import { Popover, Transition } from '@headlessui/react'
 import { MenuIcon } from '@heroicons/react/outline'
-import classNames from 'classNames'
+import classNames from 'classnames'
 import { Fragment, ReactFragment, useEffect, useState } from 'react'
 import NavDropdown from './NavDropdown'
 import NavItem from './NavItem'

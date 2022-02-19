@@ -1,4 +1,4 @@
-import classNames from 'classNames'
+import classNames from 'classnames'
 import { useRef, useState } from 'react'
 import { Review } from './Frontpage'
 import ReviewCard from './ReviewCard'

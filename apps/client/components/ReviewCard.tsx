@@ -1,6 +1,6 @@
 import { Review } from './Frontpage'
 import ReactStars from 'react-stars'
-import classNames from 'classNames'
+import classNames from 'classnames'
 import { DetailedHTMLProps, HTMLAttributes } from 'react'
 import { ChatIcon } from '@heroicons/react/outline'
 

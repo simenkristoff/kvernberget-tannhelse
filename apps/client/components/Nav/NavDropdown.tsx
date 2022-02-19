@@ -1,6 +1,6 @@
 import { Popover, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/outline'
-import classNames from 'classNames'
+import classNames from 'classnames'
 import { Fragment, ReactFragment } from 'react'
 
 export interface NavDropdownProps {
