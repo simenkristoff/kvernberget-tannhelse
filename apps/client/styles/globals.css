@@ -6,39 +6,42 @@
 @tailwind utilities;
 
 @layer base {
-    h1, h2, h3, h4, h5, h6 {
-        @apply font-heading;
-    }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
 }
 
 @layer components {
+  .wrapper {
+    @apply max-w-7xl mx-auto px-2 lg:px-6;
+  }
 
-    .wrapper {
-        @apply max-w-7xl mx-auto px-2 lg:px-6;
-    }
+  .section-title {
+    @apply inline float-left text-4xl mb-8 font-medium text-gray-700 after:block after:h-[3px] after:w-full after:bg-teal-700 after:rounded-[50%];
+  }
 
-    .section-title {
-        @apply inline float-left text-4xl mb-8 font-medium text-gray-700 after:block after:h-[3px] after:w-full after:bg-teal-700 after:rounded-[50%];
-    }
+  .nav-item {
+    @apply inline-flex items-center p-2 align-middle text-base text-gray-700 outline-teal-500 hover:text-teal-700 transition-colors duration-300;
+  }
 
-    .nav-item {
-        @apply inline-flex items-center p-2 align-middle text-base text-gray-700 outline-teal-500 hover:text-teal-700 transition-colors duration-300;
-    }
+  .nav-item.active {
+    @apply border-b-2 border-b-teal-600;
+  }
 
-    .nav-item.active {
-        @apply border-b-2 border-b-teal-600
-    }
+  .nav-item.open {
+    @apply border-b-2 border-b-teal-600;
+  }
 
-    .nav-item.open {
-        @apply border-b-2 border-b-teal-600
-    }
+  .btn {
+    @apply whitespace-nowrap cursor-pointer inline-block items-center justify-center px-6 py-3 rounded-md shadow-sm text-base font-medium duration-300;
+  }
 
-    .btn {
-        @apply whitespace-nowrap cursor-pointer inline-block items-center justify-center px-6 py-3 rounded-md shadow-sm text-base font-medium duration-300;
-    }
-
-    .btn-primary {
-        @apply text-white bg-teal-600 hover:bg-teal-700 border border-teal-700;
-    }
-
+  .btn-primary {
+    @apply text-white bg-teal-600 hover:bg-teal-700 border border-teal-700;
+  }
 }

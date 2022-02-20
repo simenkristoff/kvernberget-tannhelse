@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@lib/*": [ "./lib/*"],
+      "@lib/*": ["./lib/*"],
       "@components/*": ["./components/*"]
     },
     "target": "es5",
@@ -20,6 +20,11 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "./node_modules/@sanity/base/types/**/*.ts", "./**/*.ts", "./**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "./node_modules/@sanity/base/types/**/*.ts",
+    "./**/*.ts",
+    "./**/*.tsx"
+  ],
   "exclude": ["node_modules"]
 }
