@@ -7,7 +7,7 @@ import {
 } from 'react'
 
 interface WindowContextProps {
-  fixed: boolean;
+  fixed: boolean
 }
 
 const initial: WindowContextProps = {
@@ -16,7 +16,7 @@ const initial: WindowContextProps = {
 
 const WindowContext = createContext<WindowContextProps>(initial)
 
-export function WindowProvider ({ children }: { children: ReactNode }) {
+export function WindowProvider({ children }: { children: ReactNode }) {
   const [fixed, setFixed] = useState<boolean>(false)
 
   const checkScrollConstraints = () => {
@@ -43,6 +43,6 @@ export function WindowProvider ({ children }: { children: ReactNode }) {
   )
 }
 
-export function useWindow () {
+export function useWindow() {
   return useContext(WindowContext)
 }

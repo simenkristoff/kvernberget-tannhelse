@@ -1,9 +1,11 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+
 import { InputText, InputCheckbox } from './input'
 
-export default function AppointmentForm () {
+export default function AppointmentForm() {
   const { control, handleSubmit } = useForm()
+  // eslint-disable-next-line no-console
   const onSubmit = (data: any) => console.log(data)
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2">

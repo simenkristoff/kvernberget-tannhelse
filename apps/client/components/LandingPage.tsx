@@ -5,6 +5,7 @@ import client, { PortableText } from '@lib/sanity'
 import { useNextSanityImage } from 'next-sanity-image'
 import Image from 'next/image'
 import React from 'react'
+
 import EmployeeCard from './EmployeeCard'
 import ReviewSlider from './ReviewSlider'
 
@@ -18,13 +19,16 @@ const treatments: string[] = [
 ]
 
 export interface LandingPageProps {
-  latestPost: GetLatestPostQueryResult;
-  reviews: Review[];
-  employees: GetEmployeesQueryResult;
+  latestPost: GetLatestPostQueryResult
+  reviews: Review[]
+  employees: GetEmployeesQueryResult
 }
 
-export default function LandingPage ({ latestPost, reviews, employees }: LandingPageProps) {
-  console.log(latestPost)
+export default function LandingPage({
+  latestPost,
+  reviews,
+  employees
+}: LandingPageProps) {
   return (
     <React.Fragment>
       <section className="relative py-16 flex h-full max-h-screen bg-gradient-to-b from-sky-100 via-gray-100">
@@ -72,13 +76,19 @@ export default function LandingPage ({ latestPost, reviews, employees }: Landing
           <article className="flex flex-col md:flex-row border max-w-4xl mx-auto border-gray-300 rounded-lg overflow-hidden shadow-md">
             <div className="md:h-[300px] lg:h-[400px]">
               <div className="relative w-full h-full aspect-square">
-                <Image
-                  src={useNextSanityImage(client, latestPost.mainImage!)}
-                  alt={latestPost.title}
-                  layout="fill"
-                  objectFit="cover"
-                  sizes="(max-width: 800px) 100vw, 800px"
-                />
+                {latestPost.mainImage && (
+                  <Image
+                    src={
+                      latestPost.mainImage.asset
+                        ? useNextSanityImage(client, latestPost.mainImage.asset)
+                        : ''
+                    }
+                    alt={latestPost.title}
+                    layout="fill"
+                    objectFit="cover"
+                    sizes="(max-width: 800px) 100vw, 800px"
+                  />
+                )}
               </div>
             </div>
             <div className="relative py-8 px-4 my-auto">
@@ -87,7 +97,9 @@ export default function LandingPage ({ latestPost, reviews, employees }: Landing
                   {latestPost.title}
                 </h3>
                 <PortableText blocks={latestPost.excerpt} />
-                <p className='font-bold text-teal-700 hover:text-teal-600 duration-300'>Les mer...</p>
+                <p className="font-bold text-teal-700 hover:text-teal-600 duration-300">
+                  Les mer...
+                </p>
               </div>
             </div>
           </article>

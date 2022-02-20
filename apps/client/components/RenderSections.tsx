@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { upperFirst } from 'lodash'
+
 import * as SectionComponents from './sections'
 
-function resolveSections (section: any) {
+function resolveSections(section: any) {
   // eslint-disable-next-line import/namespace
   const SectionComps = SectionComponents as any
   const Section = SectionComps[upperFirst(section._type as any)]
@@ -16,7 +17,7 @@ function resolveSections (section: any) {
   return null
 }
 
-function RenderSections (props: any) {
+function RenderSections(props: any) {
   const { sections } = props
 
   if (!sections) {

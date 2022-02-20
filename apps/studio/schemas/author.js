@@ -1,4 +1,3 @@
-
 export default {
   name: 'author',
   title: 'Author',

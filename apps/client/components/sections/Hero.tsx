@@ -1,10 +1,11 @@
-import Cta from '../Cta'
 import Image from 'next/image'
 import client, { PortableText } from '@lib/sanity'
 import { useNextSanityImage } from 'next-sanity-image'
 import { Hero as HeroSectionProps } from '@lib/schema'
 
-export default function Hero (props: HeroSectionProps) {
+import Cta from '../Cta'
+
+export default function Hero(props: HeroSectionProps) {
   const { heading, backgroundImage, tagline, ctas } = props
 
   return (
@@ -23,13 +24,19 @@ export default function Hero (props: HeroSectionProps) {
             )}
           </div>
           <div className="relative w-full h-64 md:w-1/2 lg:h-96">
-            <Image
-              src={useNextSanityImage(client, backgroundImage?.image!)}
-              alt={backgroundImage?.alt}
-              layout="fill"
-              objectFit="contain"
-              sizes="(max-width: 800px) 100vw, 800px"
-            />
+            {backgroundImage && (
+              <Image
+                src={
+                  backgroundImage.image
+                    ? useNextSanityImage(client, backgroundImage?.image)
+                    : ''
+                }
+                alt={backgroundImage?.alt}
+                layout="fill"
+                objectFit="contain"
+                sizes="(max-width: 800px) 100vw, 800px"
+              />
+            )}
           </div>
         </div>
       </div>

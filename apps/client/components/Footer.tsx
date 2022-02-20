@@ -5,16 +5,16 @@ import {
 } from '@heroicons/react/outline'
 import Image from 'next/image'
 import client from '@lib/sanity'
-
 import { useNextSanityImage } from 'next-sanity-image'
-import formatPhoneNumber from './utils/formatPhoneNumber'
 import { SiteSettings } from '@lib/schema'
 
+import formatPhoneNumber from './utils/formatPhoneNumber'
+
 interface FooterProps {
-  settings: SiteSettings;
+  settings: SiteSettings
 }
 
-export default function Footer ({ settings }: FooterProps) {
+export default function Footer({ settings }: FooterProps) {
   return (
     <footer className="">
       <div className="border-t border-gray-300 pt-16 text-gray-800">
@@ -24,10 +24,14 @@ export default function Footer ({ settings }: FooterProps) {
               {settings.logo?.image && (
                 <div className="h-20 relative pb-2 lg:mb-0">
                   <div className="h-full aspect-3/1 mx-auto lg:mx-0">
-                    {settings.logo?.image && (
+                    {settings.logo && (
                       <Image
-                        src={useNextSanityImage(client, settings.logo.image)}
-                        alt={settings.logo?.alt || settings.siteTitle}
+                        src={
+                          settings.logo.image
+                            ? useNextSanityImage(client, settings.logo.image)
+                            : ''
+                        }
+                        alt={settings.logo.alt || settings.siteTitle}
                         layout="responsive"
                         objectFit="contain"
                         sizes="(max-width: 800px) 100vw, 800px"
@@ -78,7 +82,7 @@ export default function Footer ({ settings }: FooterProps) {
                     Telefon:
                   </p>
                   <p className="mt-1 group-hover:text-slate-700">
-                    (+47) {formatPhoneNumber(settings.phone!)}
+                    (+47) {formatPhoneNumber(settings.phone)}
                   </p>
                 </a>
 

@@ -34,4 +34,5 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 ## Access to Sanity
+
 Sanity Management can be accesses [here](https://www.sanity.io/manage/project/84d8xdsv/settings#api-settings)

@@ -2,3 +2,6 @@
 *.md
 *.lock
 *.ico
+*.log
+
+/dist

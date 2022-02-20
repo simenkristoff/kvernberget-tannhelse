@@ -2,6 +2,7 @@ import { Popover, Transition } from '@headlessui/react'
 import { MenuIcon } from '@heroicons/react/outline'
 import classNames from 'classnames'
 import { Fragment, ReactFragment, useEffect, useState } from 'react'
+
 import NavDropdown from './NavDropdown'
 import NavItem from './NavItem'
 
@@ -14,12 +15,12 @@ const breakpoints: { [key: string]: number } = {
 }
 
 export interface NavProps {
-  fixed: boolean;
-  className?: string;
-  children?: ReactFragment;
+  fixed: boolean
+  className?: string
+  children?: ReactFragment
 }
 
-function Nav ({ fixed, className, children }: NavProps) {
+function Nav({ fixed, className, children }: NavProps) {
   const [toggle, setToggle] = useState<boolean>(false)
 
   const checkWidthConstraints = () => {
@@ -68,12 +69,15 @@ function Nav ({ fixed, className, children }: NavProps) {
             leaveTo="opacity-0 translate-y-1"
           >
             <Popover.Panel
-              className='w-screen absolute bottom-0 left-0 translate-y-full shadow-md md:shadow-none md:relative z-50 md:translate-y-0 md:w-full'
+              className="w-screen absolute bottom-0 left-0 translate-y-full shadow-md md:shadow-none md:relative z-50 md:translate-y-0 md:w-full"
               static
             >
               <Popover.Group
                 as="nav"
-                className={classNames('flex flex-col h-full bg-white md:bg-transparent md:flex-row lg:space-x-2 justify-start', { 'justify-end': fixed })}
+                className={classNames(
+                  'flex flex-col h-full bg-white md:bg-transparent md:flex-row lg:space-x-2 justify-start',
+                  { 'justify-end': fixed }
+                )}
               >
                 {children}
               </Popover.Group>

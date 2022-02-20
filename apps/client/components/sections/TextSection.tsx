@@ -1,6 +1,6 @@
 import { PortableText } from '@lib/sanity'
 
-function TextSection (props: any) {
+function TextSection(props: any) {
   const { text } = props
   return (
     <div>

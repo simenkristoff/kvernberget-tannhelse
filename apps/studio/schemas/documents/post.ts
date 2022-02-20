@@ -1,19 +1,21 @@
-import { Rule } from "@sanity/types";
+import { Rule } from '@sanity/types'
 import chain, { map, reduce } from 'lodash'
 
 const verifyBlockLength = (blockContent: any, maxLen: number) => {
-    const count = chain(blockContent).map((item) => map(item.children, (child) => child.text)).reduce((prev, curr) => {
+  const count = chain(blockContent)
+    .map((item) => map(item.children, (child) => child.text))
+    .reduce((prev, curr) => {
       prev += reduce(curr, (p, c) => c.length, 0)
       return prev
-    }, 0).valueOf()
+    }, 0)
+    .valueOf()
 
-    if(count > maxLen) {
-      return `Teksten kan ikke være lengre enn ${maxLen} bokstaver`
-    }
-    
-    return true
+  if (count > maxLen) {
+    return `Teksten kan ikke være lengre enn ${maxLen} bokstaver`
+  }
+
+  return true
 }
-
 
 export default {
   name: 'post',
@@ -54,7 +56,7 @@ export default {
       validation: (rule: Rule) => [
         rule.required(),
         rule.custom((value) => verifyBlockLength(value, 250))
-      ],
+      ]
     },
     {
       name: 'body',
@@ -68,7 +70,7 @@ export default {
       title: 'title',
       media: 'mainImage'
     },
-    prepare (selection) {
+    prepare(selection) {
       return Object.assign({}, selection)
     }
   }

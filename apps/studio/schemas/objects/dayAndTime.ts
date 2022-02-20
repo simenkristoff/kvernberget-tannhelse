@@ -1,11 +1,19 @@
-import { MdSchedule } from "react-icons/md";
+import { MdSchedule } from 'react-icons/md'
 import { Rule } from '@sanity/types'
 
 // 1. Import the TimeInput react component
 import TimeInput from '../../components/TimeInput'
 
 // 2. List of days the editor may choose from
-const days = ['Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag', 'Søndag']
+const days = [
+  'Mandag',
+  'Tirsdag',
+  'Onsdag',
+  'Torsdag',
+  'Fredag',
+  'Lørdag',
+  'Søndag'
+]
 
 // 3. Validate function which is invoked on user input
 const verifyInput = (dayAndTime: any) => {
@@ -22,7 +30,9 @@ const verifyInput = (dayAndTime: any) => {
   if (!closesAt) {
     return 'Velg når klinikken stenger'
   }
-  return opensAt < closesAt ? true : `Sørg for at klinikken åpner før den stenger på ${day}`
+  return opensAt < closesAt
+    ? true
+    : `Sørg for at klinikken åpner før den stenger på ${day}`
 }
 
 export default {
@@ -36,9 +46,7 @@ export default {
   },
 
   // 4. Perform validation
-  validation: (rule: Rule) => [
-    rule.custom(verifyInput),
-  ],
+  validation: (rule: Rule) => [rule.custom(verifyInput)],
 
   fields: [
     {
@@ -86,7 +94,7 @@ export default {
       opensAt: 'opensAt',
       closesAt: 'closesAt'
     },
-    prepare ({ day, closed, opensAt, closesAt }) {
+    prepare({ day, closed, opensAt, closesAt }) {
       return {
         title: day,
         subtitle: closed ? 'Stengt' : `${opensAt} - ${closesAt}`

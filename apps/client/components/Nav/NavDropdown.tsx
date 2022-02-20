@@ -4,18 +4,24 @@ import classNames from 'classnames'
 import { Fragment, ReactFragment } from 'react'
 
 export interface NavDropdownProps {
-  label: string;
-  children: ReactFragment;
+  label: string
+  children: ReactFragment
 }
 
-export default function NavDropdown ({ label, children }: NavDropdownProps) {
+export default function NavDropdown({ label, children }: NavDropdownProps) {
   return (
     <Popover className="relative flex flex-col md:flex-row">
       {({ open }) => (
         <Fragment>
           <Popover.Button className={classNames('nav-item', { open: open })}>
             {label}
-            <ChevronDownIcon className={classNames('h-5 w-5 transition-transform duration-300', { 'rotate-180': open })} aria-hidden="true" />
+            <ChevronDownIcon
+              className={classNames(
+                'h-5 w-5 transition-transform duration-300',
+                { 'rotate-180': open }
+              )}
+              aria-hidden="true"
+            />
           </Popover.Button>
 
           <Transition

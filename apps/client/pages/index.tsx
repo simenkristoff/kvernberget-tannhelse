@@ -1,6 +1,5 @@
 import LandingPage, { LandingPageProps } from '@components/LandingPage'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
-
 import { getEmployees } from '@lib/queries/getEmployees'
 import { getLatestPost } from '@lib/queries/getLatestPost'
 import Layout from '@components/Layout'
@@ -8,7 +7,7 @@ import { getSiteSettings } from '@lib/queries/getSettings'
 import { Fragment } from 'react'
 import { getReviews } from '@lib/queries/getReviews'
 
-export default function Home ({
+export default function Home({
   settings,
   latestPost,
   reviews,
@@ -30,7 +29,7 @@ export default function Home ({
   )
 }
 
-export async function getStaticProps ({
+export async function getStaticProps({
   params,
   preview = false
 }: GetStaticPropsContext) {

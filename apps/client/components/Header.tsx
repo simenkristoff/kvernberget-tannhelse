@@ -1,7 +1,5 @@
 import client from '@lib/sanity'
-import Nav from './Nav/Nav'
 import Image from 'next/image'
-
 import { useNextSanityImage } from 'next-sanity-image'
 import classNames from 'classnames'
 import { useWindow } from 'context/WindowContext'
@@ -10,14 +8,16 @@ import {
   PhoneIcon,
   MailIcon
 } from '@heroicons/react/outline'
-import formatPhoneNumber from './utils/formatPhoneNumber'
 import { SiteSettings } from '@lib/schema'
+
+import formatPhoneNumber from './utils/formatPhoneNumber'
+import Nav from './Nav/Nav'
 
 interface HeaderProps {
   settings: SiteSettings
 }
 
-export default function Header ({ settings }: HeaderProps) {
+export default function Header({ settings }: HeaderProps) {
   const { fixed } = useWindow()
 
   return (
@@ -29,9 +29,14 @@ export default function Header ({ settings }: HeaderProps) {
     >
       <div className="bg-white">
         <div className="wrapper flex flex-wrap">
-          <div className={classNames('flex-auto w-full max-w-[10rem] aspect-3/1 my-2 transition-all duration-200', {
-            'md:max-w-[12rem] lg:max-w-[16rem]': !fixed
-          })}>
+          <div
+            className={classNames(
+              'flex-auto w-full max-w-[10rem] aspect-3/1 my-2 transition-all duration-200',
+              {
+                'md:max-w-[12rem] lg:max-w-[16rem]': !fixed
+              }
+            )}
+          >
             {settings.logo?.image && (
               <Image
                 src={useNextSanityImage(client, settings.logo.image)}
@@ -42,7 +47,12 @@ export default function Header ({ settings }: HeaderProps) {
               />
             )}
           </div>
-          <div className={classNames('hidden', { 'md:flex flex-1 pl-7 flex-row w-full justify-end space-x-4 lg:space-x-14': !fixed })}>
+          <div
+            className={classNames('hidden', {
+              'md:flex flex-1 pl-7 flex-row w-full justify-end space-x-4 lg:space-x-14':
+                !fixed
+            })}
+          >
             <a
               href="#"
               className="relative group hover:translate-x-2 duration-300 my-2 block"
@@ -59,7 +69,6 @@ export default function Header ({ settings }: HeaderProps) {
                 {settings.address}
               </p>
             </a>
-
             <a
               href={`tel: ${settings.phone}`}
               className="relative group hover:translate-x-2 duration-300 my-2 block"
@@ -73,7 +82,7 @@ export default function Header ({ settings }: HeaderProps) {
                 Telefon:
               </p>
               <p className="mt-1 group-hover:text-slate-700">
-                (+47) {formatPhoneNumber(settings.phone!)}
+                (+47) {formatPhoneNumber(settings.phone)}
               </p>
             </a>
 
@@ -95,7 +104,13 @@ export default function Header ({ settings }: HeaderProps) {
             </a>
           </div>
 
-          <Nav fixed={fixed} className={classNames('flex flex-auto justify-end md:justify-start items-center', { 'border-t border-transparent md:border-gray-100': !fixed })}>
+          <Nav
+            fixed={fixed}
+            className={classNames(
+              'flex flex-auto justify-end md:justify-start items-center',
+              { 'border-t border-transparent md:border-gray-100': !fixed }
+            )}
+          >
             <Nav.NavItem to="/">Hjem</Nav.NavItem>
             <Nav.NavDropdown label="Behandlinger">
               <Nav.NavItem to="/fyllinger">Fyllinger</Nav.NavItem>
@@ -108,7 +123,13 @@ export default function Header ({ settings }: HeaderProps) {
             <Nav.NavItem to="/priser">Priser</Nav.NavItem>
             <Nav.NavItem to="/om-oss">Om oss</Nav.NavItem>
             <Nav.NavItem to="/kontakt-oss">Kontakt oss</Nav.NavItem>
-            <button className={classNames('btn btn-primary md:py-0', { 'h-full rounded-none self-stretch md:absolute md:right-0 md:bottom-0': !fixed, 'rounded-none md:rounded-md': fixed })}>
+            <button
+              className={classNames('btn btn-primary md:py-0', {
+                'h-full rounded-none self-stretch md:absolute md:right-0 md:bottom-0':
+                  !fixed,
+                'rounded-none md:rounded-md': fixed
+              })}
+            >
               Bestill time
             </button>
           </Nav>

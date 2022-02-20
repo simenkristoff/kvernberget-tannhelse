@@ -9,9 +9,7 @@ import {
 import { config } from './config'
 
 if (!config.projectId) {
-  throw Error(
-    'The Project ID is not set. Check your environment variables.'
-  )
+  throw Error('The Project ID is not set. Check your environment variables.')
 }
 export const urlFor = (source: SanityImageSource) =>
   createImageUrlBuilder(config).image(source)
@@ -19,8 +17,7 @@ export const urlFor = (source: SanityImageSource) =>
 export const imageBuilder = (source: SanityImageSource) =>
   createImageUrlBuilder(config).image(source)
 
-export const usePreviewSubscription =
-    createPreviewSubscriptionHook(config)
+export const usePreviewSubscription = createPreviewSubscriptionHook(config)
 
 // Set up Portable Text serialization
 export const PortableText = createPortableTextComponent({
@@ -30,9 +27,9 @@ export const PortableText = createPortableTextComponent({
   serializers: {
     types: {
       code: (props: any) => (
-          <pre data-language={props.node.language}>
-            <code>{props.node.code}</code>
-          </pre>
+        <pre data-language={props.node.language}>
+          <code>{props.node.code}</code>
+        </pre>
       )
     }
   }

@@ -1,5 +1,6 @@
 import { getClient } from '@lib/sanity'
 import { groq } from 'next-sanity'
+
 import type * as Schema from '../schema'
 
 export const getEmployeesQuery = groq`
@@ -13,4 +14,5 @@ export const getEmployeesQuery = groq`
 
 export type GetEmployeesQueryResult = Array<Schema.Employees>
 
-export const getEmployees = async (preview: boolean) => getClient(preview).fetch<GetEmployeesQueryResult>(getEmployeesQuery)
+export const getEmployees = async (preview: boolean) =>
+  getClient(preview).fetch<GetEmployeesQueryResult>(getEmployeesQuery)

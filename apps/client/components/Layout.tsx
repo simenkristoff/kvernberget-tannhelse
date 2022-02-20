@@ -1,15 +1,16 @@
 import { ChevronDoubleUpIcon } from '@heroicons/react/outline'
 import { SiteSettings } from '@lib/schema'
 import { useWindow } from 'context/WindowContext'
+
 import Footer from './Footer'
 import Header from './Header'
 
 interface LayoutProps {
   settings: SiteSettings
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
-export default function Layout ({ settings, children }: LayoutProps) {
+export default function Layout({ settings, children }: LayoutProps) {
   const { fixed } = useWindow()
 
   const scrollToTop = () => {
@@ -21,9 +22,7 @@ export default function Layout ({ settings, children }: LayoutProps) {
   return (
     <div>
       <Header settings={settings} />
-      <main>
-        {children}
-      </main>
+      <main>{children}</main>
 
       {fixed && (
         <button
@@ -34,7 +33,7 @@ export default function Layout ({ settings, children }: LayoutProps) {
         </button>
       )}
 
-      <Footer settings={settings}/>
+      <Footer settings={settings} />
     </div>
   )
 }

@@ -5,13 +5,13 @@ import Head from 'next/head'
  */
 
 interface MetaHeadProps {
-  pageTitle?: string;
-  description?: string;
-  twitterHandle?: string;
-  settings: SiteSettings;
+  pageTitle?: string
+  description?: string
+  twitterHandle?: string
+  settings: SiteSettings
 }
 
-export default function MetaHead ({
+export default function MetaHead({
   pageTitle,
   description,
   twitterHandle,

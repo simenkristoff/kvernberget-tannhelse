@@ -1,5 +1,6 @@
 import { getClient } from '@lib/sanity'
 import { groq } from 'next-sanity'
+
 import type * as Schema from '../schema'
 
 export const getSiteSettingsQuery = groq`
@@ -10,4 +11,5 @@ export const getSiteSettingsQuery = groq`
 
 export type GetSiteSettingsQueryResult = Schema.SiteSettings
 
-export const getSiteSettings = async () => getClient(false).fetch<GetSiteSettingsQueryResult>(getSiteSettingsQuery)
+export const getSiteSettings = async () =>
+  getClient(false).fetch<GetSiteSettingsQueryResult>(getSiteSettingsQuery)

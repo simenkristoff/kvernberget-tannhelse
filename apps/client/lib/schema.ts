@@ -42,35 +42,35 @@ export type {
  *
  */
 export interface Route extends SanityDocument {
-  _type: 'route';
+  _type: 'route'
 
   /**
    * Slug — `slug`
    *
    *
    */
-  slug?: { _type: 'slug'; current: string };
+  slug?: { _type: 'slug'; current: string }
 
   /**
    * page — `reference`
    *
    * Select the page that this route should point to
    */
-  page?: SanityReference<Page>;
+  page?: SanityReference<Page>
 
   /**
    * Include page in sitemap — `boolean`
    *
    * For search engines. Will be added to /sitemap.xml
    */
-  includeInSitemap?: boolean;
+  includeInSitemap?: boolean
 
   /**
    * Disallow in robots.txt — `boolean`
    *
    * Hide this route for search engines
    */
-  disallowRobots?: boolean;
+  disallowRobots?: boolean
 }
 
 /**
@@ -79,35 +79,35 @@ export interface Route extends SanityDocument {
  *
  */
 export interface Reviews extends SanityDocument {
-  _type: 'reviews';
+  _type: 'reviews'
 
   /**
    * Tittel — `string`
    *
    *
    */
-  title?: string;
+  title?: string
 
   /**
    * Rangering — `rating`
    *
    *
    */
-  rating?: Rating;
+  rating?: Rating
 
   /**
    * Omtale — `text`
    *
    *
    */
-  content?: string;
+  content?: string
 
   /**
    * Kilde — `url`
    *
    * Lenke til nettstedet omtalen er hentet fra
    */
-  source?: string;
+  source?: string
 }
 
 /**
@@ -116,56 +116,56 @@ export interface Reviews extends SanityDocument {
  *
  */
 export interface SiteSettings extends SanityDocument {
-  _type: 'siteSettings';
+  _type: 'siteSettings'
 
   /**
    * Site Title — `string`
    *
    *
    */
-  siteTitle?: string;
+  siteTitle?: string
 
   /**
    * Site Description — `text`
    *
    *
    */
-  siteDescription?: string;
+  siteDescription?: string
 
   /**
    * Logo — `altImage`
    *
    *
    */
-  logo?: AltImage;
+  logo?: AltImage
 
   /**
    * Address — `string`
    *
    *
    */
-  address?: string;
+  address: string
 
   /**
    * Email — `string`
    *
    *
    */
-  email?: string;
+  email: string
 
   /**
    * Phone number — `string`
    *
    *
    */
-  phone?: string;
+  phone: string
 
   /**
    * Åpningstider — `array`
    *
    *
    */
-  openingHours?: Array<SanityKeyed<DayAndTime>>;
+  openingHours?: Array<SanityKeyed<DayAndTime>>
 }
 
 /**
@@ -174,7 +174,7 @@ export interface SiteSettings extends SanityDocument {
  *
  */
 export interface Employees extends SanityDocument {
-  _type: 'employees';
+  _type: 'employees'
 
   /**
    * Bilde — `image`
@@ -182,11 +182,11 @@ export interface Employees extends SanityDocument {
    *
    */
   image?: {
-    _type: 'image';
-    asset: SanityReference<SanityImageAsset>;
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
+    _type: 'image'
+    asset: SanityReference<SanityImageAsset>
+    crop?: SanityImageCrop
+    hotspot?: SanityImageHotspot
+  }
 
   /**
    * Navn — `object`
@@ -194,35 +194,35 @@ export interface Employees extends SanityDocument {
    *
    */
   name?: {
-    _type: 'name';
+    _type: 'name'
     /**
      * Fornavn — `string`
      *
      *
      */
-    firstName?: string;
+    firstName?: string
 
     /**
      * Etternavn — `string`
      *
      *
      */
-    lastName?: string;
-  };
+    lastName?: string
+  }
 
   /**
    * Stilling — `string`
    *
    *
    */
-  jobTitle?: string;
+  jobTitle?: string
 
   /**
    * Beskrivelse — `blockContent`
    *
    *
    */
-  description?: BlockContent;
+  description?: BlockContent
 }
 
 /**
@@ -231,21 +231,21 @@ export interface Employees extends SanityDocument {
  *
  */
 export interface Post extends SanityDocument {
-  _type: 'post';
+  _type: 'post'
 
   /**
    * Title — `string`
    *
    *
    */
-  title?: string;
+  title?: string
 
   /**
    * Slug — `slug`
    *
    *
    */
-  slug?: { _type: 'slug'; current: string };
+  slug?: { _type: 'slug'; current: string }
 
   /**
    * Main image — `image`
@@ -253,32 +253,32 @@ export interface Post extends SanityDocument {
    *
    */
   mainImage?: {
-    _type: 'image';
-    asset: SanityReference<SanityImageAsset>;
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
+    _type: 'image'
+    asset: SanityReference<SanityImageAsset>
+    crop?: SanityImageCrop
+    hotspot?: SanityImageHotspot
+  }
 
   /**
    * Published at — `datetime`
    *
    *
    */
-  publishedAt?: string;
+  publishedAt?: string
 
   /**
    * Utdrag — `blockContent`
    *
    *
    */
-  excerpt?: BlockContent;
+  excerpt?: BlockContent
 
   /**
    * Body — `blockContent`
    *
    *
    */
-  body?: BlockContent;
+  body?: BlockContent
 }
 
 /**
@@ -287,35 +287,35 @@ export interface Post extends SanityDocument {
  *
  */
 export interface Page extends SanityDocument {
-  _type: 'page';
+  _type: 'page'
 
   /**
    * Tittel — `string`
    *
    *
    */
-  title?: string;
+  title?: string
 
   /**
    * Slug — `slug`
    *
    *
    */
-  slug?: { _type: 'slug'; current: string };
+  slug?: { _type: 'slug'; current: string }
 
   /**
    * Include page in sitemap — `boolean`
    *
    * For search engines. Will be added to /sitemap.xml
    */
-  includeInSitemap?: boolean;
+  includeInSitemap?: boolean
 
   /**
    * Disallow in robots.txt — `boolean`
    *
    * Hide this route for search engines
    */
-  disallowRobots?: boolean;
+  disallowRobots?: boolean
 
   /**
    * Seksjoner — `array`
@@ -324,34 +324,34 @@ export interface Page extends SanityDocument {
    */
   content?: Array<
     SanityKeyed<Hero> | SanityKeyed<ImageSection> | SanityKeyed<TextSection>
-  >;
+  >
 
   /**
    * Metadata — `seoMetaData`
    *
    *
    */
-  meta?: SeoMetaData;
+  meta?: SeoMetaData
 }
 
 export type BlockContent = Array<
   | SanityKeyed<SanityBlock>
   | SanityKeyed<{
-      _type: 'image';
-      asset: SanityReference<SanityImageAsset>;
-      crop?: SanityImageCrop;
-      hotspot?: SanityImageHotspot;
+      _type: 'image'
+      asset: SanityReference<SanityImageAsset>
+      crop?: SanityImageCrop
+      hotspot?: SanityImageHotspot
     }>
->;
+>
 
 export type SeoMetaData = {
-  _type: 'seoMetaData';
+  _type: 'seoMetaData'
   /**
    * Metabeskrivelse — `text`
    *
    * Beskrivelse som vises når denne siden dukker opp i søkeresultater eller deles på sosiale medier.
    */
-  description?: string;
+  description?: string
 
   /**
    * Metabilde — `image`
@@ -359,15 +359,15 @@ export type SeoMetaData = {
    * Dette bildet forhåndsvises når denne siden deles på sosiale medier.
    */
   openGraphImage?: {
-    _type: 'image';
-    asset: SanityReference<SanityImageAsset>;
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
-};
+    _type: 'image'
+    asset: SanityReference<SanityImageAsset>
+    crop?: SanityImageCrop
+    hotspot?: SanityImageHotspot
+  }
+}
 
 export type DayAndTime = {
-  _type: 'dayAndTime';
+  _type: 'dayAndTime'
   /**
    * Day — `string`
    *
@@ -380,219 +380,211 @@ export type DayAndTime = {
     | 'Torsdag'
     | 'Fredag'
     | 'Lørdag'
-    | 'Søndag';
+    | 'Søndag'
 
   /**
    * Stengt — `boolean`
    *
    *
    */
-  closed?: boolean;
+  closed?: boolean
 
   /**
    * Opens at — `string`
    *
    * Choose when the store opens
    */
-  opensAt?: string;
+  opensAt?: string
 
   /**
    * Closes at — `string`
    *
    * Choose when the store closes
    */
-  closesAt?: string;
-};
+  closesAt?: string
+}
 
 export type AltImage = {
-  _type: 'altImage';
+  _type: 'altImage'
   /**
    * Bilde — `image`
    *
    *
    */
   image?: {
-    _type: 'image';
-    asset: SanityReference<SanityImageAsset>;
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
+    _type: 'image'
+    asset: SanityReference<SanityImageAsset>
+    crop?: SanityImageCrop
+    hotspot?: SanityImageHotspot
+  }
 
   /**
    * Alternativ tekst — `string`
    *
    * Noen av de besøkende kan ikke se bilder, enten fordi de er blinde, fargeblinde, eller svaksynte; i slike tilfeller benyttes alternativ tekst av nettleseren for å beskrive bildet for brukeren.
    */
-  alt?: string;
-};
+  alt?: string
+}
 
-export type InternalLink = SanityReference<Route>;
+export type InternalLink = SanityReference<Route>
 
 export type Figure = {
-  _type: 'figure';
-  asset: SanityReference<SanityImageAsset>;
-  crop?: SanityImageCrop;
-  hotspot?: SanityImageHotspot;
+  _type: 'figure'
+  asset: SanityReference<SanityImageAsset>
+  crop?: SanityImageCrop
+  hotspot?: SanityImageHotspot
 
   /**
    * Caption — `string`
    *
    *
    */
-  caption?: string;
+  caption?: string
 
   /**
    * Alternative text — `string`
    *
    * Important for SEO and accessiblity.
    */
-  alt?: string;
-};
+  alt?: string
+}
 
 export type Link = {
-  _type: 'link';
+  _type: 'link'
   /**
    * URL — `url`
    *
    *
    */
-  href?: string;
-};
+  href?: string
+}
 
-export type PortableText = Array<
-  SanityKeyed<SanityBlock> | SanityKeyed<Figure>
->;
+export type PortableText = Array<SanityKeyed<SanityBlock> | SanityKeyed<Figure>>
 
 export type Cta = {
-  _type: 'cta';
+  _type: 'cta'
   /**
    * Title — `string`
    *
    *
    */
-  title?: string;
+  title?: string
 
   /**
    * Internal link — `reference`
    *
    * Use this to link between pages on the website
    */
-  route?: SanityReference<Route>;
+  route?: SanityReference<Route>
 
   /**
    * External link — `url`
    *
    *
    */
-  link?: string;
-};
+  link?: string
+}
 
-export type SimplePortableText = Array<SanityKeyed<SanityBlock>>;
+export type SimplePortableText = Array<SanityKeyed<SanityBlock>>
 
 export type Hero = {
-  _type: 'hero';
+  _type: 'hero'
   /**
    * Heading — `string`
    *
    *
    */
-  heading?: string;
+  heading?: string
 
   /**
    * Tagline — `simplePortableText`
    *
    *
    */
-  tagline?: SimplePortableText;
+  tagline?: SimplePortableText
 
   /**
    * Bakgrunnsbilde — `altImage`
    *
    *
    */
-  backgroundImage?: AltImage;
+  backgroundImage?: AltImage
 
   /**
    * Call to actions — `array`
    *
    *
    */
-  ctas?: Array<SanityKeyed<Cta>>;
-};
+  ctas?: Array<SanityKeyed<Cta>>
+}
 
 export type ImageSection = {
-  _type: 'imageSection';
+  _type: 'imageSection'
   /**
    * Heading — `string`
    *
    *
    */
-  heading?: string;
+  heading?: string
 
   /**
    * Label — `string`
    *
    *
    */
-  label?: string;
+  label?: string
 
   /**
    * Text — `simplePortableText`
    *
    *
    */
-  text?: SimplePortableText;
+  text?: SimplePortableText
 
   /**
    * Image — `figure`
    *
    *
    */
-  image?: Figure;
+  image?: Figure
 
   /**
    * Call to action — `cta`
    *
    *
    */
-  cta?: Cta;
-};
+  cta?: Cta
+}
 
 export type TextSection = {
-  _type: 'textSection';
+  _type: 'textSection'
   /**
    * Label — `string`
    *
    *
    */
-  label?: string;
+  label?: string
 
   /**
    * Heading — `string`
    *
    *
    */
-  heading?: string;
+  heading?: string
 
   /**
    * Text — `portableText`
    *
    *
    */
-  text?: PortableText;
-};
+  text?: PortableText
+}
 
-export type Documents =
-  | Route
-  | Reviews
-  | SiteSettings
-  | Employees
-  | Post
-  | Page;
+export type Documents = Route | Reviews | SiteSettings | Employees | Post | Page
 
 /**
  * This interface is a stub. It was referenced in your sanity schema but
  * the definition was not actually found. Future versions of
  * sanity-codegen will let you type this explicity.
  */
-type Rating = any;
+type Rating = any

@@ -2,11 +2,15 @@ import { Rule } from '@sanity/types'
 import { chain } from 'lodash'
 
 const verifyOpeningHours = (openingHours: any) => {
-  const nonUniq = chain(openingHours).groupBy('day').pickBy(x => x.length > 1).keys().value()
+  const nonUniq = chain(openingHours)
+    .groupBy('day')
+    .pickBy((x) => x.length > 1)
+    .keys()
+    .value()
   if (nonUniq.length > 0) {
     return `Ugyldig verdier.. ${nonUniq.join(', ')} gjentas flere ganger`
   }
-  
+
   return true
 }
 
@@ -15,7 +19,7 @@ export default {
   name: 'siteSettings',
   title: 'Innstillinger',
   type: 'document',
-  __experimental_actions: ['create', 'update', 'delete', 'publish'], 
+  __experimental_actions: ['create', 'update', 'delete', 'publish'],
   groups: [
     {
       name: 'general',
@@ -40,86 +44,88 @@ export default {
       group: 'general'
     },
     {
-      title: "Logo",
+      title: 'Logo',
       name: 'logo',
-      type: "altImage"
+      type: 'altImage'
     },
     {
       type: 'string',
       name: 'address',
-      title: 'Address'
+      title: 'Address',
+      codegen: { required: true },
+      validation: (rule: Rule) => [rule.required()]
     },
     {
       type: 'string',
       name: 'email',
       title: 'Email',
-      validation: (rule: Rule) => rule.email()
+      codegen: { required: true },
+      validation: (rule: Rule) => [rule.required(), rule.email()]
     },
     {
       type: 'string',
       name: 'phone',
       title: 'Phone number',
-      validation: (rule: Rule) => rule.regex(/^\d{8}$/)
+      codegen: { required: true },
+      validation: (rule: Rule) => [rule.required(), rule.regex(/^\d{8}$/)]
     },
     {
-      title: "Åpningstider",
-      name: "openingHours",
-      type: "array",
-      of: [{ type: "dayAndTime" }],
+      title: 'Åpningstider',
+      name: 'openingHours',
+      type: 'array',
+      of: [{ type: 'dayAndTime' }],
       group: 'availability',
-      validation: (rule: Rule) => [
-        rule.custom(verifyOpeningHours)
-      ]
-    },
+      validation: (rule: Rule) => [rule.custom(verifyOpeningHours)]
+    }
   ],
   initialValue: {
-    siteTitle: "Kvernberget Tannhelse",
-    siteDescription: "Hei",
-    address: "Rørgata 8, 6517 Kristiansund",
-    phone: "71670000",
-    email: "post@kvernbergettannhelse.no",
+    siteTitle: 'Kvernberget Tannhelse',
+    siteDescription: 'Hei',
+    address: 'Rørgata 8, 6517 Kristiansund',
+    phone: '71670000',
+    email: 'post@kvernbergettannhelse.no',
     openingHours: [
       {
-        day: "Mandag",
+        day: 'Mandag',
         closed: false,
-        opensAt: "08:00",
-        closesAt: "16:00"
+        opensAt: '08:00',
+        closesAt: '16:00'
       },
       {
-        day: "Tirsdag",
+        day: 'Tirsdag',
         closed: false,
-        opensAt: "08:00",
-        closesAt: "16:00"
+        opensAt: '08:00',
+        closesAt: '16:00'
       },
       {
-        day: "Onsdag",
+        day: 'Onsdag',
         closed: false,
-        opensAt: "08:00",
-        closesAt: "16:00"
+        opensAt: '08:00',
+        closesAt: '16:00'
       },
       {
-        day: "Torsdag",
+        day: 'Torsdag',
         closed: false,
-        opensAt: "08:00",
-        closesAt: "17:00"
+        opensAt: '08:00',
+        closesAt: '17:00'
       },
       {
-        day: "Fredag",
+        day: 'Fredag',
         closed: false,
-        opensAt: "08:00",
-        closesAt: "15:00"
+        opensAt: '08:00',
+        closesAt: '15:00'
       },
       {
-        day: "Lørdag",
+        day: 'Lørdag',
         closed: true,
-        opensAt: "08:00",
-        closesAt: "15:00"
+        opensAt: '08:00',
+        closesAt: '15:00'
       },
       {
-        day: "Søndag",
+        day: 'Søndag',
         closed: true,
-        opensAt: "08:00",
-        closesAt: "15:00"
+        opensAt: '08:00',
+        closesAt: '15:00'
       }
     ]
   }

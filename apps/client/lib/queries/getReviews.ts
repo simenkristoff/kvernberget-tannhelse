@@ -1,6 +1,7 @@
 import { CleanSchema } from '@lib/interface'
 import { getClient } from '@lib/sanity'
 import { groq } from 'next-sanity'
+
 import type * as Schema from '../schema'
 
 export type Review = CleanSchema<Schema.Reviews>
@@ -15,4 +16,5 @@ export const getReviewsQuery = groq`
     }
 `
 
-export const getReviews = async (preview: boolean) => getClient(preview).fetch<Review[]>(getReviewsQuery)
+export const getReviews = async (preview: boolean) =>
+  getClient(preview).fetch<Review[]>(getReviewsQuery)

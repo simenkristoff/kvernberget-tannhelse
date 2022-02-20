@@ -1,14 +1,18 @@
 import { Review } from '@lib/queries/getReviews'
 import classNames from 'classnames'
 import { useRef, useState } from 'react'
+
 import ReviewCard from './ReviewCard'
 
 interface ReviewSliderProps {
-  reviews: Review[];
-  className?: string;
+  reviews: Review[]
+  className?: string
 }
 
-export default function ReviewSlider ({ reviews, className }: ReviewSliderProps) {
+export default function ReviewSlider({
+  reviews,
+  className
+}: ReviewSliderProps) {
   const startPos = useRef<number>(0)
   const dragging = useRef<boolean>(false)
   const [active, setActive] = useState<number>(0)
@@ -46,42 +50,45 @@ export default function ReviewSlider ({ reviews, className }: ReviewSliderProps)
     const dir = movedBy / Math.abs(movedBy)
 
     const slides = Math.abs(movedBy) > 50 ? dir + active : active
-    const next = Math.min(Math.max(slides, -(maxSlide)), 0)
-    setCurrTrans(
-      next * width
-    )
+    const next = Math.min(Math.max(slides, -maxSlide), 0)
+    setCurrTrans(next * width)
     setActive(next)
   }
 
   return (
     <div className={classNames('w-full max-w-sm sm:max-w-md', className)}>
-
-        <div className={'transition-all w-full aspect-4/3 sm:aspect-video relative overflow-hidden duration-1000'}>
-          {reviews.map((review, i) => (
-            <ReviewCard
-              onTouchStart={handleStart}
-              onMouseDown={handleStart}
-              onTouchMove={handleDrag}
-              onMouseMove={handleDrag}
-              onTouchEnd={handleEnd}
-              onMouseUp={handleEnd}
-              onMouseLeave={() => {
-                if (dragging.current) handleEnd()
-              }}
-              onContextMenu={(e) => {
-                e.preventDefault()
-                e.stopPropagation()
-              }}
-              key={review._id}
-              className={'absolute min-h-max max-h-72 block w-full max-w-sm sm:max-w-md transition-all -translate-x-full duration-300 drop-shadow-md select-none'}
-              style={{
-                transform: `translate3d(${i * width + currTrans}px, 0px, 0px )`,
-                width
-              }}
-              data={review}
-            />
-          ))}
-        </div>
+      <div
+        className={
+          'transition-all w-full aspect-4/3 sm:aspect-video relative overflow-hidden duration-1000'
+        }
+      >
+        {reviews.map((review, i) => (
+          <ReviewCard
+            onTouchStart={handleStart}
+            onMouseDown={handleStart}
+            onTouchMove={handleDrag}
+            onMouseMove={handleDrag}
+            onTouchEnd={handleEnd}
+            onMouseUp={handleEnd}
+            onMouseLeave={() => {
+              if (dragging.current) handleEnd()
+            }}
+            onContextMenu={(e) => {
+              e.preventDefault()
+              e.stopPropagation()
+            }}
+            key={review._id}
+            className={
+              'absolute min-h-max max-h-72 block w-full max-w-sm sm:max-w-md transition-all -translate-x-full duration-300 drop-shadow-md select-none'
+            }
+            style={{
+              transform: `translate3d(${i * width + currTrans}px, 0px, 0px )`,
+              width
+            }}
+            data={review}
+          />
+        ))}
+      </div>
 
       <div className="flex items-center justify-center">
         {[...Array(maxSlide + 1)].map((x, i) => (

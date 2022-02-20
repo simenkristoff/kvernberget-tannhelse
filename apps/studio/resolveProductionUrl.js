@@ -1,3 +1,3 @@
-export default function resolveProductionUrl (document) {
+export default function resolveProductionUrl(document) {
   return `http://localhost:3000/${document.slug.current}`
 }

@@ -1,10 +1,9 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import React from 'react'
-
 import { WindowProvider } from 'context/WindowContext'
 
-export function reportWebVitals (metric: any) {
+export function reportWebVitals(metric: any) {
   // { id, name, label, value } = metric
   // // Use `window.gtag` if you initialized Google Analytics as this example:
   // // https://github.com/vercel/next.js/blob/canary/examples/with-google-analytics/pages/_app.js
@@ -17,7 +16,7 @@ export function reportWebVitals (metric: any) {
   // })
 }
 
-function App ({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   return (
     <WindowProvider>
       <Component {...pageProps} />

@@ -1,5 +1,6 @@
 import classNames from 'classnames'
 import { Controller } from 'react-hook-form'
+
 import { InputProps } from './interface'
 
 const days = [
@@ -12,7 +13,7 @@ const days = [
   'Søndag'
 ]
 
-export default function InputSelect (props: InputProps) {
+export default function InputSelect(props: InputProps) {
   return (
     <Controller
       {...props}

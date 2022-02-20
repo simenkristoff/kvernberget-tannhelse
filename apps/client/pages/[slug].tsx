@@ -12,9 +12,9 @@ const query = groq`*[_type == "page" && slug.current == $slug][0]{
   ...
 }`
 
-type RouteParams = { slug: string };
+type RouteParams = { slug: string }
 
-function ProductPageContainer ({
+function ProductPageContainer({
   settings,
   page,
   preview,
@@ -42,7 +42,7 @@ function ProductPageContainer ({
   )
 }
 
-export async function getStaticProps ({
+export async function getStaticProps({
   params,
   preview = false
 }: GetStaticPropsContext<RouteParams>) {
@@ -58,7 +58,7 @@ export async function getStaticProps ({
   }
 }
 
-export async function getStaticPaths () {
+export async function getStaticPaths() {
   const routes = await getClient()
     .fetch(`*[_type == "page" && defined(slug.current)]{
     "params": {"slug": slug.current}

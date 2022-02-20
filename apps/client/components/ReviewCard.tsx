@@ -6,16 +6,17 @@ import { Review } from '@lib/queries/getReviews'
 
 interface ReviewProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  data: Review;
+  data: Review
 }
 
-function getBaseUrl (url: string) {
+function getBaseUrl(url: string) {
   const match = url.match(/^((https|http):\/\/){1}[a-zA-z.-]*\/{1}/gm)
-  if (match) return match[0].slice(0, -1).replace(/^((https|http):\/\/)?(www.)?/gm, '')
+  if (match)
+    return match[0].slice(0, -1).replace(/^((https|http):\/\/)?(www.)?/gm, '')
   return ''
 }
 
-export default function ReviewCard ({
+export default function ReviewCard({
   data,
   style,
   className,

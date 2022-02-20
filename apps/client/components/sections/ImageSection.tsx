@@ -5,7 +5,7 @@ import client, { PortableText } from '@lib/sanity'
 import { useNextSanityImage } from 'next-sanity-image'
 import { ImageSection as ImageSectionProps } from '@lib/schema'
 
-function ImageSection (props: ImageSectionProps) {
+function ImageSection(props: ImageSectionProps) {
   // const { heading, label, text, image, cta } = props
   const { heading, label, text, image } = props
 
