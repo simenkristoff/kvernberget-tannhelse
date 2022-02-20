@@ -45,6 +45,6 @@ export const previewClient = createClient({
   useCdn: true
 })
 
-export const getClient = (usePreview: boolean) =>
+export const getClient = (usePreview?: boolean) =>
   usePreview ? previewClient : client
 export default client

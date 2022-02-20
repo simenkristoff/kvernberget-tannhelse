@@ -1,7 +1,7 @@
 import client from '@lib/sanity'
 import Nav from './Nav/Nav'
 import Image from 'next/image'
-import { useSettings } from 'context/SettingsContext'
+
 import { useNextSanityImage } from 'next-sanity-image'
 import classNames from 'classnames'
 import { useWindow } from 'context/WindowContext'
@@ -11,9 +11,13 @@ import {
   MailIcon
 } from '@heroicons/react/outline'
 import formatPhoneNumber from './utils/formatPhoneNumber'
+import { SiteSettings } from '@lib/schema'
 
-export default function Header () {
-  const settings = useSettings()
+interface HeaderProps {
+  settings: SiteSettings
+}
+
+export default function Header ({ settings }: HeaderProps) {
   const { fixed } = useWindow()
 
   return (
@@ -28,9 +32,9 @@ export default function Header () {
           <div className={classNames('flex-auto w-full max-w-[10rem] aspect-3/1 my-2 transition-all duration-200', {
             'md:max-w-[12rem] lg:max-w-[16rem]': !fixed
           })}>
-            {settings.logo?.asset && (
+            {settings.logo?.image && (
               <Image
-                src={useNextSanityImage(client, settings.logo)}
+                src={useNextSanityImage(client, settings.logo.image)}
                 alt={settings.logo?.alt || settings.siteTitle}
                 layout="responsive"
                 objectFit="contain"

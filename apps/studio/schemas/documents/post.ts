@@ -1,6 +1,5 @@
 import { Rule } from "@sanity/types";
 import chain, { map, reduce } from 'lodash'
-import { Children } from "react";
 
 const verifyBlockLength = (blockContent: any, maxLen: number) => {
     const count = chain(blockContent).map((item) => map(item.children, (child) => child.text)).reduce((prev, curr) => {

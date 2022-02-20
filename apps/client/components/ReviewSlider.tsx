@@ -1,6 +1,6 @@
+import { Review } from '@lib/queries/getReviews'
 import classNames from 'classnames'
 import { useRef, useState } from 'react'
-import { Review } from './Frontpage'
 import ReviewCard from './ReviewCard'
 
 interface ReviewSliderProps {
@@ -72,7 +72,7 @@ export default function ReviewSlider ({ reviews, className }: ReviewSliderProps)
                 e.preventDefault()
                 e.stopPropagation()
               }}
-              key={review.title}
+              key={review._id}
               className={'absolute min-h-max max-h-72 block w-full max-w-sm sm:max-w-md transition-all -translate-x-full duration-300 drop-shadow-md select-none'}
               style={{
                 transform: `translate3d(${i * width + currTrans}px, 0px, 0px )`,

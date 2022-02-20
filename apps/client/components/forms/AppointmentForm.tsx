@@ -1,65 +1,68 @@
 import React from 'react'
-import { useForm, Controller, ControllerProps } from 'react-hook-form'
-
-function InputText (
-  props: Omit<ControllerProps & { label?: string }, 'render'>
-) {
-  return (
-    <Controller
-      {...props}
-      render={({ field, fieldState }) => {
-        console.log(fieldState)
-        return (
-          <div className="mb-6">
-            {props.label && (
-              <label
-                htmlFor={props.name}
-                className="block mb-1  font-semibold text-gray-900"
-              >
-                {props.label}
-              </label>
-            )}
-            <input
-              {...field}
-              type="text"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg active:ring-cyan-600 active:border-cyan-600 focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-            />
-            {fieldState.error && fieldState.error.message}
-          </div>
-        )
-      }}
-    />
-  )
-}
+import { useForm } from 'react-hook-form'
+import { InputText, InputCheckbox } from './input'
 
 export default function AppointmentForm () {
-  const {
-    control,
-    handleSubmit
-  } = useForm()
+  const { control, handleSubmit } = useForm()
   const onSubmit = (data: any) => console.log(data)
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2">
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <InputText
+      <form className="max-w-2xl" onSubmit={handleSubmit(onSubmit)}>
+        <div className="flex flex-wrap -mx-2">
+          <InputText
+            className="w-full sm:w-1/2 px-2"
+            control={control}
+            name="firstName"
+            label="Fornavn"
+            rules={{
+              required: 'Dette feltet må fylles'
+            }}
+          />
+
+          <InputText
+            className="w-full sm:w-1/2 px-2"
+            control={control}
+            name="lastName"
+            label="Etternavn"
+            rules={{
+              required: 'Dette feltet må fylles'
+            }}
+          />
+
+          <InputText
+            className="w-full sm:w-1/2 px-2"
+            control={control}
+            name="email"
+            label="E-post"
+            rules={{
+              required: 'Dette feltet må fylles'
+            }}
+          />
+
+          <InputText
+            className="w-full sm:w-1/2 px-2"
+            control={control}
+            name="phone"
+            label="Telefon"
+            rules={{
+              required: 'Dette feltet må fylles'
+            }}
+          />
+        </div>
+        <InputCheckbox
           control={control}
-          name="firstName"
-          label="Fornavn"
+          name="special"
+          label="Jeg har spesielle behov til timen min og ønsker å bli kontaktet per telefon"
+        />
+        <InputCheckbox
+          control={control}
+          name="agreement"
+          label="Jeg samtykker til lagring av persondata hos Kvernberget Tannhelse i forbindelse med timebestilling"
           rules={{
             required: 'Dette feltet må fylles'
           }}
         />
-
-        <InputText
-          control={control}
-          name="lastName"
-          label="Etternavn"
-          rules={{
-            required: 'Dette feltet må fylles'
-          }}
-        />
-
-        <input type="submit" />
+        <input className="btn btn-primary" type="submit" />
       </form>
     </div>
   )

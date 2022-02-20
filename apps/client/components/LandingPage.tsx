@@ -1,49 +1,12 @@
 import { GetEmployeesQueryResult } from '@lib/queries/getEmployees'
 import { GetLatestPostQueryResult } from '@lib/queries/getLatestPost'
+import { Review } from '@lib/queries/getReviews'
 import client, { PortableText } from '@lib/sanity'
 import { useNextSanityImage } from 'next-sanity-image'
 import Image from 'next/image'
 import React from 'react'
 import EmployeeCard from './EmployeeCard'
 import ReviewSlider from './ReviewSlider'
-
-export interface Review {
-  title: string;
-  rating: number;
-  content: string;
-  source: string;
-}
-
-const reviews: Review[] = [
-  {
-    title: 'Super tannlege, anbefales!',
-    rating: 5,
-    content:
-      'Den beste tannlegen jeg har prøvd siden jeg flyttet til Kristiansund. Tok seg tid til å forklare alt hva han gjorde, og hva jeg kunne forvente å kjenne. Første gangen jeg ikke har vært nervøs hos en tannlege :)',
-    source: 'https://www.legelisten.no/klinikker/12095-kvernberget-tannhelse'
-  },
-  {
-    title: 'Mest behagelige tannlegen jeg har hatt',
-    rating: 5,
-    content:
-      'Behagelig inntrykk. Flink å forklare hva som var problemet og hva han kom til å gjøre. Mye mindre hardhendt enn den tannlegen jeg har brukt før. Byttet tannlege etter første besøk hos Carl.',
-    source: 'https://www.legelisten.no/klinikker/12095-kvernberget-tannhelse'
-  },
-  {
-    title: 'Mest smertefrie tannlegen jeg har hatt',
-    rating: 5,
-    content:
-      'Kirsti passet på at jeg hadde nok bedøvelse og var rolig og profesjonell under hele behandlingen. Jeg kjente ikke stikket!',
-    source: 'https://www.legelisten.no/klinikker/12095-kvernberget-tannhelse'
-  },
-  {
-    title: 'Fantastisk',
-    rating: 5,
-    content:
-      'Effektiv, forsiktig, dyktig. Har vært borti en del tannleger, men dette er den ene tannlegen jeg gleder meg til å besøke',
-    source: 'https://www.legelisten.no/klinikker/12095-kvernberget-tannhelse'
-  }
-]
 
 const treatments: string[] = [
   'Fyllinger',
@@ -54,12 +17,13 @@ const treatments: string[] = [
   'Visdomstenner'
 ]
 
-interface IProps {
+export interface LandingPageProps {
   latestPost: GetLatestPostQueryResult;
+  reviews: Review[];
   employees: GetEmployeesQueryResult;
 }
 
-export default function Frontpage ({ latestPost, employees }: IProps) {
+export default function LandingPage ({ latestPost, reviews, employees }: LandingPageProps) {
   console.log(latestPost)
   return (
     <React.Fragment>

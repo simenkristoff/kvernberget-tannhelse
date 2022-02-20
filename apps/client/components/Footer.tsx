@@ -6,31 +6,38 @@ import {
 import Image from 'next/image'
 import client from '@lib/sanity'
 
-import { useSettings } from 'context/SettingsContext'
 import { useNextSanityImage } from 'next-sanity-image'
 import formatPhoneNumber from './utils/formatPhoneNumber'
+import { SiteSettings } from '@lib/schema'
 
-export default function Footer () {
-  const settings = useSettings()
+interface FooterProps {
+  settings: SiteSettings;
+}
+
+export default function Footer ({ settings }: FooterProps) {
   return (
-    <footer className=''>
+    <footer className="">
       <div className="border-t border-gray-300 pt-16 text-gray-800">
         <section className="wrapper">
           <div className="w-full flex-wrap mb-0 sm:mb-16 md:flex">
             <div className="w-full lg:w-1/3 lg:px-6 pb-6 mb-6 lg:pb-0 lg:mb-0 border-b border-gray-200 border-opacity-25 text-left md:border-none last:border-none">
-              {settings.logo?.asset && (
+              {settings.logo?.image && (
                 <div className="h-20 relative pb-2 lg:mb-0">
                   <div className="h-full aspect-3/1 mx-auto lg:mx-0">
-                    <Image
-                      src={useNextSanityImage(client, settings.logo)}
-                      alt={settings.logo?.alt || settings.siteTitle}
-                      layout="responsive"
-                      sizes="(max-width: 800px) 100vw, 800px"
-                    />
+                    {settings.logo?.image && (
+                      <Image
+                        src={useNextSanityImage(client, settings.logo.image)}
+                        alt={settings.logo?.alt || settings.siteTitle}
+                        layout="responsive"
+                        objectFit="contain"
+                        sizes="(max-width: 800px) 100vw, 800px"
+                      />
+                    )}
                   </div>
                 </div>
               )}
-              <p className='max-w-xl sm:mx-auto m-0'
+              <p
+                className="max-w-xl sm:mx-auto m-0"
                 dangerouslySetInnerHTML={{
                   __html: settings.siteDescription || ''
                 }}
@@ -104,7 +111,7 @@ export default function Footer () {
                       : `${item.opensAt}-${item.closesAt}`
                     return (
                       <li key={item._key}>
-                        <span className='font-medium'>{item.day}</span>:&nbsp;
+                        <span className="font-medium">{item.day}</span>:&nbsp;
                         <span className="font-semibold text-teal-600">
                           {state}
                         </span>

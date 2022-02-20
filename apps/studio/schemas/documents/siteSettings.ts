@@ -40,22 +40,9 @@ export default {
       group: 'general'
     },
     {
-      title: "siteLogo",
+      title: "Logo",
       name: 'logo',
-      type: "image",
-      group: 'general',
-      options: {hotspot: true},
-      fields: [
-        {
-          name: "alt",
-          type: "string",
-          title: "Alternative text",
-          description: "Important for SEO and accessibility",
-          options: {
-            isHighlighted: true,
-          }
-        }
-      ]
+      type: "altImage"
     },
     {
       type: 'string',
@@ -75,7 +62,7 @@ export default {
       validation: (rule: Rule) => rule.regex(/^\d{8}$/)
     },
     {
-      title: "Opening Hours",
+      title: "Åpningstider",
       name: "openingHours",
       type: "array",
       of: [{ type: "dayAndTime" }],

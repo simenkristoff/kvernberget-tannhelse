@@ -12,6 +12,7 @@
   },
   "workspaces": {
     "nohoist": [
+      "@sanity/production-preview",
       "@tailwindcss/forms",
       "@tailwindcss/forms/**"
     ],

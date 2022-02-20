@@ -34,7 +34,7 @@
     }
 
     .btn {
-        @apply whitespace-nowrap inline-flex items-center justify-center px-6 py-3 rounded-md shadow-sm text-base font-medium duration-300;
+        @apply whitespace-nowrap cursor-pointer inline-block items-center justify-center px-6 py-3 rounded-md shadow-sm text-base font-medium duration-300;
     }
 
     .btn-primary {

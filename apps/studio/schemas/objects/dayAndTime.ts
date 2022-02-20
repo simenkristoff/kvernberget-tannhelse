@@ -1,3 +1,4 @@
+import { MdSchedule } from "react-icons/md";
 import { Rule } from '@sanity/types'
 
 // 1. Import the TimeInput react component
@@ -27,6 +28,7 @@ const verifyInput = (dayAndTime: any) => {
 export default {
   name: 'dayAndTime',
   title: 'Day and Time',
+  icon: MdSchedule,
   type: 'object',
   initialValue: {
     opensAt: '08:00',

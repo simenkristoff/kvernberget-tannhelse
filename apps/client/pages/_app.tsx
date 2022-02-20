@@ -1,39 +1,28 @@
 import '../styles/globals.css'
-import type { AppContext, AppInitialProps, AppProps } from 'next/app'
+import type { AppProps } from 'next/app'
 import React from 'react'
-import { getSiteSettings, GetSiteSettingsQueryResult } from '@lib/queries/getSettings'
 
-import { SettingsProvider } from 'context/SettingsContext'
 import { WindowProvider } from 'context/WindowContext'
 
-export const SettingsContext = React.createContext({})
-
-interface SettingsProps {
-  siteSettings: GetSiteSettingsQueryResult
+export function reportWebVitals (metric: any) {
+  // { id, name, label, value } = metric
+  // // Use `window.gtag` if you initialized Google Analytics as this example:
+  // // https://github.com/vercel/next.js/blob/canary/examples/with-google-analytics/pages/_app.js
+  // window.gtag('event', name, {
+  //   event_category:
+  //     label === 'web-vital' ? 'Web Vitals' : 'Next.js custom metric',
+  //   value: Math.round(name === 'CLS' ? value * 1000 : value), // values must be integers
+  //   event_label: id, // id unique to current page load
+  //   non_interaction: true // avoids affecting bounce rate.
+  // })
 }
 
-type InitialAppProps = AppInitialProps & SettingsProps
-
-function App ({ Component, pageProps, siteSettings }: AppProps & SettingsProps) {
+function App ({ Component, pageProps }: AppProps) {
   return (
     <WindowProvider>
-    <SettingsProvider value={siteSettings[0]}>
       <Component {...pageProps} />
-    </SettingsProvider>
     </WindowProvider>
   )
-}
-
-App.getInitialProps = async ({ Component, ctx }: AppContext): Promise<InitialAppProps> => {
-  const siteSettings = await getSiteSettings()
-  let pageProps = {}
-  if (Component.getInitialProps) {
-    pageProps = await Component.getInitialProps(ctx)
-  }
-  return {
-    pageProps,
-    siteSettings
-  }
 }
 
 export default App
