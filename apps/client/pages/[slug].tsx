@@ -20,6 +20,8 @@ function ProductPageContainer ({
   preview,
   slug
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  if (!settings || !page) return null
+
   const router = useRouter()
   if (!router.isFallback && !page) {
     return <ErrorNotFound />

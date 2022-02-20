@@ -3,7 +3,6 @@ import { SiteSettings } from '@lib/schema'
 import { useWindow } from 'context/WindowContext'
 import Footer from './Footer'
 import Header from './Header'
-import MetaHead from './MetaHead'
 
 interface LayoutProps {
   settings: SiteSettings
@@ -21,7 +20,6 @@ export default function Layout ({ settings, children }: LayoutProps) {
   }
   return (
     <div>
-      <MetaHead settings={settings} />
       <Header settings={settings} />
       <main>
         {children}
