@@ -1,9 +1,13 @@
 import PropTypes from 'prop-types'
-import Cta from '../Cta'
-import { PortableText, urlFor } from '@lib/sanity'
+// import Cta from '../Cta'
+import Image from 'next/image'
+import client, { PortableText } from '@lib/sanity'
+import { useNextSanityImage } from 'next-sanity-image'
+import { ImageSection as ImageSectionProps } from '@lib/schema'
 
-function ImageSection (props: any) {
-  const { heading, label, text, image, cta } = props
+function ImageSection (props: ImageSectionProps) {
+  // const { heading, label, text, image, cta } = props
+  const { heading, label, text, image } = props
 
   if (!image) {
     return null
@@ -15,17 +19,21 @@ function ImageSection (props: any) {
         <div className="flex items-center">
           <div>
             <figure>
-              <img
-                className="rounded-md object-cover mx-auto"
-                src={urlFor(image).auto('format').width(2000).url()}
-                alt={heading}
-              />
+              <div className="relative rounded-md w-full object-cover mx-auto">
+                <Image
+                  src={useNextSanityImage(client, image?.asset)}
+                  alt={image?.alt}
+                  layout="responsive"
+                  objectFit="contain"
+                  sizes="(max-width: 800px) 100vw, 800px"
+                />
+              </div>
               <figcaption>
                 <div>
                   <div>{label}</div>
                   <h2>{heading}</h2>
                   {text && <PortableText blocks={text} />}
-                  {cta && cta.route && <Cta {...cta} />}
+                  {/* {cta && cta.route && <Cta {...cta} />} */}
                 </div>
               </figcaption>
             </figure>

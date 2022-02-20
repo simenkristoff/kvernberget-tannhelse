@@ -2,9 +2,7 @@ import Cta from '../Cta'
 import Image from 'next/image'
 import client, { PortableText } from '@lib/sanity'
 import { useNextSanityImage } from 'next-sanity-image'
-import { Hero as HeroSchema } from '@lib/schema'
-
-interface HeroSectionProps extends HeroSchema {}
+import { Hero as HeroSectionProps } from '@lib/schema'
 
 export default function Hero (props: HeroSectionProps) {
   const { heading, backgroundImage, tagline, ctas } = props

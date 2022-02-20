@@ -14,8 +14,8 @@ import type {
   SanityImageMetadata,
   SanityImageDimensions,
   SanityImagePalette,
-  SanityImagePaletteSwatch,
-} from "sanity-codegen";
+  SanityImagePaletteSwatch
+} from 'sanity-codegen'
 
 export type {
   SanityReference,
@@ -33,8 +33,8 @@ export type {
   SanityImageMetadata,
   SanityImageDimensions,
   SanityImagePalette,
-  SanityImagePaletteSwatch,
-};
+  SanityImagePaletteSwatch
+}
 
 /**
  * Route
@@ -42,14 +42,14 @@ export type {
  *
  */
 export interface Route extends SanityDocument {
-  _type: "route";
+  _type: 'route';
 
   /**
    * Slug — `slug`
    *
    *
    */
-  slug?: { _type: "slug"; current: string };
+  slug?: { _type: 'slug'; current: string };
 
   /**
    * page — `reference`
@@ -79,7 +79,7 @@ export interface Route extends SanityDocument {
  *
  */
 export interface Reviews extends SanityDocument {
-  _type: "reviews";
+  _type: 'reviews';
 
   /**
    * Tittel — `string`
@@ -116,7 +116,7 @@ export interface Reviews extends SanityDocument {
  *
  */
 export interface SiteSettings extends SanityDocument {
-  _type: "siteSettings";
+  _type: 'siteSettings';
 
   /**
    * Site Title — `string`
@@ -174,7 +174,7 @@ export interface SiteSettings extends SanityDocument {
  *
  */
 export interface Employees extends SanityDocument {
-  _type: "employees";
+  _type: 'employees';
 
   /**
    * Bilde — `image`
@@ -182,7 +182,7 @@ export interface Employees extends SanityDocument {
    *
    */
   image?: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
@@ -194,7 +194,7 @@ export interface Employees extends SanityDocument {
    *
    */
   name?: {
-    _type: "name";
+    _type: 'name';
     /**
      * Fornavn — `string`
      *
@@ -231,7 +231,7 @@ export interface Employees extends SanityDocument {
  *
  */
 export interface Post extends SanityDocument {
-  _type: "post";
+  _type: 'post';
 
   /**
    * Title — `string`
@@ -245,7 +245,7 @@ export interface Post extends SanityDocument {
    *
    *
    */
-  slug?: { _type: "slug"; current: string };
+  slug?: { _type: 'slug'; current: string };
 
   /**
    * Main image — `image`
@@ -253,7 +253,7 @@ export interface Post extends SanityDocument {
    *
    */
   mainImage?: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
@@ -287,7 +287,7 @@ export interface Post extends SanityDocument {
  *
  */
 export interface Page extends SanityDocument {
-  _type: "page";
+  _type: 'page';
 
   /**
    * Tittel — `string`
@@ -301,7 +301,7 @@ export interface Page extends SanityDocument {
    *
    *
    */
-  slug?: { _type: "slug"; current: string };
+  slug?: { _type: 'slug'; current: string };
 
   /**
    * Include page in sitemap — `boolean`
@@ -337,7 +337,7 @@ export interface Page extends SanityDocument {
 export type BlockContent = Array<
   | SanityKeyed<SanityBlock>
   | SanityKeyed<{
-      _type: "image";
+      _type: 'image';
       asset: SanityReference<SanityImageAsset>;
       crop?: SanityImageCrop;
       hotspot?: SanityImageHotspot;
@@ -345,7 +345,7 @@ export type BlockContent = Array<
 >;
 
 export type SeoMetaData = {
-  _type: "seoMetaData";
+  _type: 'seoMetaData';
   /**
    * Metabeskrivelse — `text`
    *
@@ -359,7 +359,7 @@ export type SeoMetaData = {
    * Dette bildet forhåndsvises når denne siden deles på sosiale medier.
    */
   openGraphImage?: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
@@ -367,20 +367,20 @@ export type SeoMetaData = {
 };
 
 export type DayAndTime = {
-  _type: "dayAndTime";
+  _type: 'dayAndTime';
   /**
    * Day — `string`
    *
    * Select day of week
    */
   day?:
-    | "Mandag"
-    | "Tirsdag"
-    | "Onsdag"
-    | "Torsdag"
-    | "Fredag"
-    | "Lørdag"
-    | "Søndag";
+    | 'Mandag'
+    | 'Tirsdag'
+    | 'Onsdag'
+    | 'Torsdag'
+    | 'Fredag'
+    | 'Lørdag'
+    | 'Søndag';
 
   /**
    * Stengt — `boolean`
@@ -405,14 +405,14 @@ export type DayAndTime = {
 };
 
 export type AltImage = {
-  _type: "altImage";
+  _type: 'altImage';
   /**
    * Bilde — `image`
    *
    *
    */
   image?: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
@@ -429,7 +429,7 @@ export type AltImage = {
 export type InternalLink = SanityReference<Route>;
 
 export type Figure = {
-  _type: "figure";
+  _type: 'figure';
   asset: SanityReference<SanityImageAsset>;
   crop?: SanityImageCrop;
   hotspot?: SanityImageHotspot;
@@ -450,7 +450,7 @@ export type Figure = {
 };
 
 export type Link = {
-  _type: "link";
+  _type: 'link';
   /**
    * URL — `url`
    *
@@ -464,7 +464,7 @@ export type PortableText = Array<
 >;
 
 export type Cta = {
-  _type: "cta";
+  _type: 'cta';
   /**
    * Title — `string`
    *
@@ -490,7 +490,7 @@ export type Cta = {
 export type SimplePortableText = Array<SanityKeyed<SanityBlock>>;
 
 export type Hero = {
-  _type: "hero";
+  _type: 'hero';
   /**
    * Heading — `string`
    *
@@ -521,7 +521,7 @@ export type Hero = {
 };
 
 export type ImageSection = {
-  _type: "imageSection";
+  _type: 'imageSection';
   /**
    * Heading — `string`
    *
@@ -559,7 +559,7 @@ export type ImageSection = {
 };
 
 export type TextSection = {
-  _type: "textSection";
+  _type: 'textSection';
   /**
    * Label — `string`
    *

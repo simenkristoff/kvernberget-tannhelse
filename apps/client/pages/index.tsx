@@ -5,7 +5,6 @@ import { getEmployees } from '@lib/queries/getEmployees'
 import { getLatestPost } from '@lib/queries/getLatestPost'
 import Layout from '@components/Layout'
 import { getSiteSettings } from '@lib/queries/getSettings'
-import MetaHead from '@components/MetaHead'
 import { Fragment } from 'react'
 import { getReviews } from '@lib/queries/getReviews'
 
@@ -24,7 +23,6 @@ export default function Home ({
 
   return (
     <Fragment>
-      <MetaHead settings={settings} />
       <Layout settings={settings}>
         <LandingPage {...mapStateToProps} />
       </Layout>

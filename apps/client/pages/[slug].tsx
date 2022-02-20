@@ -6,7 +6,6 @@ import SinglePage from '@components/SinglePage'
 import { getSiteSettings } from '@lib/queries/getSettings'
 import Layout from '@components/Layout'
 import { Fragment } from 'react'
-import MetaHead from '@components/MetaHead'
 import ErrorNotFound from './ErrorNotFound'
 
 const query = groq`*[_type == "page" && slug.current == $slug][0]{
@@ -26,17 +25,14 @@ function ProductPageContainer ({
     return <ErrorNotFound />
   }
 
-  console.log(preview)
   const previewData = usePreviewSubscription(query, {
     params: { slug },
     initialData: page,
     enabled: preview || router.query.preview !== null
   })
 
-  console.log(previewData)
   return (
     <Fragment>
-      <MetaHead settings={settings} />
       <Layout settings={settings}>
         <SinglePage page={preview ? previewData : page} />
       </Layout>
