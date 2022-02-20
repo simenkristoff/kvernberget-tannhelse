@@ -27,10 +27,10 @@ export default function ReviewCard({
     <article {...props} style={style} className={classNames(className)}>
       <div
         className={classNames(
-          'relative flex flex-col basis-full bg-white border py-2 px-4 rounded-md border-gray-200 cursor-move'
+          'relative flex basis-full cursor-move flex-col rounded-md border border-gray-200 bg-white py-2 px-4'
         )}
       >
-        <ChatIcon className="absolute top-0 right-0 text-teal-600 h-12 w-12" />
+        <ChatIcon className="absolute top-0 right-0 h-12 w-12 text-teal-600" />
         <ReactStars
           className="w-full"
           count={5}
@@ -40,13 +40,13 @@ export default function ReviewCard({
           size={24}
         />
 
-        <h3 className="text-xl mb-2 font-medium text-gray-700">{title}</h3>
+        <h3 className="mb-2 text-xl font-medium text-gray-700">{title}</h3>
         <p
           className="mb-2 text-gray-700"
           dangerouslySetInnerHTML={{ __html: content || '' }}
         />
         {source && (
-          <p className="italic font-medium flex flex-1 items-end">
+          <p className="flex flex-1 items-end font-medium italic">
             Hentet fra:&nbsp;
             <a
               className="text-blue-600 hover:text-blue-800 hover:underline"

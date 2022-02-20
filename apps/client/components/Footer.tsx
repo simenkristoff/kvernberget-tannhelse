@@ -8,7 +8,7 @@ import client from '@lib/sanity'
 import { useNextSanityImage } from 'next-sanity-image'
 import { SiteSettings } from '@lib/schema'
 
-import formatPhoneNumber from './utils/formatPhoneNumber'
+import formatPhoneNumber from '../utils/formatPhoneNumber'
 
 interface FooterProps {
   settings: SiteSettings
@@ -19,11 +19,11 @@ export default function Footer({ settings }: FooterProps) {
     <footer className="">
       <div className="border-t border-gray-300 pt-16 text-gray-800">
         <section className="wrapper">
-          <div className="w-full flex-wrap mb-0 sm:mb-16 md:flex">
-            <div className="w-full lg:w-1/3 lg:px-6 pb-6 mb-6 lg:pb-0 lg:mb-0 border-b border-gray-200 border-opacity-25 text-left md:border-none last:border-none">
+          <div className="mb-0 w-full flex-wrap sm:mb-16 md:flex">
+            <div className="mb-6 w-full border-b border-gray-200 border-opacity-25 pb-6 text-left last:border-none md:border-none lg:mb-0 lg:w-1/3 lg:px-6 lg:pb-0">
               {settings.logo?.image && (
-                <div className="h-20 relative pb-2 lg:mb-0">
-                  <div className="h-full aspect-3/1 mx-auto lg:mx-0">
+                <div className="relative h-20 pb-2 lg:mb-0">
+                  <div className="mx-auto aspect-3/1 h-full lg:mx-0">
                     {settings.logo && (
                       <Image
                         src={
@@ -41,7 +41,7 @@ export default function Footer({ settings }: FooterProps) {
                 </div>
               )}
               <p
-                className="max-w-xl sm:mx-auto m-0"
+                className="m-0 max-w-xl sm:mx-auto"
                 dangerouslySetInnerHTML={{
                   __html: settings.siteDescription || ''
                 }}
@@ -49,36 +49,33 @@ export default function Footer({ settings }: FooterProps) {
             </div>
 
             {/* Address */}
-            <div className="w-full md:w-1/2 lg:w-1/3 lg:px-6 pb-6 mb-6 lg:pb-0 lg:mb-0 border-b border-gray-200 border-opacity-25 md:border-none last:border-none">
+            <div className="mb-6 w-full border-b border-gray-200 border-opacity-25 pb-6 last:border-none md:w-1/2 md:border-none lg:mb-0 lg:w-1/3 lg:px-6 lg:pb-0">
               <h3 className="text-xl font-medium">Kontaktinformasjon:</h3>
               <div className="ml-7 mt-2">
-                <a
-                  href="#"
-                  className="relative group hover:translate-x-2 duration-300 my-2 block"
-                >
+                <span className="group relative my-2 block duration-300 hover:translate-x-2">
                   <LocationMarkerIcon
-                    className="absolute -left-7 top-0 text-teal-600 group-hover:text-teal-700 duration-300"
+                    className="absolute -left-7 top-0 text-teal-600 duration-300 group-hover:text-teal-700"
                     height={24}
                     width={24}
                   />
-                  <p className="font-bold text-teal-600 group-hover:text-teal-700 duration-300">
+                  <p className="font-bold text-teal-600 duration-300 group-hover:text-teal-700">
                     Addresse:
                   </p>
                   <p className="mt-1 group-hover:text-slate-700">
                     {settings.address}
                   </p>
-                </a>
+                </span>
 
                 <a
                   href={`tel: ${settings.phone}`}
-                  className="relative group hover:translate-x-2 duration-300 my-2 block"
+                  className="group relative my-2 block duration-300 hover:translate-x-2"
                 >
                   <PhoneIcon
-                    className="absolute -left-7 top-0 text-teal-600 group-hover:text-teal-700 duration-300"
+                    className="absolute -left-7 top-0 text-teal-600 duration-300 group-hover:text-teal-700"
                     height={24}
                     width={24}
                   />
-                  <p className="font-bold text-teal-600 group-hover:text-teal-700 duration-300">
+                  <p className="font-bold text-teal-600 duration-300 group-hover:text-teal-700">
                     Telefon:
                   </p>
                   <p className="mt-1 group-hover:text-slate-700">
@@ -88,14 +85,14 @@ export default function Footer({ settings }: FooterProps) {
 
                 <a
                   href={`mailto: ${settings.email}`}
-                  className="relative group hover:translate-x-2 duration-300 my-2 block"
+                  className="group relative my-2 block duration-300 hover:translate-x-2"
                 >
                   <MailIcon
-                    className="absolute -left-7 top-0 text-teal-600 group-hover:text-teal-700 duration-300"
+                    className="absolute -left-7 top-0 text-teal-600 duration-300 group-hover:text-teal-700"
                     height={24}
                     width={24}
                   />
-                  <p className="font-bold text-teal-600 group-hover:text-teal-700 duration-300">
+                  <p className="font-bold text-teal-600 duration-300 group-hover:text-teal-700">
                     Email:
                   </p>
                   <p className="mt-1 group-hover:text-slate-700">
@@ -105,7 +102,7 @@ export default function Footer({ settings }: FooterProps) {
               </div>
             </div>
 
-            <div className="w-full md:w-1/2 lg:w-1/3 lg:px-6 pb-6 mb-6 lg:pb-0 lg:mb-0 border-b border-gray-200 border-opacity-25 md:border-none last:border-none">
+            <div className="mb-6 w-full border-b border-gray-200 border-opacity-25 pb-6 last:border-none md:w-1/2 md:border-none lg:mb-0 lg:w-1/3 lg:px-6 lg:pb-0">
               <h3 className="text-xl font-medium">Åpningstider:</h3>
               <ul>
                 {settings.openingHours &&
@@ -126,7 +123,7 @@ export default function Footer({ settings }: FooterProps) {
             </div>
           </div>
         </section>
-        <section className="wrapper flex-col py-2 border-t border-gray-300 text-center text-sm">
+        <section className="wrapper flex-col border-t border-gray-300 py-2 text-center text-sm">
           <p>
             &copy; {new Date().getFullYear()}&nbsp;
             <span className="font-medium text-teal-600">

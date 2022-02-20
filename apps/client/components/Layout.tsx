@@ -26,10 +26,10 @@ export default function Layout({ settings, children }: LayoutProps) {
 
       {fixed && (
         <button
-          className="btn btn-primary fixed bottom-2 right-2 z-50 p-2 drop-shadow-lg hover:bottom-4 active:bottom-4 transition-all duration-300"
+          className="btn btn-primary fixed bottom-2 right-2 z-50 p-2 drop-shadow-lg transition-all duration-300 hover:bottom-4 active:bottom-4"
           onClick={scrollToTop}
         >
-          <ChevronDoubleUpIcon className="w-6 h-6" />
+          <ChevronDoubleUpIcon className="h-6 w-6" />
         </button>
       )}
 

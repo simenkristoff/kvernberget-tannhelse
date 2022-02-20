@@ -24,14 +24,14 @@ export default function InputSelect(props: InputProps) {
           {props.label && (
             <label
               htmlFor={field.name}
-              className="inline-block mb-1 text-sm font-semibold text-gray-900"
+              className="mb-1 inline-block text-sm font-semibold text-gray-900"
             >
               {props.label}
             </label>
           )}
           <select
             {...field}
-            className="block w-full text-sm rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder:text-gray-600 active:ring-teal-600 active:border-teal-600 focus:ring-teal-600 focus:border-cyan-600"
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 placeholder:text-gray-600 focus:border-cyan-600 focus:ring-teal-600 active:border-teal-600 active:ring-teal-600"
           >
             {days.map((day) => (
               <option key="day">{day}</option>

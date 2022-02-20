@@ -7,8 +7,10 @@ function Cta(props: any) {
 
   if (route && route.slug && route.slug.current) {
     return (
-      <Link href={`/${route.slug.current}`}>
-        <a className="btn btn-primary">{title}</a>
+      <Link href={`/${route.slug.current}`} passHref>
+        <a href="replace" className="btn btn-primary">
+          {title}
+        </a>
       </Link>
     )
   }
@@ -21,7 +23,7 @@ function Cta(props: any) {
     )
   }
 
-  return <a className="btn btn-primary">{title}</a>
+  return <button className="btn btn-primary">{title}</button>
 }
 
 Cta.propTypes = {

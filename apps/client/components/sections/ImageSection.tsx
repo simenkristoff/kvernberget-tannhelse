@@ -15,11 +15,11 @@ function ImageSection(props: ImageSectionProps) {
 
   return (
     <div>
-      <div className="container mx-auto px-6 mt-12">
+      <div className="container mx-auto mt-12 px-6">
         <div className="flex items-center">
           <div>
             <figure>
-              <div className="relative rounded-md w-full object-cover mx-auto">
+              <div className="relative mx-auto w-full rounded-md object-cover">
                 <Image
                   src={useNextSanityImage(client, image?.asset)}
                   alt={image?.alt}

@@ -14,14 +14,14 @@ export default function InputCheckbox(props: InputProps) {
           <label className="relative block pl-6" htmlFor={field.name}>
             <input
               className={classNames(
-                'absolute mt-1 -ml-6 p-0 h-5 w-5 rounded-md checked:bg-teal-600 focus:checked:bg-teal-600 focus:bg-transparent focus:outline-teal-600',
+                'absolute mt-1 -ml-6 h-5 w-5 rounded-md p-0 checked:bg-teal-600 focus:bg-transparent focus:outline-teal-600 focus:checked:bg-teal-600',
                 { 'border-red-600': fieldState.error }
               )}
               {...field}
               type="checkbox"
             />
             {props.label && (
-              <span className="inline-block mb-1 leading-5 text-sm font-semibold text-gray-900">
+              <span className="mb-1 inline-block text-sm font-semibold leading-5 text-gray-900">
                 {props.label}
               </span>
             )}

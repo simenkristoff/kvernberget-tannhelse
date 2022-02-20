@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { Review } from '@lib/queries/getReviews'
 import classNames from 'classnames'
 import { useRef, useState } from 'react'
@@ -59,7 +60,7 @@ export default function ReviewSlider({
     <div className={classNames('w-full max-w-sm sm:max-w-md', className)}>
       <div
         className={
-          'transition-all w-full aspect-4/3 sm:aspect-video relative overflow-hidden duration-1000'
+          'relative aspect-4/3 w-full overflow-hidden transition-all duration-1000 sm:aspect-video'
         }
       >
         {reviews.map((review, i) => (
@@ -79,7 +80,7 @@ export default function ReviewSlider({
             }}
             key={review._id}
             className={
-              'absolute min-h-max max-h-72 block w-full max-w-sm sm:max-w-md transition-all -translate-x-full duration-300 drop-shadow-md select-none'
+              'absolute block max-h-72 min-h-max w-full max-w-sm -translate-x-full select-none drop-shadow-md transition-all duration-300 sm:max-w-md'
             }
             style={{
               transform: `translate3d(${i * width + currTrans}px, 0px, 0px )`,
@@ -92,11 +93,12 @@ export default function ReviewSlider({
 
       <div className="flex items-center justify-center">
         {[...Array(maxSlide + 1)].map((x, i) => (
+          // eslint-disable-next-line jsx-a11y/no-static-element-interactions
           <div
             key={i}
             onClick={() => changeSlide(i)}
             className={classNames(
-              'inline mx-1 h-5 w-5 border border-gray-300 hover:bg-teal-600 duration-500 rounded-full cursor-pointer',
+              'mx-1 inline h-5 w-5 cursor-pointer rounded-full border border-gray-300 duration-500 hover:bg-teal-600',
               { 'bg-teal-600': i === Math.abs(active) }
             )}
           />
@@ -105,5 +107,3 @@ export default function ReviewSlider({
     </div>
   )
 }
-
-// (i - active) * width

@@ -13,8 +13,11 @@ export default function NavItem({ to, className, children }: NavItemProps) {
   const { pathname } = useRouter()
   const isActive = pathname === to + 'foo'
   return (
-    <Link href={to}>
-      <a className={classNames('nav-item', className, { active: isActive })}>
+    <Link href={to} passHref>
+      <a
+        href="replace"
+        className={classNames('nav-item', className, { active: isActive })}
+      >
         {children}
       </a>
     </Link>

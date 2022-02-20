@@ -10,10 +10,10 @@ export default function Hero(props: HeroSectionProps) {
 
   return (
     <div>
-      <div className="wrapper mx-auto px-6 mt-4">
+      <div className="wrapper mx-auto mt-4 px-6">
         <div className="md:flex md:items-center">
-          <div className="w-full max-w-lg mx-auto mt-5 md:ml-8 md:mt-0 md:w-1/2">
-            <h3 className="text-gray-700 uppercase text-lg">{heading}</h3>
+          <div className="mx-auto mt-5 w-full max-w-lg md:ml-8 md:mt-0 md:w-1/2">
+            <h3 className="text-lg uppercase text-gray-700">{heading}</h3>
             {tagline && <PortableText blocks={tagline} />}
             {ctas && (
               <div>
@@ -23,7 +23,7 @@ export default function Hero(props: HeroSectionProps) {
               </div>
             )}
           </div>
-          <div className="relative w-full h-64 md:w-1/2 lg:h-96">
+          <div className="relative h-64 w-full md:w-1/2 lg:h-96">
             {backgroundImage && (
               <Image
                 src={

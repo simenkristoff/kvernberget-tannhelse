@@ -8,11 +8,11 @@ export default function AppointmentForm() {
   // eslint-disable-next-line no-console
   const onSubmit = (data: any) => console.log(data)
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2">
+    <div className="mx-auto max-w-7xl px-4 py-2 sm:px-6">
       <form className="max-w-2xl" onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex flex-wrap -mx-2">
+        <div className="-mx-2 flex flex-wrap">
           <InputText
-            className="w-full sm:w-1/2 px-2"
+            className="w-full px-2 sm:w-1/2"
             control={control}
             name="firstName"
             label="Fornavn"
@@ -22,7 +22,7 @@ export default function AppointmentForm() {
           />
 
           <InputText
-            className="w-full sm:w-1/2 px-2"
+            className="w-full px-2 sm:w-1/2"
             control={control}
             name="lastName"
             label="Etternavn"
@@ -32,7 +32,7 @@ export default function AppointmentForm() {
           />
 
           <InputText
-            className="w-full sm:w-1/2 px-2"
+            className="w-full px-2 sm:w-1/2"
             control={control}
             name="email"
             label="E-post"
@@ -42,7 +42,7 @@ export default function AppointmentForm() {
           />
 
           <InputText
-            className="w-full sm:w-1/2 px-2"
+            className="w-full px-2 sm:w-1/2"
             control={control}
             name="phone"
             label="Telefon"

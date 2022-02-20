@@ -49,7 +49,7 @@ function Nav({ fixed, className, children }: NavProps) {
           <span className="sr-only">Toggle menu</span>
           <MenuIcon
             className={classNames(
-              'h-10 w-10 rounded-md text-teal-600 border-2 border-teal-600 hover:text-teal-700 hover:border-teal-700 transition-all duration-300',
+              'h-10 w-10 rounded-md border-2 border-teal-600 text-teal-600 transition-all duration-300 hover:border-teal-700 hover:text-teal-700',
               { '-rotate-90': toggle }
             )}
             aria-hidden="true"
@@ -69,13 +69,13 @@ function Nav({ fixed, className, children }: NavProps) {
             leaveTo="opacity-0 translate-y-1"
           >
             <Popover.Panel
-              className="w-screen absolute bottom-0 left-0 translate-y-full shadow-md md:shadow-none md:relative z-50 md:translate-y-0 md:w-full"
+              className="absolute bottom-0 left-0 z-50 w-screen translate-y-full shadow-md md:relative md:w-full md:translate-y-0 md:shadow-none"
               static
             >
               <Popover.Group
                 as="nav"
                 className={classNames(
-                  'flex flex-col h-full bg-white md:bg-transparent md:flex-row lg:space-x-2 justify-start',
+                  'flex h-full flex-col justify-start bg-white md:flex-row md:bg-transparent lg:space-x-2',
                   { 'justify-end': fixed }
                 )}
               >

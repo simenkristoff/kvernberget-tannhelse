@@ -10,7 +10,8 @@ import {
 } from '@heroicons/react/outline'
 import { SiteSettings } from '@lib/schema'
 
-import formatPhoneNumber from './utils/formatPhoneNumber'
+import formatPhoneNumber from '../utils/formatPhoneNumber'
+
 import Nav from './Nav/Nav'
 
 interface HeaderProps {
@@ -22,7 +23,7 @@ export default function Header({ settings }: HeaderProps) {
 
   return (
     <header
-      className={classNames('w-full z-50 bg-white shadow-md', {
+      className={classNames('z-50 w-full bg-white shadow-md', {
         relative: !fixed,
         'fixed top-0 left-0': fixed
       })}
@@ -31,7 +32,7 @@ export default function Header({ settings }: HeaderProps) {
         <div className="wrapper flex flex-wrap">
           <div
             className={classNames(
-              'flex-auto w-full max-w-[10rem] aspect-3/1 my-2 transition-all duration-200',
+              'my-2 aspect-3/1 w-full max-w-[10rem] flex-auto transition-all duration-200',
               {
                 'md:max-w-[12rem] lg:max-w-[16rem]': !fixed
               }
@@ -49,36 +50,33 @@ export default function Header({ settings }: HeaderProps) {
           </div>
           <div
             className={classNames('hidden', {
-              'md:flex flex-1 pl-7 flex-row w-full justify-end space-x-4 lg:space-x-14':
+              'w-full flex-1 flex-row justify-end space-x-4 pl-7 md:flex lg:space-x-14':
                 !fixed
             })}
           >
-            <a
-              href="#"
-              className="relative group hover:translate-x-2 duration-300 my-2 block"
-            >
+            <span className="group relative my-2 block duration-300 hover:translate-x-2">
               <LocationMarkerIcon
-                className="absolute -left-7 top-0 text-teal-600 group-hover:text-teal-700 duration-300"
+                className="absolute -left-7 top-0 text-teal-600 duration-300 group-hover:text-teal-700"
                 height={24}
                 width={24}
               />
-              <p className="font-bold text-teal-600 group-hover:text-teal-700 duration-300">
+              <p className="font-bold text-teal-600 duration-300 group-hover:text-teal-700">
                 Addresse:
               </p>
               <p className="mt-1 group-hover:text-slate-700">
                 {settings.address}
               </p>
-            </a>
+            </span>
             <a
               href={`tel: ${settings.phone}`}
-              className="relative group hover:translate-x-2 duration-300 my-2 block"
+              className="group relative my-2 block duration-300 hover:translate-x-2"
             >
               <PhoneIcon
-                className="absolute -left-7 top-0 text-teal-600 group-hover:text-teal-700 duration-300"
+                className="absolute -left-7 top-0 text-teal-600 duration-300 group-hover:text-teal-700"
                 height={24}
                 width={24}
               />
-              <p className="font-bold text-teal-600 group-hover:text-teal-700 duration-300">
+              <p className="font-bold text-teal-600 duration-300 group-hover:text-teal-700">
                 Telefon:
               </p>
               <p className="mt-1 group-hover:text-slate-700">
@@ -88,14 +86,14 @@ export default function Header({ settings }: HeaderProps) {
 
             <a
               href={`mailto: ${settings.email}`}
-              className="relative group hover:translate-x-2 duration-300 my-2 block"
+              className="group relative my-2 block duration-300 hover:translate-x-2"
             >
               <MailIcon
-                className="absolute -left-7 top-0 text-teal-600 group-hover:text-teal-700 duration-300"
+                className="absolute -left-7 top-0 text-teal-600 duration-300 group-hover:text-teal-700"
                 height={24}
                 width={24}
               />
-              <p className="font-bold text-teal-600 group-hover:text-teal-700 duration-300">
+              <p className="font-bold text-teal-600 duration-300 group-hover:text-teal-700">
                 Email:
               </p>
               <p className="mt-1 group-hover:text-slate-700">
@@ -107,7 +105,7 @@ export default function Header({ settings }: HeaderProps) {
           <Nav
             fixed={fixed}
             className={classNames(
-              'flex flex-auto justify-end md:justify-start items-center',
+              'flex flex-auto items-center justify-end md:justify-start',
               { 'border-t border-transparent md:border-gray-100': !fixed }
             )}
           >
@@ -125,7 +123,7 @@ export default function Header({ settings }: HeaderProps) {
             <Nav.NavItem to="/kontakt-oss">Kontakt oss</Nav.NavItem>
             <button
               className={classNames('btn btn-primary md:py-0', {
-                'h-full rounded-none self-stretch md:absolute md:right-0 md:bottom-0':
+                'h-full self-stretch rounded-none md:absolute md:right-0 md:bottom-0':
                   !fixed,
                 'rounded-none md:rounded-md': fixed
               })}

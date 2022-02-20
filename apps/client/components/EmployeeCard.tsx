@@ -13,8 +13,8 @@ export default function EmployeeCard({ data, ...props }: IProps) {
   const employeeName = `${data.name?.firstName} ${data.name?.lastName}`
   return (
     <div {...props} className="relative block">
-      <div className="rounded-full overflow-hidden border border-teal-600 drop-shadow-lg">
-        <div className="relative w-full mx-auto aspect-square">
+      <div className="overflow-hidden rounded-full border border-teal-600 drop-shadow-lg">
+        <div className="relative mx-auto aspect-square w-full">
           <Image
             src={data.image ? useNextSanityImage(client, data.image) : ''}
             alt={employeeName}
