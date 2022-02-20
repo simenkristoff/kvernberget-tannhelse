@@ -46,6 +46,6 @@ export async function getStaticProps ({
       employees,
       preview
     },
-    revalidate: 10
+    revalidate: 60
   }
 }

@@ -6,7 +6,7 @@ import SinglePage from '@components/SinglePage'
 import { getSiteSettings } from '@lib/queries/getSettings'
 import Layout from '@components/Layout'
 import { Fragment } from 'react'
-import ErrorNotFound from './ErrorNotFound'
+import Error from 'next/error'
 
 const query = groq`*[_type == "page" && slug.current == $slug][0]{
   ...
@@ -24,7 +24,7 @@ function ProductPageContainer ({
 
   const router = useRouter()
   if (!router.isFallback && !page) {
-    return <ErrorNotFound />
+    return <Error statusCode={404} />
   }
 
   const previewData = usePreviewSubscription(query, {
@@ -53,7 +53,8 @@ export async function getStaticProps ({
   })
 
   return {
-    props: { preview, settings, page, slug }
+    props: { preview, settings, page, slug },
+    revalidate: 60
   }
 }
 
@@ -65,7 +66,7 @@ export async function getStaticPaths () {
 
   return {
     paths: routes || null,
-    fallback: true
+    fallback: false
   }
 }
 

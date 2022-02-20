@@ -22,6 +22,7 @@ export async function getStaticProps ({
 }: GetStaticPropsContext) {
   const settings = await getSiteSettings()
   return {
-    props: { settings, preview }
+    props: { settings, preview },
+    revalidate: 60
   }
 }
