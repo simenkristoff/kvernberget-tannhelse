@@ -20,9 +20,9 @@ export default function Layout({ settings, children }: LayoutProps) {
     })
   }
   return (
-    <div>
+    <div className="wrapper-full">
       <Header settings={settings} />
-      <main>{children}</main>
+      <main className="wrapper-full">{children}</main>
 
       {fixed && (
         <button

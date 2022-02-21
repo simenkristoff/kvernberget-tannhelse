@@ -10,7 +10,7 @@ interface ReviewsSectionProps {
 
 export default function ReviewsSection({ data }: ReviewsSectionProps) {
   return (
-    <section className="relative h-full w-full bg-gradient-to-b from-sky-50 via-gray-50 to-gray-100 py-16">
+    <section className="frontpage-section bg-gradient-to-b from-sky-50 via-gray-50 to-gray-100">
       <div className="wrapper relative flex min-h-[10rem] w-full flex-1 items-center justify-center px-0">
         <div className="relative hidden aspect-auto h-full w-1/3 md:flex">
           <Image

@@ -9,7 +9,7 @@ type HeroSectionProps = Pick<Frontpage, 'introSection'>
 
 export default function HeroSection({ introSection }: HeroSectionProps) {
   return (
-    <section className="relative h-full bg-gradient-to-b from-sky-100 via-gray-100 py-16 text-lg">
+    <section className="frontpage-section bg-gradient-to-b from-sky-100 via-gray-100 text-lg">
       <div className="wrapper relative z-10">
         <Hero data={introSection} />
       </div>

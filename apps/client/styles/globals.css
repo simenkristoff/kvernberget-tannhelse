@@ -30,6 +30,14 @@
     @apply mx-auto max-w-7xl px-2 lg:px-6;
   }
 
+  .wrapper-full {
+    @apply relative h-full w-screen;
+  }
+
+  .frontpage-section {
+    @apply wrapper-full py-8 md:py-16;
+  }
+
   .section-title {
     @apply float-left mb-8 inline text-4xl font-medium text-gray-700 after:block after:h-[3px] after:w-full after:rounded-[50%] after:bg-teal-700;
   }

@@ -39,7 +39,7 @@ export default function LandingPage({
         <HeroSection introSection={frontpage.introSection} />
       )}
 
-      <section className="relative py-16">
+      <section className="frontpage-section">
         <div className="wrapper">
           <article className="mx-auto flex max-w-4xl flex-col overflow-hidden rounded-lg border border-gray-300 shadow-md md:flex-row">
             <div className="w-full">
@@ -63,7 +63,7 @@ export default function LandingPage({
         </div>
       </section>
 
-      <section className="relative flex h-full w-full py-16">
+      <section className="frontpage-section flex">
         <div className="wrapper">
           <div className="mb-4 flex flex-col justify-center">
             <div className="mx-auto block">
@@ -95,7 +95,7 @@ export default function LandingPage({
       <ReviewsSection data={reviews} />
 
       {/* Employees */}
-      <section className="relative py-16">
+      <section className="frontpage-section">
         <div className="wrapper">
           <div className="flex justify-center">
             <h2 className="section-title text-center">Våre ansatte</h2>
