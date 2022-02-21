@@ -31,10 +31,10 @@
   }
 
   .wrapper-full {
-    @apply relative h-full w-screen;
+    @apply relative h-auto w-screen;
   }
 
-  .frontpage-section {
+  .content-section {
     @apply wrapper-full py-8 md:py-16;
   }
 

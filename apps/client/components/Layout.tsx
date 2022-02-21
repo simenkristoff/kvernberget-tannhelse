@@ -20,7 +20,7 @@ export default function Layout({ settings, children }: LayoutProps) {
     })
   }
   return (
-    <div className="wrapper-full">
+    <div className="relative h-screen w-screen">
       <Header settings={settings} />
       <main className="wrapper-full">{children}</main>
 

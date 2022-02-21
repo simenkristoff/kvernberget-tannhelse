@@ -10,14 +10,13 @@ interface ReviewsSectionProps {
 
 export default function ReviewsSection({ data }: ReviewsSectionProps) {
   return (
-    <section className="frontpage-section bg-gradient-to-b from-sky-50 via-gray-50 to-gray-100">
+    <section className="content-section bg-gradient-to-b from-sky-50 via-gray-50 to-gray-100">
       <div className="wrapper relative flex min-h-[10rem] w-full flex-1 items-center justify-center px-0">
         <div className="relative hidden aspect-auto h-full w-1/3 md:flex">
           <Image
-            className="block"
             src={reviewsImage}
             alt="Illustrasjon for omtaler"
-            priority
+            priority={true}
           />
         </div>
         <div className="block w-full max-w-sm py-8 sm:max-w-md lg:py-0">

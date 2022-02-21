@@ -25,7 +25,7 @@ export default function Header({ settings }: HeaderProps) {
 
   return (
     <header
-      className={classNames('z-50 w-full bg-white shadow-md', {
+      className={classNames('wrapper-full z-50 bg-white shadow-md', {
         relative: !fixed,
         'fixed top-0 left-0': fixed
       })}

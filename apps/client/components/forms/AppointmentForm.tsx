@@ -64,7 +64,9 @@ export default function AppointmentForm() {
             required: 'Dette feltet må fylles'
           }}
         />
-        <input className="btn btn-primary" type="submit" />
+        <div className="mx-auto text-center">
+          <input className="btn btn-primary" type="submit" />
+        </div>
       </form>
     </div>
   )

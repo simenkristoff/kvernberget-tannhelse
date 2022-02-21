@@ -13,7 +13,9 @@ export default function Contact({
     <Fragment>
       <MetaHead settings={settings} />
       <Layout settings={settings}>
-        <AppointmentForm />
+        <div className="content-section flex justify-center">
+          <AppointmentForm />
+        </div>
       </Layout>
     </Fragment>
   )
