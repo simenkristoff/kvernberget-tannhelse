@@ -2,7 +2,7 @@ import ReviewSlider from '@components/ReviewSlider'
 import { Review } from '@lib/queries/getReviews'
 import Image from 'next/image'
 
-import reviewsImage from '../../public/reviews.png'
+import reviewsIllustration from '../../public/assets/reviews-illustration.png'
 
 interface ReviewsSectionProps {
   data: Review[]
@@ -14,7 +14,7 @@ export default function ReviewsSection({ data }: ReviewsSectionProps) {
       <div className="wrapper relative flex min-h-[10rem] w-full flex-1 items-center justify-center px-0">
         <div className="relative hidden aspect-auto h-full w-1/3 md:flex">
           <Image
-            src={reviewsImage}
+            src={reviewsIllustration}
             alt="Illustrasjon for omtaler"
             priority={true}
           />

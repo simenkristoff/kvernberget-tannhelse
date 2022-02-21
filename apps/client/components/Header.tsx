@@ -31,46 +31,60 @@ export default function Header({ settings }: HeaderProps) {
       })}
     >
       <div className="bg-white">
-        <div className="wrapper flex flex-wrap">
+        <div
+          className={classNames(
+            'wrapper flex min-h-[4rem] flex-wrap justify-between ',
+            {
+              'flex-row md:flex-col': !fixed,
+              'flex-row': fixed
+            }
+          )}
+        >
           <div
-            className={classNames('w-full max-w-[12rem] flex-auto pt-2 ', {
-              'sm:max-w-[16rem]': !fixed
+            className={classNames('flex', {
+              'flex-auto md:w-full md:justify-between': !fixed,
+              'flex-auto': fixed
             })}
           >
-            <SanityImage src={settings.logo?.image} alt={settings.logo?.alt} />
-          </div>
-          <div
-            className={classNames('hidden', {
-              'w-full flex-1 flex-row justify-end space-x-4 pl-7 md:flex lg:space-x-14':
-                !fixed
-            })}
-          >
-            <IconLabel
-              icon={<LocationMarkerIcon />}
-              href="#"
-              text="Addresse"
-              small={settings.address}
-            />
-            <IconLabel
-              icon={<PhoneIcon />}
-              href={`tel: ${settings.phone}`}
-              text="Telefon"
-              small={`(+47) ${formatPhoneNumber(settings.phone)}`}
-            />
-            <IconLabel
-              icon={<MailIcon />}
-              href={`mailto: ${settings.email}`}
-              text="Email"
-              small={settings.email}
-            />
+            <div
+              className={classNames(
+                'w-full max-w-[12rem] flex-auto pt-2 pb-1 duration-200',
+                {
+                  'sm:max-w-[16rem]': !fixed
+                }
+              )}
+            >
+              <SanityImage
+                src={settings.logo?.image}
+                alt={settings.logo?.alt}
+              />
+            </div>
+            <div
+              className={classNames('hidden', {
+                'w-full flex-1 flex-row justify-end space-x-4 pl-7 md:flex lg:space-x-14':
+                  !fixed
+              })}
+            >
+              <IconLabel
+                icon={<PhoneIcon />}
+                href={`tel: ${settings.phone}`}
+                text="Telefon"
+                small={`(+47) ${formatPhoneNumber(settings.phone)}`}
+              />
+              <IconLabel
+                icon={<MailIcon />}
+                href={`mailto: ${settings.email}`}
+                text="Email"
+                small={settings.email}
+              />
+            </div>
           </div>
 
           <Nav
             fixed={fixed}
-            className={classNames(
-              'flex flex-auto items-center justify-end md:justify-start',
-              { 'border-t border-transparent md:border-gray-100': !fixed }
-            )}
+            className={classNames('flex items-center', {
+              'border-t border-transparent md:border-gray-100': !fixed
+            })}
           >
             <Nav.NavItem to="/">Hjem</Nav.NavItem>
             <Nav.NavDropdown label="Behandlinger">

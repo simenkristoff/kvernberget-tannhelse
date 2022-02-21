@@ -7,9 +7,10 @@ import CtaButton from '../CtaButton'
 
 export interface HeroProps {
   data?: HeroSchema
+  className?: string
 }
 
-export default function Hero({ data }: HeroProps) {
+export default function Hero({ data, className }: HeroProps) {
   if (!data) return null
   const {
     heading,
@@ -21,37 +22,35 @@ export default function Hero({ data }: HeroProps) {
   } = data
 
   return (
-    <div>
-      <div className="wrapper mx-auto">
-        <div className="md:flex md:items-center md:space-x-10">
-          <div
-            className={classNames('mx-auto mt-5 w-full max-w-lg md:w-1/2', {
-              'text-center md:text-left': centerTextOnMobile
-            })}
-          >
-            {heading && <PortableText blocks={heading} />}
-            {tagline && <PortableText blocks={tagline} />}
-            {ctas && (
-              <div className="mt-8">
-                {ctas.map((cta) => (
-                  <CtaButton data={cta} key={cta._key} />
-                ))}
-              </div>
-            )}
-          </div>
-          <div
-            className={classNames(
-              'relative w-full overflow-hidden rounded-xl shadow-md shadow-gray-500 md:w-1/2',
-              {
-                'hidden md:block': hideImageOnMobile
-              }
-            )}
-          >
-            <SanityImage
-              src={backgroundImage?.image}
-              alt={backgroundImage?.alt}
-            />
-          </div>
+    <div className={classNames('wrapper mx-auto w-full', className)}>
+      <div className="md:flex md:items-center md:space-x-10">
+        <div
+          className={classNames('mx-auto mt-5 w-full max-w-lg md:w-1/2', {
+            'text-center md:text-left': centerTextOnMobile
+          })}
+        >
+          {heading && <PortableText blocks={heading} />}
+          {tagline && <PortableText blocks={tagline} />}
+          {ctas && (
+            <div className="mt-8">
+              {ctas.map((cta) => (
+                <CtaButton data={cta} key={cta._key} />
+              ))}
+            </div>
+          )}
+        </div>
+        <div
+          className={classNames(
+            'relative w-full overflow-hidden rounded-xl shadow-md shadow-gray-500 md:w-1/2',
+            {
+              'hidden md:block': hideImageOnMobile
+            }
+          )}
+        >
+          <SanityImage
+            src={backgroundImage?.image}
+            alt={backgroundImage?.alt}
+          />
         </div>
       </div>
     </div>

@@ -43,7 +43,7 @@ function Nav({ fixed, className, children }: NavProps) {
   }, [])
 
   return (
-    <Popover className={classNames('flex items-center', className)}>
+    <Popover className={classNames(className)}>
       <Fragment>
         <Popover.Button className="md:hidden">
           <span className="sr-only">Toggle menu</span>
