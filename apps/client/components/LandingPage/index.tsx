@@ -7,6 +7,7 @@ import React from 'react'
 
 import EmployeeCard from '../EmployeeCard'
 import SanityImage from '../Image'
+
 import HeroSection from './HeroSection'
 import ReviewsSection from './ReviewsSection'
 

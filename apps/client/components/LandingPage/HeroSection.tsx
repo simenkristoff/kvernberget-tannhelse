@@ -1,6 +1,7 @@
 import { Hero } from '@components/sections'
 import { Frontpage } from '@lib/queries/getLandingPage'
 import Image from 'next/image'
+
 import abstractLeft from '../../public/abstract-left.png'
 import abstractRight from '../../public/abstract-right.png'
 

@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Employees } from '@lib/schema'
 import { useNextSanityImage } from 'next-sanity-image'
 import { DetailedHTMLProps, HTMLAttributes } from 'react'
+
 import SanityImage from './Image'
 
 interface IProps

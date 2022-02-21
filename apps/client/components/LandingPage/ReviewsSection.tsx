@@ -1,6 +1,7 @@
 import ReviewSlider from '@components/ReviewSlider'
 import { Review } from '@lib/queries/getReviews'
 import Image from 'next/image'
+
 import reviewsImage from '../../public/reviews.png'
 
 interface ReviewsSectionProps {

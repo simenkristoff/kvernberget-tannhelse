@@ -1,9 +1,9 @@
 import { PortableText } from '@lib/sanity'
 import { Hero as HeroSchema } from '@lib/schema'
-
-import CtaButton from '../CtaButton'
 import SanityImage from '@components/Image'
 import classNames from 'classnames'
+
+import CtaButton from '../CtaButton'
 
 export interface HeroProps {
   data?: HeroSchema
