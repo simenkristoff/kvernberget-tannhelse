@@ -20,11 +20,11 @@ export default function ReviewCard({
   data,
   style,
   className,
-  ...props
+  ...htmlProps
 }: ReviewProps) {
   const { title, content, rating, source } = data
   return (
-    <article {...props} style={style} className={classNames(className)}>
+    <article {...htmlProps} style={style} className={classNames(className)}>
       <div
         className={classNames(
           'relative flex basis-full cursor-move flex-col rounded-md border border-gray-200 bg-white py-2 px-4'

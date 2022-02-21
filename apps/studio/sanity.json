@@ -15,7 +15,8 @@
     "@sanity/desk-tool",
     "@sanity/production-preview",
     "media-library",
-    "simple-star-rating"
+    "simple-star-rating",
+    "@sanity/color-input"
   ],
   "env": {
     "development": {

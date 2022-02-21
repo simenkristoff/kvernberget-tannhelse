@@ -10,6 +10,8 @@ import { SiteSettings } from '@lib/schema'
 
 import formatPhoneNumber from '../utils/formatPhoneNumber'
 
+import IconLabel from './IconLabel'
+
 interface FooterProps {
   settings: SiteSettings
 }
@@ -52,53 +54,24 @@ export default function Footer({ settings }: FooterProps) {
             <div className="mb-6 w-full border-b border-gray-200 border-opacity-25 pb-6 last:border-none md:w-1/2 md:border-none lg:mb-0 lg:w-1/3 lg:px-6 lg:pb-0">
               <h3 className="text-xl font-medium">Kontaktinformasjon:</h3>
               <div className="ml-7 mt-2">
-                <span className="group relative my-2 block duration-300 hover:translate-x-2">
-                  <LocationMarkerIcon
-                    className="absolute -left-7 top-0 text-teal-600 duration-300 group-hover:text-teal-700"
-                    height={24}
-                    width={24}
-                  />
-                  <p className="font-bold text-teal-600 duration-300 group-hover:text-teal-700">
-                    Addresse:
-                  </p>
-                  <p className="mt-1 group-hover:text-slate-700">
-                    {settings.address}
-                  </p>
-                </span>
-
-                <a
+                <IconLabel
+                  icon={<LocationMarkerIcon />}
+                  href="#"
+                  text="Addresse"
+                  small={settings.address}
+                />
+                <IconLabel
+                  icon={<PhoneIcon />}
                   href={`tel: ${settings.phone}`}
-                  className="group relative my-2 block duration-300 hover:translate-x-2"
-                >
-                  <PhoneIcon
-                    className="absolute -left-7 top-0 text-teal-600 duration-300 group-hover:text-teal-700"
-                    height={24}
-                    width={24}
-                  />
-                  <p className="font-bold text-teal-600 duration-300 group-hover:text-teal-700">
-                    Telefon:
-                  </p>
-                  <p className="mt-1 group-hover:text-slate-700">
-                    (+47) {formatPhoneNumber(settings.phone)}
-                  </p>
-                </a>
-
-                <a
+                  text="Telefon"
+                  small={`(+47) ${formatPhoneNumber(settings.phone)}`}
+                />
+                <IconLabel
+                  icon={<MailIcon />}
                   href={`mailto: ${settings.email}`}
-                  className="group relative my-2 block duration-300 hover:translate-x-2"
-                >
-                  <MailIcon
-                    className="absolute -left-7 top-0 text-teal-600 duration-300 group-hover:text-teal-700"
-                    height={24}
-                    width={24}
-                  />
-                  <p className="font-bold text-teal-600 duration-300 group-hover:text-teal-700">
-                    Email:
-                  </p>
-                  <p className="mt-1 group-hover:text-slate-700">
-                    {settings.email}
-                  </p>
-                </a>
+                  text="Email"
+                  small={settings.email}
+                />
               </div>
             </div>
 
@@ -113,7 +86,7 @@ export default function Footer({ settings }: FooterProps) {
                     return (
                       <li key={item._key}>
                         <span className="font-medium">{item.day}</span>:&nbsp;
-                        <span className="font-semibold text-teal-600">
+                        <span className="font-semibold text-teal-700">
                           {state}
                         </span>
                       </li>
@@ -126,7 +99,7 @@ export default function Footer({ settings }: FooterProps) {
         <section className="wrapper flex-col border-t border-gray-300 py-2 text-center text-sm">
           <p>
             &copy; {new Date().getFullYear()}&nbsp;
-            <span className="font-medium text-teal-600">
+            <span className="font-semibold text-teal-700">
               Kvernberget Tannhelse AS
             </span>
             . Alle rettigheter reservert.

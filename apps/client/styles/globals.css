@@ -6,6 +6,11 @@
 @tailwind utilities;
 
 @layer base {
+  p,
+  a {
+    @apply font-medium text-gray-800;
+  }
+
   h1,
   h2,
   h3,
@@ -14,34 +19,38 @@
   h6 {
     @apply font-heading;
   }
+
+  h1 {
+    @apply mb-8 text-5xl font-bold text-gray-700;
+  }
 }
 
 @layer components {
   .wrapper {
-    @apply max-w-7xl mx-auto px-2 lg:px-6;
+    @apply mx-auto max-w-7xl px-2 lg:px-6;
   }
 
   .section-title {
-    @apply inline float-left text-4xl mb-8 font-medium text-gray-700 after:block after:h-[3px] after:w-full after:bg-teal-700 after:rounded-[50%];
+    @apply float-left mb-8 inline text-4xl font-medium text-gray-700 after:block after:h-[3px] after:w-full after:rounded-[50%] after:bg-teal-700;
   }
 
   .nav-item {
-    @apply inline-flex items-center p-2 align-middle text-base text-gray-700 outline-teal-500 hover:text-teal-700 transition-colors duration-300;
+    @apply inline-flex items-center p-2 align-middle text-base text-gray-700 outline-teal-500 transition-colors duration-300 hover:text-teal-700;
   }
 
   .nav-item.active {
     @apply border-b-2 border-b-teal-600;
   }
 
-  .nav-item.open {
-    @apply border-b-2 border-b-teal-600;
+  .nav-dropdown .nav-item {
+    @apply text-base font-normal;
   }
 
   .btn {
-    @apply whitespace-nowrap cursor-pointer inline-block items-center justify-center px-6 py-3 rounded-md shadow-sm text-base font-medium duration-300;
+    @apply inline-block cursor-pointer items-center justify-center whitespace-nowrap rounded-md px-6 py-3 text-base font-medium shadow-sm duration-300;
   }
 
   .btn-primary {
-    @apply text-white bg-teal-600 hover:bg-teal-700 border border-teal-700;
+    @apply border border-teal-700 bg-teal-600 text-white hover:bg-teal-700;
   }
 }

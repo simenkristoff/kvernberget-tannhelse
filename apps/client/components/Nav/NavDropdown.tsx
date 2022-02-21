@@ -34,7 +34,7 @@ export default function NavDropdown({ label, children }: NavDropdownProps) {
             leaveTo="opacity-0 translate-y-1"
           >
             <Popover.Panel className="z-50 min-w-full md:absolute md:bottom-0 md:translate-y-full md:transform">
-              <div className="relative flex flex-col border-b bg-white px-5 py-2 md:items-center md:border-x md:shadow-md">
+              <div className="nav-dropdown relative flex flex-col border-b bg-white px-5 py-2 md:border-x md:shadow-md">
                 {children}
               </div>
             </Popover.Panel>

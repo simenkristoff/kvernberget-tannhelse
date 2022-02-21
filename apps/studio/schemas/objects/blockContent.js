@@ -1,13 +1,5 @@
-/**
- * This is the schema definition for the rich text fields used for
- * for this blog studio. When you import it in schemas.js it can be
- * reused in other parts of the studio with:
- *  {
- *    name: 'someName',
- *    title: 'Some title',
- *    type: 'blockContent'
- *  }
- */
+import { MdPalette } from 'react-icons/md'
+
 export default {
   title: 'Block Content',
   name: 'blockContent',
@@ -39,6 +31,12 @@ export default {
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
+          {
+            name: 'color',
+            title: 'Farge',
+            type: 'color',
+            icon: MdPalette
+          },
           {
             title: 'URL',
             name: 'link',

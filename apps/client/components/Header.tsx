@@ -13,6 +13,8 @@ import { SiteSettings } from '@lib/schema'
 import formatPhoneNumber from '../utils/formatPhoneNumber'
 
 import Nav from './Nav/Nav'
+import IconLabel from './IconLabel'
+import SanityImage from './Image'
 
 interface HeaderProps {
   settings: SiteSettings
@@ -31,22 +33,11 @@ export default function Header({ settings }: HeaderProps) {
       <div className="bg-white">
         <div className="wrapper flex flex-wrap">
           <div
-            className={classNames(
-              'my-2 aspect-3/1 w-full max-w-[10rem] flex-auto transition-all duration-200',
-              {
-                'md:max-w-[12rem] lg:max-w-[16rem]': !fixed
-              }
-            )}
+            className={classNames('w-full max-w-[12rem] flex-auto pt-2 ', {
+              'sm:max-w-[16rem]': !fixed
+            })}
           >
-            {settings.logo?.image && (
-              <Image
-                src={useNextSanityImage(client, settings.logo.image)}
-                alt={settings.logo?.alt || settings.siteTitle}
-                layout="responsive"
-                objectFit="contain"
-                sizes="(max-width: 800px) 100vw, 800px"
-              />
-            )}
+            <SanityImage src={settings.logo?.image} alt={settings.logo?.alt} />
           </div>
           <div
             className={classNames('hidden', {
@@ -54,52 +45,24 @@ export default function Header({ settings }: HeaderProps) {
                 !fixed
             })}
           >
-            <span className="group relative my-2 block duration-300 hover:translate-x-2">
-              <LocationMarkerIcon
-                className="absolute -left-7 top-0 text-teal-600 duration-300 group-hover:text-teal-700"
-                height={24}
-                width={24}
-              />
-              <p className="font-bold text-teal-600 duration-300 group-hover:text-teal-700">
-                Addresse:
-              </p>
-              <p className="mt-1 group-hover:text-slate-700">
-                {settings.address}
-              </p>
-            </span>
-            <a
+            <IconLabel
+              icon={<LocationMarkerIcon />}
+              href="#"
+              text="Addresse"
+              small={settings.address}
+            />
+            <IconLabel
+              icon={<PhoneIcon />}
               href={`tel: ${settings.phone}`}
-              className="group relative my-2 block duration-300 hover:translate-x-2"
-            >
-              <PhoneIcon
-                className="absolute -left-7 top-0 text-teal-600 duration-300 group-hover:text-teal-700"
-                height={24}
-                width={24}
-              />
-              <p className="font-bold text-teal-600 duration-300 group-hover:text-teal-700">
-                Telefon:
-              </p>
-              <p className="mt-1 group-hover:text-slate-700">
-                (+47) {formatPhoneNumber(settings.phone)}
-              </p>
-            </a>
-
-            <a
+              text="Telefon"
+              small={`(+47) ${formatPhoneNumber(settings.phone)}`}
+            />
+            <IconLabel
+              icon={<MailIcon />}
               href={`mailto: ${settings.email}`}
-              className="group relative my-2 block duration-300 hover:translate-x-2"
-            >
-              <MailIcon
-                className="absolute -left-7 top-0 text-teal-600 duration-300 group-hover:text-teal-700"
-                height={24}
-                width={24}
-              />
-              <p className="font-bold text-teal-600 duration-300 group-hover:text-teal-700">
-                Email:
-              </p>
-              <p className="mt-1 group-hover:text-slate-700">
-                {settings.email}
-              </p>
-            </a>
+              text="Email"
+              small={settings.email}
+            />
           </div>
 
           <Nav

@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import React from 'react'
 import { WindowProvider } from 'context/WindowContext'
+import Head from 'next/head'
 
 export function reportWebVitals(metric: any) {
   // { id, name, label, value } = metric
@@ -19,6 +20,9 @@ export function reportWebVitals(metric: any) {
 function App({ Component, pageProps }: AppProps) {
   return (
     <WindowProvider>
+      <Head>
+        <title>Kvernberget Tannhelse</title>
+      </Head>
       <Component {...pageProps} />
     </WindowProvider>
   )

@@ -1,6 +1,12 @@
 {
   "baseBranch": "origin/master",
   "pipeline": {
+    "codegen": {
+      "dependsOn": [
+        "^codegen"
+      ],
+      "cache": false
+    },
     "build": {
       "dependsOn": [
         "^build"

@@ -1,3 +1,5 @@
+import { Rule } from '@sanity/types'
+
 export default {
   type: 'object',
   name: 'hero',
@@ -5,8 +7,24 @@ export default {
   fields: [
     {
       name: 'heading',
-      type: 'string',
+      type: 'portableHeader',
       title: 'Heading'
+    },
+    {
+      name: 'hideImageOnMobile',
+      type: 'boolean',
+      title: 'Skjul bildet på små skjermstørrelser',
+      initialValue: true,
+      codegen: { required: true },
+      validation: (rule: Rule) => [rule.required()]
+    },
+    {
+      name: 'centerTextOnMobile',
+      type: 'boolean',
+      title: 'Sentrer text på små skjermstørrelser',
+      initialValue: true,
+      codegen: { required: true },
+      validation: (rule: Rule) => [rule.required()]
     },
     {
       name: 'tagline',

@@ -20,11 +20,9 @@ export default function InputCheckbox(props: InputProps) {
               {...field}
               type="checkbox"
             />
-            {props.label && (
-              <span className="mb-1 inline-block text-sm font-semibold leading-5 text-gray-900">
-                {props.label}
-              </span>
-            )}
+            <span className="mb-1 inline-block text-sm font-semibold leading-5 text-gray-900">
+              {props.label}
+            </span>
           </label>
           {fieldState.error && (
             <span className="ml-6 text-sm text-red-600">

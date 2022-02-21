@@ -19,12 +19,14 @@ export const imageBuilder = (source: SanityImageSource) =>
 
 export const usePreviewSubscription = createPreviewSubscriptionHook(config)
 
-// Set up Portable Text serialization
+const color = (props: any) => {
+  return <span style={{ color: props.mark.hex }}>{props.children}</span>
+}
+
 export const PortableText = createPortableTextComponent({
   ...config,
-  // Serializers passed to @sanity/block-content-to-react
-  // (https://github.com/sanity-io/block-content-to-react)
   serializers: {
+    marks: { color },
     types: {
       code: (props: any) => (
         <pre data-language={props.node.language}>

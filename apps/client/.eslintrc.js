@@ -5,6 +5,7 @@ module.exports = {
     es2021: true
   },
   extends: [
+    'eslint-config/.eslint.js',
     'plugin:react/recommended',
     'standard',
     'plugin:@next/next/recommended',

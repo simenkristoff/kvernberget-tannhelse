@@ -1,9 +1,15 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Link from 'next/link'
+import { Cta as CtaSchema, Route } from '@lib/schema'
 
-function Cta(props: any) {
-  const { title, route, link } = props
+export interface CtaButtonProps {
+  data?: CtaSchema
+}
+
+export default function CtaButton({ data }: CtaButtonProps) {
+  if (!data) return null
+  const { title, link } = data
+  const route = data.route as unknown as Route
 
   if (route && route.slug && route.slug.current) {
     return (
@@ -25,15 +31,3 @@ function Cta(props: any) {
 
   return <button className="btn btn-primary">{title}</button>
 }
-
-Cta.propTypes = {
-  title: PropTypes.string.isRequired,
-  route: PropTypes.shape({
-    slug: PropTypes.shape({
-      current: PropTypes.string
-    })
-  }),
-  link: PropTypes.string
-}
-
-export default Cta

@@ -6,15 +6,19 @@ import Layout from '@components/Layout'
 import { getSiteSettings } from '@lib/queries/getSettings'
 import { Fragment } from 'react'
 import { getReviews } from '@lib/queries/getReviews'
+import MetaHead from '@components/MetaHead'
+import { getFrontpage } from '@lib/queries/getLandingPage'
 
 export default function Home({
   settings,
+  frontpage,
   latestPost,
   reviews,
   employees,
   preview
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const mapStateToProps: LandingPageProps = {
+    frontpage,
     latestPost,
     reviews,
     employees
@@ -22,6 +26,7 @@ export default function Home({
 
   return (
     <Fragment>
+      <MetaHead settings={settings} />
       <Layout settings={settings}>
         <LandingPage {...mapStateToProps} />
       </Layout>
@@ -34,12 +39,14 @@ export async function getStaticProps({
   preview = false
 }: GetStaticPropsContext) {
   const settings = await getSiteSettings()
+  const frontpage = await getFrontpage(preview)
   const latestPost = await getLatestPost(preview)
   const reviews = await getReviews(preview)
   const employees = await getEmployees(preview)
   return {
     props: {
       settings,
+      frontpage,
       latestPost,
       reviews,
       employees,

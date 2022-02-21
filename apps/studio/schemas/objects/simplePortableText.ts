@@ -1,3 +1,5 @@
+import { MdPalette } from 'react-icons/md'
+
 export default {
   title: 'Simple Portable Text',
   name: 'simplePortableText',
@@ -6,15 +8,44 @@ export default {
     {
       title: 'Block',
       type: 'block',
-      styles: [],
-      lists: [],
+      styles: [
+        { title: 'Normal', value: 'normal' },
+        { title: 'H1', value: 'h1' },
+        { title: 'H2', value: 'h2' },
+        { title: 'H3', value: 'h3' },
+        { title: 'H4', value: 'h4' },
+        { title: 'Quote', value: 'blockquote' }
+      ],
+      lists: [{ title: 'Bullet', value: 'bullet' }],
+      // Marks let you mark up inline text in the block editor.
       marks: {
+        // Decorators usually describe a single property – e.g. a typographic
+        // preference or highlighting by editors.
         decorators: [
           { title: 'Strong', value: 'strong' },
-          { title: 'Emphasis', value: 'em' },
-          { title: 'Code', value: 'code' }
+          { title: 'Emphasis', value: 'em' }
         ],
-        annotations: [{ type: 'link' }, { type: 'internalLink' }]
+        // Annotations can be any object structure – e.g. a link or a footnote.
+        annotations: [
+          {
+            name: 'color',
+            title: 'Farge',
+            type: 'color',
+            icon: MdPalette
+          },
+          {
+            title: 'URL',
+            name: 'link',
+            type: 'object',
+            fields: [
+              {
+                title: 'URL',
+                name: 'href',
+                type: 'url'
+              }
+            ]
+          }
+        ]
       }
     }
   ]

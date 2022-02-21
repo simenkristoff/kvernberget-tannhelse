@@ -6,10 +6,12 @@
   "scripts": {
     "dev": "sanity start",
     "build": "echo 'Building Sanity to public/studio' && npx @sanity/cli build ../client/public/studio -y",
+    "codegen": "npx sanity-codegen",
     "lint": "eslint ./** --fix"
   },
   "dependencies": {
     "@sanity/base": "^2.27.0",
+    "@sanity/color-input": "^2.27.0",
     "@sanity/core": "^2.27.0",
     "@sanity/default-layout": "^2.27.0",
     "@sanity/default-login": "^2.27.0",
@@ -28,6 +30,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.17.2",
-    "eslint-config-sanity": "^5.1.0"
+    "eslint-config-sanity": "^5.1.0",
+    "sanity-codegen": "^0.9.8"
   }
 }

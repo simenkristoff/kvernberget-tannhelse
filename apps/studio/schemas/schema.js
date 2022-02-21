@@ -5,7 +5,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // Documents
 import siteSettings from './documents/siteSettings'
-
+import frontpage from './documents/frontpage'
 import route from './documents/route'
 import reviews from './documents/reviews'
 import post from './documents/post'
@@ -21,6 +21,7 @@ import cta from './objects/cta'
 import figure from './objects/figure'
 import internalLink from './objects/internalLink'
 import link from './objects/link'
+import portableHeader from './objects/portableHeader'
 import portableText from './objects/portableText'
 import simplePortableText from './objects/simplePortableText'
 
@@ -39,6 +40,7 @@ export default createSchema({
     internalLink,
     figure,
     link,
+    portableHeader,
     portableText,
     cta,
     simplePortableText,
@@ -49,6 +51,7 @@ export default createSchema({
     route,
     reviews,
     siteSettings,
+    frontpage,
     employees,
     post,
     page

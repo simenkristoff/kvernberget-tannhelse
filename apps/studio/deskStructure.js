@@ -12,7 +12,15 @@ export default () =>
             .schemaType('siteSettings')
             .documentId('siteSettings')
         ),
+      S.listItem()
+        .title('Forside')
+        .child(
+          S.document()
+            .title('Innstillinger')
+            .schemaType('frontpage')
+            .documentId('frontpage')
+        ),
       ...S.documentTypeListItems().filter(
-        (listItem) => !['siteSettings'].includes(listItem.getId())
+        (listItem) => !['siteSettings', 'frontpage'].includes(listItem.getId())
       )
     ])

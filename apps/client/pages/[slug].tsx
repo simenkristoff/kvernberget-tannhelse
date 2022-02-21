@@ -7,10 +7,8 @@ import { getSiteSettings } from '@lib/queries/getSettings'
 import Layout from '@components/Layout'
 import { Fragment } from 'react'
 import Error from 'next/error'
-
-const query = groq`*[_type == "page" && slug.current == $slug][0]{
-  ...
-}`
+import MetaHead from '@components/MetaHead'
+import { getPageBySlug, getPageBySlugQuery } from '@lib/queries/getPageBySlug'
 
 type RouteParams = { slug: string }
 
@@ -21,13 +19,12 @@ function ProductPageContainer({
   slug
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   if (!settings || !page) return null
-
   const router = useRouter()
   if (!router.isFallback && !page) {
     return <Error statusCode={404} />
   }
 
-  const previewData = usePreviewSubscription(query, {
+  const previewData = usePreviewSubscription(getPageBySlugQuery, {
     params: { slug },
     initialData: page,
     enabled: preview || router.query.preview !== null
@@ -35,6 +32,7 @@ function ProductPageContainer({
 
   return (
     <Fragment>
+      <MetaHead settings={settings} pageTitle={page.title} />
       <Layout settings={settings}>
         <SinglePage page={preview ? previewData : page} />
       </Layout>
@@ -48,9 +46,7 @@ export async function getStaticProps({
 }: GetStaticPropsContext<RouteParams>) {
   const slug = params?.slug || ''
   const settings = await getSiteSettings()
-  const page = await getClient(preview).fetch(query, {
-    slug
-  })
+  const page = await getPageBySlug(preview, { slug })
 
   return {
     props: { preview, settings, page, slug },

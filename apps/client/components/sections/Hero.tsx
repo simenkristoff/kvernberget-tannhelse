@@ -1,42 +1,56 @@
-import Image from 'next/image'
-import client, { PortableText } from '@lib/sanity'
-import { useNextSanityImage } from 'next-sanity-image'
-import { Hero as HeroSectionProps } from '@lib/schema'
+import { PortableText } from '@lib/sanity'
+import { Hero as HeroSchema } from '@lib/schema'
 
-import Cta from '../Cta'
+import CtaButton from '../CtaButton'
+import SanityImage from '@components/Image'
+import classNames from 'classnames'
 
-export default function Hero(props: HeroSectionProps) {
-  const { heading, backgroundImage, tagline, ctas } = props
+export interface HeroProps {
+  data?: HeroSchema
+}
+
+export default function Hero({ data }: HeroProps) {
+  if (!data) return null
+  const {
+    heading,
+    backgroundImage,
+    tagline,
+    ctas,
+    hideImageOnMobile,
+    centerTextOnMobile
+  } = data
 
   return (
     <div>
-      <div className="wrapper mx-auto mt-4 px-6">
-        <div className="md:flex md:items-center">
-          <div className="mx-auto mt-5 w-full max-w-lg md:ml-8 md:mt-0 md:w-1/2">
-            <h3 className="text-lg uppercase text-gray-700">{heading}</h3>
+      <div className="wrapper mx-auto">
+        <div className="md:flex md:items-center md:space-x-10">
+          <div
+            className={classNames('mx-auto mt-5 w-full max-w-lg md:w-1/2', {
+              'text-center md:text-left': centerTextOnMobile
+            })}
+          >
+            {heading && <PortableText blocks={heading} />}
             {tagline && <PortableText blocks={tagline} />}
             {ctas && (
-              <div>
-                {ctas.map((cta: any) => (
-                  <Cta {...cta} key={cta._key} />
+              <div className="mt-8">
+                {ctas.map((cta) => (
+                  <CtaButton data={cta} key={cta._key} />
                 ))}
               </div>
             )}
           </div>
-          <div className="relative h-64 w-full md:w-1/2 lg:h-96">
-            {backgroundImage && (
-              <Image
-                src={
-                  backgroundImage.image
-                    ? useNextSanityImage(client, backgroundImage?.image)
-                    : ''
-                }
-                alt={backgroundImage?.alt}
-                layout="fill"
-                objectFit="contain"
-                sizes="(max-width: 800px) 100vw, 800px"
-              />
+          <div
+            className={classNames(
+              'relative w-full overflow-hidden rounded-xl shadow-md shadow-gray-500 md:w-1/2',
+              {
+                'hidden md:block': hideImageOnMobile
+              }
             )}
+          >
+            <SanityImage
+              src={backgroundImage?.image}
+              alt={backgroundImage?.alt}
+            />
           </div>
         </div>
       </div>
