@@ -1,4 +1,6 @@
-import { Html, Head, Main, NextScript } from 'next/document'
+import { Html, Head, Main } from 'next/document'
+
+import DeferNextScript from '../utils/DeferNextScript'
 
 export default function Document() {
   return (
@@ -6,7 +8,7 @@ export default function Document() {
       <Head />
       <body className="relative m-0 mx-auto h-screen w-screen overflow-x-hidden p-0">
         <Main />
-        <NextScript />
+        <DeferNextScript />
       </body>
     </Html>
   )

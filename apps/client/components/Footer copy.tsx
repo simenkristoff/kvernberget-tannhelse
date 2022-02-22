@@ -19,26 +19,18 @@ interface FooterProps {
 
 export default function Footer({ settings }: FooterProps) {
   return (
-    <footer className="wrapper-full relative mt-16 bg-teal-700">
-      <svg
-        className="absolute top-0 -mt-5 h-6 w-full text-teal-700 sm:-mt-10 sm:h-16"
-        preserveAspectRatio="none"
-        viewBox="0 0 1440 54"
-      >
-        <path
-          fill="currentColor"
-          d="M0 22L120 16.7C240 11 480 1.00001 720 0.700012C960 1.00001 1200 11 1320 16.7L1440 22V54H1320C1200 54 960 54 720 54C480 54 240 54 120 54H0V22Z"
-        />
-      </svg>
-      <div className="border-t border-gray-300 pt-16 text-gray-200">
+    <footer className="">
+      <div className="border-t border-gray-300 pt-16 text-gray-800">
         <section className="wrapper">
           <div className="mb-0 w-full flex-wrap sm:mb-16 md:flex">
             <div className="mb-6 w-full border-b border-gray-200 border-opacity-25 pb-6 text-left last:border-none md:border-none lg:mb-0 lg:w-1/3 lg:px-6 lg:pb-0">
-              <h3 className="mb-2 text-center text-xl font-bold tracking-wide text-gray-100 lg:text-left">
-                {settings.siteTitle}
-              </h3>
+              <SanityImage
+                className="max-w-md sm:mx-auto"
+                src={settings.logo?.image}
+                alt={settings.logo?.alt}
+              />
               <p
-                className="m-0 max-w-xl text-gray-200 sm:mx-auto"
+                className="m-0 max-w-xl sm:mx-auto"
                 dangerouslySetInnerHTML={{
                   __html: settings.siteDescription || ''
                 }}
@@ -47,27 +39,22 @@ export default function Footer({ settings }: FooterProps) {
 
             {/* Address */}
             <div className="mb-6 w-full border-b border-gray-200 border-opacity-25 pb-6 last:border-none md:w-1/2 md:border-none lg:mb-0 lg:w-1/3 lg:px-6 lg:pb-0">
-              <h3 className="mb-2 text-xl font-bold tracking-wide text-gray-100">
-                Kontaktinformasjon:
-              </h3>
+              <h3 className="text-xl font-medium">Kontaktinformasjon:</h3>
               <div className="ml-7 mt-2">
                 <IconLabel
                   icon={<LocationMarkerIcon />}
-                  mode="dark"
                   href="#"
                   text="Addresse"
                   small={settings.address}
                 />
                 <IconLabel
                   icon={<PhoneIcon />}
-                  mode="dark"
                   href={`tel: ${settings.phone}`}
                   text="Telefon"
                   small={`(+47) ${formatPhoneNumber(settings.phone)}`}
                 />
                 <IconLabel
                   icon={<MailIcon />}
-                  mode="dark"
                   href={`mailto: ${settings.email}`}
                   text="Email"
                   small={settings.email}
@@ -76,9 +63,7 @@ export default function Footer({ settings }: FooterProps) {
             </div>
 
             <div className="mb-6 w-full border-b border-gray-200 border-opacity-25 pb-6 last:border-none md:w-1/2 md:border-none lg:mb-0 lg:w-1/3 lg:px-6 lg:pb-0">
-              <h3 className="mb-2 text-xl font-bold tracking-wide text-gray-100">
-                Åpningstider:
-              </h3>
+              <h3 className="text-xl font-medium">Åpningstider:</h3>
               <ul>
                 {settings.openingHours &&
                   settings.openingHours.map((item) => {
@@ -87,9 +72,10 @@ export default function Footer({ settings }: FooterProps) {
                       : `${item.opensAt}-${item.closesAt}`
                     return (
                       <li key={item._key}>
-                        <span className="font-semibold">{item.day}</span>
-                        :&nbsp;
-                        <span className="font-medium">{state}</span>
+                        <span className="font-medium">{item.day}</span>:&nbsp;
+                        <span className="font-semibold text-teal-700">
+                          {state}
+                        </span>
                       </li>
                     )
                   })}
@@ -97,13 +83,15 @@ export default function Footer({ settings }: FooterProps) {
             </div>
           </div>
         </section>
-        <section className="wrapper flex-col border-t border-gray-100 border-opacity-25 py-2 text-center text-sm ">
-          <p className="text-gray-200">
+        <section className="wrapper flex-col border-t border-gray-300 py-2 text-center text-sm">
+          <p>
             &copy; {new Date().getFullYear()}&nbsp;
-            <span className="font-bold">Kvernberget Tannhelse AS</span>. Alle
-            rettigheter reservert.
+            <span className="font-semibold text-teal-700">
+              Kvernberget Tannhelse AS
+            </span>
+            . Alle rettigheter reservert.
           </p>
-          <p className="mt-1 text-gray-200">Utviklet av Simen Kristoffersen</p>
+          <p className="mt-1">Utviklet av Simen Kristoffersen</p>
         </section>
       </div>
     </footer>

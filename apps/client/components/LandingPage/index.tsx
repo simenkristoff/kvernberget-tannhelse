@@ -2,14 +2,15 @@ import { GetEmployeesQueryResult } from '@lib/queries/getEmployees'
 import { Frontpage } from '@lib/queries/getLandingPage'
 import { GetLatestPostQueryResult } from '@lib/queries/getLatestPost'
 import { Review } from '@lib/queries/getReviews'
-import { PortableText } from '@lib/sanity'
+import { SiteSettings } from '@lib/schema'
 import React from 'react'
 
-import EmployeeCard from '../EmployeeCard'
-import SanityImage from '../Image'
-
+import BlogSection from './BlogSection'
+import ContactSection from './ContactSection'
+import EmployeesSection from './EmployeesSection'
 import HeroSection from './HeroSection'
 import ReviewsSection from './ReviewsSection'
+import TreatmentsSection from './TreatmentsSection'
 
 const treatments: string[] = [
   'Fyllinger',
@@ -22,6 +23,7 @@ const treatments: string[] = [
 
 export interface LandingPageProps {
   frontpage: Frontpage
+  settings: SiteSettings
   latestPost: GetLatestPostQueryResult
   reviews: Review[]
   employees: GetEmployeesQueryResult
@@ -29,6 +31,7 @@ export interface LandingPageProps {
 
 export default function LandingPage({
   frontpage,
+  settings,
   latestPost,
   reviews,
   employees
@@ -39,74 +42,15 @@ export default function LandingPage({
         <HeroSection introSection={frontpage.introSection} />
       )}
 
-      <section className="content-section">
-        <div className="wrapper">
-          <article className="mx-auto flex max-w-4xl flex-col overflow-hidden rounded-lg border border-gray-300 shadow-md md:flex-row">
-            <div className="w-full">
-              <SanityImage
-                src={latestPost.mainImage?.asset}
-                alt={latestPost.title}
-              />
-            </div>
-            <div className="relative my-auto py-8 px-4">
-              <div className="flex h-full flex-grow flex-col">
-                <h3 className="text-2xl font-medium text-gray-700">
-                  {latestPost.title}
-                </h3>
-                <PortableText blocks={latestPost.excerpt} />
-                <p className="font-bold text-teal-700 duration-300 hover:text-teal-600">
-                  Les mer...
-                </p>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
+      {latestPost && <BlogSection data={latestPost} />}
 
-      <section className="content-section flex">
-        <div className="wrapper">
-          <div className="mb-4 flex flex-col justify-center">
-            <div className="mx-auto block">
-              <h2 className="section-title mb-2 text-center">Behandlinger</h2>
-            </div>
-            <p className="text-center font-medium text-gray-800">
-              Vi utfører både spesialist- og allmennbehandling!
-            </p>
-          </div>
-          <div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-            {treatments.map((item) => (
-              <div
-                key={item}
-                className="group flex cursor-pointer flex-col items-center justify-center rounded-md border-2 border-gray-200 bg-white px-6 py-4 shadow-md transition-all duration-500 hover:scale-110 hover:bg-teal-600"
-              >
-                <p className="text-sm font-bold duration-500 group-hover:text-white">
-                  {item}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <button className="btn btn-primary mx-auto block">
-            Se alle behandlinger
-          </button>
-        </div>
-      </section>
+      {treatments.length > 0 && <TreatmentsSection />}
 
       <ReviewsSection data={reviews} />
 
-      {/* Employees */}
-      <section className="content-section">
-        <div className="wrapper">
-          <div className="flex justify-center">
-            <h2 className="section-title text-center">Våre ansatte</h2>
-          </div>
+      <ContactSection data={settings} />
 
-          <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {employees.length > 0 &&
-              employees.map((emp) => <EmployeeCard key={emp._id} data={emp} />)}
-          </div>
-        </div>
-      </section>
+      {employees.length > 0 && <EmployeesSection data={employees} />}
     </React.Fragment>
   )
 }

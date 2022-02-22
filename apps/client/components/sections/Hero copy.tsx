@@ -22,15 +22,10 @@ export default function Hero({ data, className }: HeroProps) {
   } = data
 
   return (
-    <div
-      className={classNames(
-        'wrapper flex flex-col items-center py-16 md:flex-row',
-        className
-      )}
-    >
-      <div className="mb-16 flex flex-col items-center text-center md:mb-0 md:w-1/2 md:items-start md:text-left lg:flex-grow lg:pr-24">
+    <div className={classNames('wrapper mx-auto w-full', className)}>
+      <div className="md:flex md:items-center md:space-x-10">
         <div
-          className={classNames({
+          className={classNames('mx-auto mt-5 w-full max-w-lg md:w-1/2', {
             'text-center md:text-left': centerTextOnMobile
           })}
         >
@@ -44,17 +39,17 @@ export default function Hero({ data, className }: HeroProps) {
             </div>
           )}
         </div>
-      </div>
-      <div
-        className={classNames('w-5/6 md:w-1/2 lg:w-full lg:max-w-lg', {
-          'hidden md:block': hideImageOnMobile
-        })}
-      >
-        <SanityImage
-          className="overflow-hidden rounded-lg object-cover object-center shadow-gray-500 drop-shadow-md"
-          src={backgroundImage?.image}
-          alt={backgroundImage?.alt}
-        />
+        <div
+          className={classNames('w-5/6 md:w-1/2 lg:w-full lg:max-w-lg', {
+            'hidden md:block': hideImageOnMobile
+          })}
+        >
+          <SanityImage
+            className="overflow-hidden rounded-lg object-cover object-center shadow-md shadow-gray-400"
+            src={backgroundImage?.image}
+            alt={backgroundImage?.alt}
+          />
+        </div>
       </div>
     </div>
   )

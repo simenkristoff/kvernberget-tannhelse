@@ -19,6 +19,7 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const mapStateToProps: LandingPageProps = {
     frontpage,
+    settings,
     latestPost,
     reviews,
     employees

@@ -4,6 +4,8 @@ import Image from 'next/image'
 
 import reviewsIllustration from '../../public/assets/reviews-illustration.png'
 
+import SectionTitle from './utils/SectionTitle'
+
 interface ReviewsSectionProps {
   data: Review[]
 }
@@ -20,9 +22,11 @@ export default function ReviewsSection({ data }: ReviewsSectionProps) {
           />
         </div>
         <div className="block w-full max-w-sm py-8 sm:max-w-md lg:py-0">
-          <h2 className="section-title text-center md:text-left">
-            Våre omtaler
-          </h2>
+          <SectionTitle
+            title="Våre omtaler"
+            textAlign="left"
+            className="mb-1"
+          />
           <ReviewSlider className="ml-auto" reviews={data} />
         </div>
       </div>

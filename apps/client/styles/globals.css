@@ -34,12 +34,16 @@
     @apply h-auto w-screen;
   }
 
+  .img-round-shadow > span {
+    @apply overflow-hidden rounded-lg object-center shadow-md shadow-gray-500;
+  }
+
   .content-section {
     @apply wrapper-full flex flex-grow flex-col py-8 md:py-16;
   }
 
   .section-title {
-    @apply float-left mb-8 inline text-4xl font-medium text-gray-700 after:block after:h-[3px] after:w-full after:rounded-[50%] after:bg-teal-700;
+    @apply float-left mb-8 inline text-4xl font-medium text-gray-700;
   }
 
   .nav-item {

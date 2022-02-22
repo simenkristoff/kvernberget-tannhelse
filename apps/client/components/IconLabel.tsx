@@ -1,21 +1,23 @@
 import classNames from 'classnames'
 import { AnchorHTMLAttributes, DetailedHTMLProps } from 'react'
 
-export type IconLabelProps = {
+export interface IconLabelProps
+  extends DetailedHTMLProps<
+    AnchorHTMLAttributes<HTMLAnchorElement>,
+    HTMLAnchorElement
+  > {
   icon: JSX.Element
   text: string
+  mode: 'dark' | 'light'
   fontWeight: 'normal' | 'medium' | 'semibold' | 'bold'
   transition: 'left' | 'right' | 'up' | 'down' | 'none'
   labelColon?: boolean
   small?: string
-} & DetailedHTMLProps<
-  AnchorHTMLAttributes<HTMLAnchorElement>,
-  HTMLAnchorElement
-> &
-  typeof defaultProps
+}
 
-const defaultProps = {
+const defaultProps: Partial<IconLabelProps> = {
   fontWeight: 'semibold',
+  mode: 'light',
   transition: 'right',
   labelColon: true
 }
@@ -23,13 +25,14 @@ const defaultProps = {
 export default function IconLabel({
   icon,
   text,
+  mode,
   fontWeight,
   transition,
   labelColon,
   small,
   className,
   ...htmlProps
-}: IconLabelProps) {
+}: IconLabelProps & typeof defaultProps) {
   return (
     <a
       {...htmlProps}
@@ -45,24 +48,35 @@ export default function IconLabel({
       )}
     >
       <icon.type
-        className="absolute -left-7 top-0 text-teal-700 duration-300 group-hover:text-teal-800"
+        className={classNames('absolute -left-7 top-0 duration-300 ', {
+          'text-teal-700 group-hover:text-teal-800': mode === 'light',
+          'text-gray-100 group-hover:text-gray-200': mode === 'dark'
+        })}
         height={24}
         width={24}
       />
       <p
-        className={classNames(
-          'text-teal-700 duration-300 group-hover:text-teal-800',
-          {
-            'font-bold': fontWeight === 'bold',
-            'font-semibold': fontWeight === 'semibold',
-            'font-medium': fontWeight === 'medium'
-          }
-        )}
+        className={classNames(' duration-300 ', {
+          'text-teal-700 group-hover:text-teal-800': mode === 'light',
+          'text-gray-100 group-hover:text-gray-200': mode === 'dark',
+          'font-bold': fontWeight === 'bold',
+          'font-semibold': fontWeight === 'semibold',
+          'font-medium': fontWeight === 'medium'
+        })}
       >
         {text}
         {small && labelColon && ':'}
       </p>
-      {small && <p className="mt-1 group-hover:text-slate-700">{small}</p>}
+      {small && (
+        <p
+          className={classNames('mt-1 duration-300', {
+            'group-hover:text-slate-700': mode === 'light',
+            'text-gray-200 group-hover:text-gray-300': mode === 'dark'
+          })}
+        >
+          {small}
+        </p>
+      )}
     </a>
   )
 }
