@@ -4,7 +4,9 @@ import { DetailedHTMLProps, HTMLAttributes } from 'react'
 export interface SectionTitleProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   title: string
+  margin?: boolean
   bordered?: boolean
+  centerOnMobile: boolean
   small?: string
   icon?: JSX.Element
   iconAlign?: 'left' | 'right'
@@ -12,6 +14,8 @@ export interface SectionTitleProps
 }
 
 const defaultProps: Partial<SectionTitleProps> = {
+  margin: true,
+  centerOnMobile: true,
   bordered: true,
   textAlign: 'center',
   iconAlign: 'left'
@@ -20,14 +24,26 @@ const defaultProps: Partial<SectionTitleProps> = {
 export default function SectionTitle(
   props: SectionTitleProps & typeof defaultProps
 ) {
-  const { title, bordered, icon, small, iconAlign, textAlign, className } =
-    props
+  const {
+    title,
+    bordered,
+    centerOnMobile,
+    margin,
+    icon,
+    small,
+    iconAlign,
+    textAlign,
+    className
+  } = props
   return (
     <div
       className={classNames(
-        `mb-10 flex basis-full flex-col items-center justify-center text-center`,
         className,
+        `flex basis-full flex-col justify-center text-center`,
+
         {
+          'items-center': centerOnMobile,
+          'mb-10': margin,
           'md:items-start md:text-left': textAlign === 'left',
           'md:items-end md:text-right': textAlign === 'right'
         }

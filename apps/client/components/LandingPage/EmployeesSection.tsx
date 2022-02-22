@@ -1,4 +1,5 @@
 import SanityImage from '@components/Image'
+import { UserGroupIcon } from '@heroicons/react/outline'
 import { GetEmployeesQueryResult } from '@lib/queries/getEmployees'
 import { Employees } from '@lib/schema'
 import { DetailedHTMLProps, HTMLAttributes } from 'react'
@@ -37,7 +38,11 @@ export default function EmployeesSection({ data }: EmployeeSectionProps) {
   return (
     <section className="content-section">
       <div className="wrapper">
-        <SectionTitle title="Våre ansatte" />
+        <SectionTitle
+          title="Våre ansatte"
+          icon={<UserGroupIcon />}
+          iconAlign="left"
+        />
         <div className="-m-4 flex w-full flex-wrap justify-center">
           {data.map((item) => (
             <EmployeeCard key={item._id} data={item} />

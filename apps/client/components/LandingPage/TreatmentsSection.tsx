@@ -1,3 +1,4 @@
+import { CogIcon } from '@heroicons/react/outline'
 import classNames from 'classnames'
 
 import SectionTitle from './utils/SectionTitle'
@@ -46,6 +47,8 @@ export default function TreatmentsSection() {
       <div className="wrapper">
         <SectionTitle
           title="Behandlinger"
+          icon={<CogIcon />}
+          iconAlign="right"
           small="Vi utfører både spesialist- og allmennbehandling!"
           textAlign="center"
         />

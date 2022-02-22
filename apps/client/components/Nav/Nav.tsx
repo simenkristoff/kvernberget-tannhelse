@@ -1,6 +1,7 @@
 import { Popover, Transition } from '@headlessui/react'
 import { MenuIcon } from '@heroicons/react/outline'
 import classNames from 'classnames'
+import { useWindow } from 'context/WindowContext'
 import { Fragment, ReactFragment, useEffect, useState } from 'react'
 
 import NavDropdown from './NavDropdown'
@@ -22,25 +23,15 @@ export interface NavProps {
 
 function Nav({ fixed, className, children }: NavProps) {
   const [toggle, setToggle] = useState<boolean>(false)
-
-  const checkWidthConstraints = () => {
-    if (!window) return
-
-    if (window.innerWidth > breakpoints.md) {
-      setToggle(true)
-    } else {
-      setToggle(false)
-    }
-  }
+  const { isMobile } = useWindow()
 
   useEffect(() => {
-    checkWidthConstraints()
-    window.addEventListener('resize', checkWidthConstraints)
-
-    return () => {
-      window.removeEventListener('resize', checkWidthConstraints)
-    }
+    setToggle(isMobile)
   }, [])
+
+  useEffect(() => {
+    setToggle(isMobile)
+  }, [isMobile])
 
   return (
     <Popover className={classNames(className)}>

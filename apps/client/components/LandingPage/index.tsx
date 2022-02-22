@@ -42,11 +42,11 @@ export default function LandingPage({
         <HeroSection introSection={frontpage.introSection} />
       )}
 
-      {latestPost && <BlogSection data={latestPost} />}
-
       {treatments.length > 0 && <TreatmentsSection />}
 
       <ReviewsSection data={reviews} />
+
+      {latestPost && <BlogSection data={latestPost} />}
 
       <ContactSection data={settings} />
 

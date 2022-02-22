@@ -16,7 +16,7 @@ export default function BlogSection({ data }: BlogSectionProps) {
         <SectionTitle title="Siste nytt fra oss" icon={<NewspaperIcon />} />
         <div className="flex flex-col items-center space-y-5 md:flex-row md:space-x-10">
           <SanityImage
-            className="img-round-shadow aspect-square"
+            className="img-round-shadow md:1/2 aspect-square lg:w-2/5"
             settings={{
               layout: 'responsive'
             }}

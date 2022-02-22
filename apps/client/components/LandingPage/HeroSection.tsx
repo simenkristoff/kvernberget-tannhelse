@@ -14,10 +14,10 @@ export default function HeroSection({ introSection }: HeroSectionProps) {
   const { ctas, backgroundImage, centerTextOnMobile, hideImageOnMobile } =
     introSection
   return (
-    <section className="content-section relative flex flex-col-reverse items-center bg-gradient-to-b from-sky-100 via-gray-100 text-lg lg:flex-col lg:py-0">
+    <section className="content-section relative flex flex-col-reverse items-center bg-gradient-to-b from-sky-200 to-gray-100 text-lg lg:flex-col lg:py-0">
       <div
         className={classNames(
-          'wrapper z-10 flex flex-col items-center py-16 md:flex-row md:space-x-2'
+          'wrapper z-10 mb-16 flex flex-col items-center py-16 md:flex-row md:space-x-2'
         )}
       >
         <div className="mb-16 flex flex-col items-center text-center md:mb-0 md:w-1/2 md:items-start md:text-left lg:flex-grow lg:pr-24">
@@ -51,7 +51,7 @@ export default function HeroSection({ introSection }: HeroSectionProps) {
           })}
         >
           <SanityImage
-            className="overflow-hidden rounded-lg object-cover object-center shadow-gray-500 drop-shadow-md"
+            className="overflow-hidden rounded-lg object-cover object-center shadow-md shadow-gray-400"
             src={backgroundImage?.image}
             alt={backgroundImage?.alt}
           />
@@ -73,6 +73,16 @@ export default function HeroSection({ introSection }: HeroSectionProps) {
           priority={true}
         />
       </div>
+      <svg
+        className="absolute bottom-0 -mt-5 h-6 w-full text-white sm:-mt-10 sm:h-16"
+        preserveAspectRatio="none"
+        viewBox="0 0 1440 54"
+      >
+        <path
+          fill="currentColor"
+          d="M0 22L120 16.7C240 11 480 1.00001 720 0.700012C960 1.00001 1200 11 1320 16.7L1440 22V54H1320C1200 54 960 54 720 54C480 54 240 54 120 54H0V22Z"
+        />
+      </svg>
     </section>
   )
 }

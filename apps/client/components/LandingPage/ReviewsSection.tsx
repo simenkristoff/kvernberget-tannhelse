@@ -1,4 +1,5 @@
 import ReviewSlider from '@components/ReviewSlider'
+import { SparklesIcon, StarIcon } from '@heroicons/react/outline'
 import { Review } from '@lib/queries/getReviews'
 import Image from 'next/image'
 
@@ -24,6 +25,8 @@ export default function ReviewsSection({ data }: ReviewsSectionProps) {
         <div className="block w-full max-w-sm py-8 sm:max-w-md lg:py-0">
           <SectionTitle
             title="Våre omtaler"
+            icon={<SparklesIcon />}
+            iconAlign="right"
             textAlign="left"
             className="mb-1"
           />
