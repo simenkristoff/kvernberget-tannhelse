@@ -15,9 +15,9 @@ interface FooterProps {
 
 export default function Footer({ settings }: FooterProps) {
   return (
-    <footer className="wrapper-full relative mt-16 bg-primary-base">
+    <footer className="wrapper-full relative mt-16 bg-primary-base dark:bg-dark-900">
       <svg
-        className="absolute top-0 -mt-5 h-6 w-full text-primary-base  sm:-mt-10 sm:h-16"
+        className="absolute top-0 -mt-5 h-6 w-full text-primary-base dark:text-dark-900 sm:-mt-10 sm:h-16"
         preserveAspectRatio="none"
         viewBox="0 0 1440 54"
       >

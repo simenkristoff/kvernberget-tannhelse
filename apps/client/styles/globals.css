@@ -6,10 +6,15 @@
 @tailwind utilities;
 
 @layer base {
+  html,
+  body {
+    @apply bg-white dark:bg-gray-900;
+  }
+
   a,
   p,
   span {
-    @apply font-sans tracking-wide text-gray-800;
+    @apply font-sans tracking-wide text-gray-800 dark:text-gray-300;
   }
 
   h1,
@@ -18,7 +23,7 @@
   h4,
   h5,
   h6 {
-    @apply mb-2 font-heading font-medium text-gray-700;
+    @apply mb-2 font-heading font-medium text-gray-700 dark:text-gray-200;
   }
 
   h1 {
@@ -67,10 +72,6 @@
     @apply wrapper-full flex flex-grow flex-col py-8 md:py-16;
   }
 
-  .section-title {
-    @apply float-left inline;
-  }
-
   .nav-item {
     @apply inline-flex items-center p-2 align-middle text-base text-gray-700 outline-primary-accent transition-colors duration-300 hover:text-primary-base dark:text-gray-200;
   }
@@ -84,11 +85,19 @@
   }
 
   .btn {
-    @apply inline-block cursor-pointer items-center justify-center whitespace-nowrap rounded-md px-6 py-3 text-base font-medium tracking-wide shadow-sm duration-300;
+    @apply inline-block select-none whitespace-nowrap rounded-md border border-transparent py-2 px-4 text-center align-middle text-base font-semibold leading-normal shadow-sm duration-300;
   }
 
   .btn-primary {
-    @apply border border-primary-base  bg-primary-light  text-white hover:bg-primary-base;
+    @apply border-primary-base  bg-primary-light  text-white hover:bg-primary-base;
+  }
+
+  .btn-secondary {
+    @apply border-gray-200 bg-gray-100 text-primary-light hover:bg-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-primary-accent dark:hover:bg-gray-600;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-gray-700 shadow-transparent hover:text-gray-600;
   }
 
   .block-content div > p,

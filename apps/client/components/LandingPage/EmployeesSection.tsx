@@ -43,7 +43,7 @@ export default function EmployeesSection({ data }: EmployeeSectionProps) {
           icon={<UserGroupIcon />}
           iconAlign="left"
         />
-        <div className="-m-4 flex w-full flex-wrap justify-center">
+        <div className="flex w-full flex-wrap justify-center">
           {data.map((item) => (
             <EmployeeCard key={item._id} data={item} />
           ))}

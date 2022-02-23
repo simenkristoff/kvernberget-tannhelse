@@ -15,6 +15,7 @@ import formatPhoneNumber from '../utils/formatPhoneNumber'
 import Nav from './Nav/Nav'
 import IconLabel from './IconLabel'
 import SanityImage from './Image'
+import Button from './Button'
 
 interface HeaderProps {
   settings: SiteSettings
@@ -26,7 +27,7 @@ export default function Header({ settings }: HeaderProps) {
   return (
     <header
       className={classNames(
-        'wrapper-full z-50 bg-white shadow-md dark:bg-dark-900',
+        'wrapper-full z-50 bg-white shadow-md dark:bg-gray-900',
         {
           relative: !fixed,
           'fixed top-0 left-0': fixed
@@ -86,7 +87,8 @@ export default function Header({ settings }: HeaderProps) {
           <Nav
             fixed={fixed}
             className={classNames('flex items-center', {
-              'border-t border-transparent md:border-gray-100': !fixed
+              'border-t border-transparent md:border-gray-100 dark:md:border-gray-800':
+                !fixed
             })}
           >
             <Nav.NavItem to="/">Hjem</Nav.NavItem>
@@ -101,15 +103,15 @@ export default function Header({ settings }: HeaderProps) {
             <Nav.NavItem to="/priser">Priser</Nav.NavItem>
             <Nav.NavItem to="/om-oss">Om oss</Nav.NavItem>
             <Nav.NavItem to="/kontakt-oss">Kontakt oss</Nav.NavItem>
-            <button
-              className={classNames('btn btn-primary md:py-0', {
-                'h-full self-stretch rounded-none md:absolute md:right-0 md:bottom-0':
+            <Button
+              className={classNames({
+                'h-full items-center self-stretch rounded-none md:absolute md:right-0 md:bottom-0':
                   !fixed,
                 'rounded-none md:rounded-md': fixed
               })}
             >
               Bestill time
-            </button>
+            </Button>
           </Nav>
         </div>
       </div>

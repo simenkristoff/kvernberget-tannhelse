@@ -63,7 +63,7 @@ export default function ContactSection({ data }: ContactSectionProps) {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="relative z-10 mt-10 flex w-full max-w-sm flex-col rounded-lg bg-white p-8 shadow-md md:ml-auto md:mt-0 md:w-1/2 md:max-w-lg lg:w-1/3 lg:max-w-xl">
+              <Popover.Panel className="relative z-10 mt-10 flex w-full max-w-sm flex-col rounded-lg bg-white p-8 shadow-md dark:bg-gray-900 md:ml-auto md:mt-0 md:w-1/2 md:max-w-lg lg:w-1/3 lg:max-w-xl">
                 <div className="my-auto flex flex-col">
                   <SectionTitle
                     title="Lokasjon"
@@ -75,7 +75,7 @@ export default function ContactSection({ data }: ContactSectionProps) {
                     bordered={false}
                     textAlign="left"
                   />
-                  <p className="mb-5 leading-relaxed text-gray-700">
+                  <p className="mb-5 leading-relaxed text-gray-700 dark:text-gray-200">
                     Du finner klinikken våres ved
                     <br />
                     <span className="font-semibold">{data.address}</span>
@@ -83,9 +83,7 @@ export default function ContactSection({ data }: ContactSectionProps) {
 
                   {data.openingHours && (
                     <Fragment>
-                      <h3 className="text-xl font-bold text-gray-800">
-                        Åpningstider
-                      </h3>
+                      <h3 className="text-xl font-bold">Åpningstider</h3>
                       <div className="relative mb-4">
                         <ul>
                           {data.openingHours.map((item) => {

@@ -2,6 +2,7 @@ import { ChevronDoubleUpIcon } from '@heroicons/react/outline'
 import { SiteSettings } from '@lib/schema'
 import { useWindow } from 'context/WindowContext'
 
+import Button from './Button'
 import Footer from './Footer'
 import Header from './Header'
 
@@ -20,17 +21,17 @@ export default function Layout({ settings, children }: LayoutProps) {
     })
   }
   return (
-    <div className="relative h-screen w-screen bg-white text-gray-700 dark:bg-dark-800 dark:text-gray-100">
+    <div className="relative h-screen w-screen bg-white text-gray-700 dark:text-gray-100">
       <Header settings={settings} />
-      <main className="wrapper-full">{children}</main>
+      <main className="wrapper-full dark:bg-gray-900">{children}</main>
 
       {fixed && (
-        <button
-          className="btn btn-primary fixed bottom-2 right-2 z-50 p-2 drop-shadow-lg transition-all duration-300 hover:bottom-4 active:bottom-4"
-          onClick={scrollToTop}
+        <Button
+          onClick={() => scrollToTop()}
+          className="group fixed bottom-2 right-2 z-50 p-2 transition-all duration-300 hover:bottom-4 active:bottom-4"
         >
           <ChevronDoubleUpIcon className="h-6 w-6" />
-        </button>
+        </Button>
       )}
 
       <Footer settings={settings} />

@@ -21,6 +21,7 @@ module.exports = {
       dark: colors.slate,
       secondary: colors.sky,
       primary: {
+        darkest: colors.teal[900],
         dark: colors.teal[800],
         base: colors.teal[700],
         light: colors.teal[600],

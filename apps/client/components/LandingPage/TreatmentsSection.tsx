@@ -1,3 +1,5 @@
+import Button from '@components/Button'
+import Icon from '@components/Icon'
 import { CogIcon } from '@heroicons/react/outline'
 import classNames from 'classnames'
 
@@ -31,9 +33,14 @@ const treatments: string[] = [
 export function TreatmentCard({ text }: { text: string }) {
   return (
     <div className="w-full p-2 sm:w-1/2">
-      <div className="group flex h-full cursor-pointer items-center rounded border border-gray-200 bg-gray-50 p-4 shadow-sm transition-all duration-500 hover:scale-105 hover:bg-primary-light">
-        <TeethIcon className="mr-4 h-9 w-9 rounded-full bg-primary-light p-2 duration-500 group-hover:bg-white group-hover:text-primary-light" />
-        <span className="title-font font-semibold text-gray-700 duration-500 group-hover:text-white">
+      <div className="group flex h-full cursor-pointer items-center rounded border border-gray-200 bg-gray-50 p-4 shadow-sm transition-all duration-500 hover:scale-105 hover:bg-primary-light dark:border-gray-700 dark:bg-gray-800">
+        <Icon
+          icon={<TeethIcon />}
+          type="primary"
+          size="small"
+          className="mr-2 duration-500 group-hover:bg-white group-hover:text-primary-light"
+        />
+        <span className="title-font font-semibold text-gray-700 duration-500 group-hover:text-white dark:text-gray-300">
           {text}
         </span>
       </div>
@@ -43,7 +50,7 @@ export function TreatmentCard({ text }: { text: string }) {
 
 export default function TreatmentsSection() {
   return (
-    <section className="content-section text-gray-600">
+    <section className="content-section text-gray-600 dark:bg-gray-900">
       <div className="wrapper">
         <SectionTitle
           title="Behandlinger"
@@ -57,9 +64,7 @@ export default function TreatmentsSection() {
             <TreatmentCard key={treatment} text={treatment} />
           ))}
         </div>
-        <button className="btn btn-primary mx-auto mt-8 flex">
-          Se alle behandlinger
-        </button>
+        <Button className="mx-auto mt-4 flex">Se alle behandlinger</Button>
       </div>
     </section>
   )

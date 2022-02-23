@@ -1,3 +1,4 @@
+import Button from '@components/Button'
 import SanityImage from '@components/Image'
 import { NewspaperIcon } from '@heroicons/react/outline'
 import { PortableText } from '@lib/sanity'
@@ -14,7 +15,7 @@ export default function BlogSection({ data }: BlogSectionProps) {
     <section className="content-section">
       <div className="wrapper">
         <SectionTitle title="Siste nytt fra oss" icon={<NewspaperIcon />} />
-        <div className="flex flex-col items-center space-y-5 md:flex-row md:space-x-10">
+        <div className="mx-auto flex max-w-3xl flex-col items-center space-y-5 md:flex-row md:space-x-10">
           <SanityImage
             className="img-round-shadow md:1/2 aspect-square lg:w-2/5"
             settings={{
@@ -32,7 +33,7 @@ export default function BlogSection({ data }: BlogSectionProps) {
               </div>
 
               <hr className="mb-5 border-gray-300" />
-              <button className="btn btn-primary">Les mer</button>
+              <Button>Les mer</Button>
             </article>
           </div>
         </div>

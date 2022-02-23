@@ -1,3 +1,4 @@
+import Icon from '@components/Icon'
 import classNames from 'classnames'
 import { DetailedHTMLProps, HTMLAttributes } from 'react'
 
@@ -58,20 +59,16 @@ export default function SectionTitle(
         })}
       >
         {icon && (
-          <div
-            className={classNames(
-              'absolute -top-1 flex h-12 w-12 items-center justify-center rounded-full bg-gray-100',
-              {
-                '-left-14 mr-2': iconAlign === 'left',
-                '-right-14 ml-2': iconAlign === 'right'
-              }
-            )}
-          >
-            <icon.type className="h-10 w-10 py-1 text-primary-light" />
-          </div>
+          <Icon
+            icon={icon}
+            className={classNames('absolute -top-1', {
+              '-left-14 mr-2': iconAlign === 'left',
+              '-right-14 ml-2': iconAlign === 'right'
+            })}
+          />
         )}
         <h2
-          className={classNames('section-title mb-2 text-center', {
+          className={classNames('float-left mb-2 inline text-center', {
             'after:block after:h-[3px] after:w-full after:rounded-[50%] after:bg-primary-base ':
               bordered
           })}
