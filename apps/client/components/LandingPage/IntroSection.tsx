@@ -1,90 +1,96 @@
-import CtaButton from '@components/CtaButton'
-import SanityImage from '@components/Image'
-import { Frontpage } from '@lib/queries/getLandingPage'
-import classNames from 'classnames'
-import Image from 'next/image'
+import { BellIcon, ClockIcon, DeviceMobileIcon } from '@heroicons/react/outline'
 
-import abstractLeft from '../../public/assets/abstract-left.png'
-import abstractRight from '../../public/assets/abstract-right.png'
-
-interface IntroSectionProps {
-  data: Pick<Frontpage, 'introSection'>
+interface IntroCardProps {
+  title: string
+  small: string
+  icon: JSX.Element
 }
 
-export default function IntroSection({ data }: IntroSectionProps) {
-  const { introSection } = data
-  if (!introSection) return null
-  const { cta, centerTextOnMobile, image } = introSection
+function IntroCard({ title, icon, small }: IntroCardProps) {
   return (
-    <section className="content-section relative flex flex-col-reverse items-center overflow-hidden bg-gradient-to-b from-secondary-200 to-gray-100 text-lg dark:from-dark-600 dark:to-dark-700 lg:flex-col lg:py-0">
-      <div className={classNames('wrapper z-10 mx-auto sm:py-16')}>
-        <div className="flex w-full flex-col items-center justify-between sm:mb-10 lg:flex-row">
-          <div
-            className={classNames({
-              'mb-16 text-center md:max-w-2xl md:text-left lg:mb-0 lg:max-w-xl':
-                centerTextOnMobile
-            })}
-          >
-            <div className="py-8">
-              <h1 className="mb-4">
-                Velkommen til
-                <br />
-                <span className="text-primary-base">Kvernberget Tannhelse</span>
-              </h1>
-              <p className="mb-8">
-                Her jobber tannlegene Kleivmyr, Neuenkirchen, Caoile,
-                Kristoffersen og Folland. Vi gir deg en trygg og forsvarlig
-                tannbehandling etter dine behov og ønsker.
-              </p>
-              <div className="flex items-center justify-center space-x-5 md:justify-start">
-                <button className="btn btn-primary">Bestill time</button>
-                <button className="text-xl font-bold text-primary-base">
-                  Les mer
-                </button>
-              </div>
-            </div>
+    <div className="inline-block p-8 text-center">
+      <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-gray-100">
+        <icon.type className="h-10 w-10 py-1 text-primary-light" />
+      </div>
+      <p className="font-bold tracking-wide text-gray-800">{title}</p>
+      <small>{small}</small>
+    </div>
+  )
+}
+
+const introCards: IntroCardProps[] = [
+  {
+    title: 'Kort ventetid',
+    small: 'Du trenger ikke vente lenge på time hos oss',
+    icon: <ClockIcon />
+  },
+  {
+    title: 'Påminnelse på SMS',
+    small: 'Vi hjelper deg å huske timen',
+    icon: <DeviceMobileIcon />
+  },
+  {
+    title: 'Akutthjelp',
+    small: 'Som kunde hos oss får du akutthjelp på dagen ved behov',
+    icon: <BellIcon />
+  }
+]
+
+export default function IntroSection() {
+  return (
+    <div className="mb-16">
+      <div className="bg-secondary-50">
+        <div className="mx-auto px-4 py-16 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8 lg:py-20">
+          <div className="mb-10 max-w-xl sm:text-center md:mx-auto md:mb-12 lg:max-w-2xl">
+            <h1 className="relative mb-4">
+              <svg
+                viewBox="0 0 52 24"
+                fill="currentColor"
+                className="absolute top-0 left-0 z-0 -mt-8 -ml-20 hidden w-32 text-gray-400 sm:block lg:-ml-28 lg:-mt-10 lg:w-32"
+              >
+                <defs>
+                  <pattern
+                    id="dc223fcc-6d72-4ebc-b4ef-abe121034d6e"
+                    x="0"
+                    y="0"
+                    width=".135"
+                    height=".30"
+                  >
+                    <circle cx="1" cy="1" r=".7" />
+                  </pattern>
+                </defs>
+                <rect
+                  fill="url(#dc223fcc-6d72-4ebc-b4ef-abe121034d6e)"
+                  width="52"
+                  height="24"
+                />
+              </svg>
+              Velkommen til
+              <br />
+              <span className="text-primary-base">Kvernberget Tannhelse</span>
+            </h1>
+            <p className="text-base text-gray-700 md:text-lg">
+              Her jobber tannlegene Kleivmyr, Neuenkirchen, Caoile,
+              Kristoffersen og Folland. Vi gir deg en trygg og forsvarlig
+              tannbehandling etter dine behov og ønsker.
+            </p>
           </div>
-          {image && (
-            <div
-              className={classNames(
-                'mb-6 flex w-full items-center justify-center md:max-w-2xl lg:w-1/2 lg:max-w-xl'
-              )}
-            >
-              <SanityImage
-                src={image.image}
-                alt={image.alt}
-                className="overflow-hidden rounded-md shadow-md shadow-gray-300"
-              />
-            </div>
-          )}
+          <div className="flex items-center space-x-5 sm:justify-center">
+            <button className="btn btn-primary">Bestill time</button>
+            <button className="text-lg font-semibold duration-300 hover:text-primary-base">
+              Les mer
+            </button>
+          </div>
         </div>
       </div>
-      <div className="absolute top-0 left-0 z-0 hidden aspect-auto h-full w-2/5 text-left md:block">
-        <Image
-          className="aspect-auto animate-full-pulse"
-          src={abstractLeft}
-          alt="Abstrakte bølger på venstre side"
-          priority={true}
-        />
+      <div className="relative px-4 sm:px-0">
+        <div className="absolute inset-0 h-1/2 bg-secondary-50" />
+        <div className="relative mx-auto grid divide-y overflow-hidden rounded bg-white shadow sm:max-w-screen-sm sm:grid-cols-3 sm:divide-y-0 sm:divide-x lg:max-w-screen-md">
+          {introCards.map((item) => (
+            <IntroCard key={item.title} {...item} />
+          ))}
+        </div>
       </div>
-      <div className="absolute top-0 right-0 z-0 hidden h-full w-2/5 text-right md:block">
-        <Image
-          className="h-full w-full animate-full-pulse"
-          src={abstractRight}
-          alt="Abstrakte bølger på høyre side"
-          priority={true}
-        />
-      </div>
-      <svg
-        className="absolute bottom-0 z-0 -mt-5 h-6 w-full text-white dark:text-dark-800 sm:-mt-10 sm:h-16"
-        preserveAspectRatio="none"
-        viewBox="0 0 1440 54"
-      >
-        <path
-          fill="currentColor"
-          d="M0 22L120 16.7C240 11 480 1.00001 720 0.700012C960 1.00001 1200 11 1320 16.7L1440 22V54H1320C1200 54 960 54 720 54C480 54 240 54 120 54H0V22Z"
-        />
-      </svg>
-    </section>
+    </div>
   )
 }

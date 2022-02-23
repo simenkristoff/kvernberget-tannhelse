@@ -38,9 +38,7 @@ export default function LandingPage({
 }: LandingPageProps) {
   return (
     <React.Fragment>
-      {frontpage.introSection && (
-        <IntroSection data={{ introSection: frontpage.introSection }} />
-      )}
+      {frontpage.introSection && <IntroSection />}
 
       {treatments.length > 0 && <TreatmentsSection />}
 

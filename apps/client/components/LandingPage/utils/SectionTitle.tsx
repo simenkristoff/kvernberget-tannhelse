@@ -60,7 +60,7 @@ export default function SectionTitle(
         {icon && (
           <div
             className={classNames(
-              'absolute -top-1 flex h-12 w-12 items-center justify-center rounded-full border border-gray-200 bg-gray-100',
+              'absolute -top-1 flex h-12 w-12 items-center justify-center rounded-full bg-gray-100',
               {
                 '-left-14 mr-2': iconAlign === 'left',
                 '-right-14 ml-2': iconAlign === 'right'

@@ -84,7 +84,7 @@
   }
 
   .btn {
-    @apply inline-block cursor-pointer items-center justify-center whitespace-nowrap rounded-md px-6 py-3 text-base font-medium shadow-sm duration-300;
+    @apply inline-block cursor-pointer items-center justify-center whitespace-nowrap rounded-md px-6 py-3 text-base font-medium tracking-wide shadow-sm duration-300;
   }
 
   .btn-primary {
