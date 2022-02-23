@@ -40,10 +40,10 @@ module.exports = {
     ],
     'react/react-in-jsx-scope': 'off',
     'no-param-reassign': 'off',
+    'no-console': ['error', { allow: ['warn', 'error'] }],
     '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     'no-use-before-define': 'off',
-    'no-console': ['error', { allow: ['warn', 'error'] }],
     'prettier/prettier': 'error'
   },
   globals: {

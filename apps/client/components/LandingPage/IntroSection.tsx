@@ -14,7 +14,6 @@ interface IntroSectionProps {
 export default function IntroSection({ data }: IntroSectionProps) {
   const { introSection } = data
   if (!introSection) return null
-  console.log(introSection)
   const { cta, centerTextOnMobile, image } = introSection
   return (
     <section className="content-section relative flex flex-col-reverse items-center overflow-hidden bg-gradient-to-b from-secondary-200 to-gray-100 text-lg dark:from-dark-600 dark:to-dark-700 lg:flex-col lg:py-0">

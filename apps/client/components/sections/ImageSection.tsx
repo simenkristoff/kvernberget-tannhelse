@@ -4,13 +4,13 @@ import Image from 'next/image'
 import client, { PortableText } from '@lib/sanity'
 import { useNextSanityImage } from 'next-sanity-image'
 import { ImageSection as ImageSectionSchema } from '@lib/schema'
-
-import { ContentSection } from './interface'
 import classNames from 'classnames'
 import SanityImage from '@components/Image'
 import CtaButton from '@components/CtaButton'
 import { useWindow } from 'context/WindowContext'
 import { useEffect, useState } from 'react'
+
+import { ContentSection } from './interface'
 
 export type ImageSectionProps = ContentSection<ImageSectionSchema>
 

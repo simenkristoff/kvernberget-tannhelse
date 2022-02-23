@@ -26,9 +26,7 @@ export default function BlogSection({ data }: BlogSectionProps) {
           />
           <div className="flex flex-auto basis-full">
             <article>
-              <h3>
-                {data.title}
-              </h3>
+              <h3>{data.title}</h3>
               <div className="mb-5">
                 <PortableText blocks={data.excerpt} />
               </div>
