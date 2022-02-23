@@ -16,11 +16,11 @@ export default function ContactSection({ data }: ContactSectionProps) {
   const { isMobile } = useWindow()
 
   useEffect(() => {
-    setToggle(isMobile)
+    setToggle(!isMobile)
   }, [])
 
   useEffect(() => {
-    setToggle(isMobile)
+    setToggle(!isMobile)
   }, [isMobile])
 
   return (
