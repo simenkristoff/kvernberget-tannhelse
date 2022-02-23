@@ -8,7 +8,7 @@ import React from 'react'
 import BlogSection from './BlogSection'
 import ContactSection from './ContactSection'
 import EmployeesSection from './EmployeesSection'
-import HeroSection from './HeroSection'
+import IntroSection from './IntroSection'
 import ReviewsSection from './ReviewsSection'
 import TreatmentsSection from './TreatmentsSection'
 
@@ -39,7 +39,7 @@ export default function LandingPage({
   return (
     <React.Fragment>
       {frontpage.introSection && (
-        <HeroSection introSection={frontpage.introSection} />
+        <IntroSection data={{ introSection: frontpage.introSection }} />
       )}
 
       {treatments.length > 0 && <TreatmentsSection />}

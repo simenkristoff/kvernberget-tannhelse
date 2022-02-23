@@ -7,7 +7,7 @@ export default {
     {
       name: 'introSection',
       title: 'Introseksjon',
-      type: 'hero'
+      type: 'heroSection'
     }
   ]
 }

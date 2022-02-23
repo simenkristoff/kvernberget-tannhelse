@@ -1,22 +1,19 @@
+import { Rule } from '@sanity/types'
+
 export default {
   type: 'object',
   name: 'textSection',
-  title: 'Text',
+  title: 'Tekstseksjon',
   fields: [
-    {
-      name: 'label',
-      type: 'string',
-      title: 'Label'
-    },
     {
       name: 'heading',
       type: 'string',
-      title: 'Heading'
+      title: 'Overskrift'
     },
     {
-      name: 'text',
-      type: 'portableText',
-      title: 'Text'
+      name: 'content',
+      type: 'simplePortableText',
+      title: 'Innhold'
     }
   ],
   preview: {
@@ -26,7 +23,7 @@ export default {
     prepare({ heading }) {
       return {
         title: `${heading}`,
-        subtitle: 'Text section'
+        subtitle: 'Tekstseksjon'
       }
     }
   }

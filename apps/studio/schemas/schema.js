@@ -13,7 +13,6 @@ import employees from './documents/employees'
 import page from './documents/page'
 
 // Objects
-import blockContent from './objects/blockContent'
 import seoMetaData from './objects/seoMetaData'
 import dayAndTime from './objects/dayAndTime'
 import altImage from './objects/altImage'
@@ -21,14 +20,16 @@ import cta from './objects/cta'
 import figure from './objects/figure'
 import internalLink from './objects/internalLink'
 import link from './objects/link'
-import portableHeader from './objects/portableHeader'
-import portableText from './objects/portableText'
-import simplePortableText from './objects/simplePortableText'
+
+// Block content
+import blockContent from './objects/blockContent/blockContent'
+import portableText from './objects/blockContent/portableText'
+import simplePortableText from './objects/blockContent/simplePortableText'
 
 // Page sections
-import hero from './objects/hero'
-import imageSection from './objects/imageSection'
-import textSection from './objects/textSection'
+import hero from './objects/contentSections/heroSection'
+import imageSection from './objects/contentSections/imageSection'
+import textSection from './objects/contentSections/textSection'
 
 export default createSchema({
   name: 'default',
@@ -40,7 +41,6 @@ export default createSchema({
     internalLink,
     figure,
     link,
-    portableHeader,
     portableText,
     cta,
     simplePortableText,

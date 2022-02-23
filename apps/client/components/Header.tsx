@@ -25,12 +25,15 @@ export default function Header({ settings }: HeaderProps) {
 
   return (
     <header
-      className={classNames('wrapper-full z-50 bg-white shadow-md', {
-        relative: !fixed,
-        'fixed top-0 left-0': fixed
-      })}
+      className={classNames(
+        'wrapper-full z-50 bg-white shadow-md dark:bg-dark-900',
+        {
+          relative: !fixed,
+          'fixed top-0 left-0': fixed
+        }
+      )}
     >
-      <div className="bg-white">
+      <div>
         <div
           className={classNames(
             'wrapper flex min-h-[4rem] flex-wrap justify-between ',

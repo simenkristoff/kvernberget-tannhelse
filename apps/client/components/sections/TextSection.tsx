@@ -1,12 +1,17 @@
 import { PortableText } from '@lib/sanity'
+import { TextSection as TextSectionSchema } from '@lib/schema'
 
-function TextSection(props: any) {
-  const { text } = props
+import { ContentSection } from './interface'
+
+export type TextSectionProps = ContentSection<TextSectionSchema>
+
+function TextSection({ data, className, ...htmlProps }: TextSectionProps) {
+  const { heading, content } = data
   return (
     <div>
-      <div className="container mx-auto px-6">
-        <div className="md:flex md:items-center">
-          {text && <PortableText blocks={text} />}
+      <div className="wrapper mx-auto">
+        <div className="block-content md:flex md:items-center">
+          {data && <PortableText blocks={content} />}
         </div>
       </div>
     </div>

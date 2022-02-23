@@ -7,6 +7,7 @@ import classNames from 'classnames'
 
 export type SanityImageProps = {
   src?: SanityImageSource
+  position?: 'absolute' | 'relative'
   alt?: string
   crop?: boolean
   settings?: Partial<ImageProps> & { className?: string }
@@ -14,6 +15,7 @@ export type SanityImageProps = {
   typeof defaultProps
 
 const defaultProps = {
+  position: 'relative',
   crop: false
 }
 
@@ -35,6 +37,7 @@ const myCustomImageBuilder = (
 export default function SanityImage({
   src,
   alt,
+  position,
   crop,
   settings,
   className,
@@ -53,7 +56,7 @@ export default function SanityImage({
   return (
     <div
       {...htmlProps}
-      className={classNames('relative block aspect-auto w-full', className)}
+      className={classNames('block aspect-auto w-full', position, className)}
     >
       <Image
         {...source}

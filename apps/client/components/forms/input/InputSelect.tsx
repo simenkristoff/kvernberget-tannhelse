@@ -31,14 +31,14 @@ export default function InputSelect(props: InputProps) {
           )}
           <select
             {...field}
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 placeholder:text-gray-600 focus:border-cyan-600 focus:ring-teal-600 active:border-teal-600 active:ring-teal-600"
+            className="focus:border-cyan-600 block w-full rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 placeholder:text-gray-600 focus:ring-primary-light  active:border-primary-light  active:ring-primary-light "
           >
             {days.map((day) => (
               <option key="day">{day}</option>
             ))}
           </select>
           {fieldState.error && (
-            <span className="text-sm text-red-600">
+            <span className="text-red-600 text-sm">
               {fieldState.error.message}
             </span>
           )}

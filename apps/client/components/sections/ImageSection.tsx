@@ -3,59 +3,68 @@ import PropTypes from 'prop-types'
 import Image from 'next/image'
 import client, { PortableText } from '@lib/sanity'
 import { useNextSanityImage } from 'next-sanity-image'
-import { ImageSection as ImageSectionProps } from '@lib/schema'
+import { ImageSection as ImageSectionSchema } from '@lib/schema'
 
-function ImageSection(props: ImageSectionProps) {
-  // const { heading, label, text, image, cta } = props
-  const { heading, label, text, image } = props
+import { ContentSection } from './interface'
+import classNames from 'classnames'
+import SanityImage from '@components/Image'
+import CtaButton from '@components/CtaButton'
+import { useWindow } from 'context/WindowContext'
+import { useEffect, useState } from 'react'
 
-  if (!image) {
-    return null
-  }
+export type ImageSectionProps = ContentSection<ImageSectionSchema>
+
+function ImageSection({ data, className, ...htmlProps }: ImageSectionProps) {
+  const { heading, content, image, imageAlignment, hideImageOnMobile, cta } =
+    data
+  const { isMobile } = useWindow()
+  const [hideImage, setHideImage] = useState<boolean>(
+    hideImageOnMobile && isMobile
+  )
+
+  useEffect(() => {
+    setHideImage(hideImageOnMobile && isMobile)
+  }, [isMobile])
 
   return (
-    <div>
-      <div className="container mx-auto mt-12 px-6">
-        <div className="flex items-center">
-          <div>
-            <figure>
-              <div className="relative mx-auto w-full rounded-md object-cover">
-                <Image
-                  src={useNextSanityImage(client, image?.asset)}
-                  alt={image?.alt}
-                  layout="responsive"
-                  objectFit="contain"
-                  sizes="(max-width: 800px) 100vw, 800px"
-                />
+    <div className="wrapper mx-auto">
+      <div className="mb-10 flex w-full flex-col items-center justify-between lg:flex-row">
+        <div
+          className={classNames('mb-16 md:max-w-2xl lg:mb-0 lg:max-w-xl', {
+            'order-2 lg:pl-5': imageAlignment === 'left',
+            'order-2 lg:order-1 lg:pr-5': imageAlignment === 'right'
+          })}
+        >
+          <div className="mb-6">
+            {heading && <h2>{heading}</h2>}
+            {content.length > 0 && (
+              <div className={classNames('block-content mb-8')}>
+                <PortableText blocks={content} />
               </div>
-              <figcaption>
-                <div>
-                  <div>{label}</div>
-                  <h2>{heading}</h2>
-                  {text && <PortableText blocks={text} />}
-                  {/* {cta && cta.route && <Cta {...cta} />} */}
-                </div>
-              </figcaption>
-            </figure>
+            )}
+            {cta && <CtaButton data={cta} />}
           </div>
         </div>
+        {!hideImage && (
+          <div
+            className={classNames(
+              'mb-6 flex w-full items-center justify-center md:max-w-2xl lg:w-1/2 lg:max-w-xl',
+              {
+                'order-1': imageAlignment === 'left',
+                'order-1 lg:order-2': imageAlignment === 'right'
+              }
+            )}
+          >
+            <SanityImage
+              src={image.image}
+              alt={image.alt}
+              className="overflow-hidden rounded-md shadow-md shadow-gray-300"
+            />
+          </div>
+        )}
       </div>
     </div>
   )
-}
-
-ImageSection.propTypes = {
-  heading: PropTypes.string,
-  label: PropTypes.string,
-  text: PropTypes.array,
-  image: PropTypes.shape({
-    asset: PropTypes.shape({
-      _ref: PropTypes.string
-    })
-  }),
-  backgroundImage: PropTypes.string,
-  tagline: PropTypes.string,
-  cta: PropTypes.object
 }
 
 export default ImageSection

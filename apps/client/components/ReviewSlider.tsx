@@ -98,8 +98,8 @@ export default function ReviewSlider({
             key={i}
             onClick={() => changeSlide(i)}
             className={classNames(
-              'mx-1 inline h-5 w-5 cursor-pointer rounded-full border border-gray-300 duration-500 hover:bg-teal-600',
-              { 'bg-teal-600': i === Math.abs(active) }
+              'mx-1 inline h-5 w-5 cursor-pointer rounded-full border border-gray-300 duration-500 hover:bg-primary-light ',
+              { 'bg-primary-light ': i === Math.abs(active) }
             )}
           />
         ))}

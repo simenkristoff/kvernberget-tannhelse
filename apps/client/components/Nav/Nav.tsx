@@ -26,11 +26,11 @@ function Nav({ fixed, className, children }: NavProps) {
   const { isMobile } = useWindow()
 
   useEffect(() => {
-    setToggle(isMobile)
+    setToggle(!isMobile)
   }, [])
 
   useEffect(() => {
-    setToggle(isMobile)
+    setToggle(!isMobile)
   }, [isMobile])
 
   return (
@@ -40,7 +40,7 @@ function Nav({ fixed, className, children }: NavProps) {
           <span className="sr-only">Toggle menu</span>
           <MenuIcon
             className={classNames(
-              'h-10 w-10 rounded-md border-2 border-teal-600 text-teal-600 transition-all duration-300 hover:border-teal-700 hover:text-teal-700',
+              'h-10 w-10 rounded-md border-2 border-primary-light  text-primary-light  transition-all duration-300 hover:border-primary-base  hover:text-primary-base ',
               { '-rotate-90': toggle }
             )}
             aria-hidden="true"

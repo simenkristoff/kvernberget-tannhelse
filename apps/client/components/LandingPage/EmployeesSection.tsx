@@ -20,10 +20,10 @@ export function EmployeeCard({ data }: EmployeeCardProps) {
           <SanityImage src={data.image} alt={employeeName} />
         </div>
         <div className="w-full">
-          <h2 className="title-font text-lg font-medium text-gray-900">
+          <h3 className="title-font mb-0 text-lg font-medium text-gray-800">
             {employeeName}
-          </h2>
-          <h3 className="mb-3 text-gray-500">{data.jobTitle}</h3>
+          </h3>
+          <span className="mb-3 text-gray-600">{data.jobTitle}</span>
         </div>
       </div>
     </div>

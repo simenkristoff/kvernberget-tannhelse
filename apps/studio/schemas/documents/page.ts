@@ -46,7 +46,11 @@ export default {
       name: 'content',
       type: 'array',
       title: 'Seksjoner',
-      of: [{ type: 'hero' }, { type: 'imageSection' }, { type: 'textSection' }]
+      of: [
+        { type: 'heroSection' },
+        { type: 'imageSection' },
+        { type: 'textSection' }
+      ]
     },
     {
       name: 'meta',

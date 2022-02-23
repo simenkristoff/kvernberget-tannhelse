@@ -26,7 +26,7 @@ export default function BlogSection({ data }: BlogSectionProps) {
           />
           <div className="flex flex-auto basis-full">
             <article>
-              <h3 className="mb-4 text-3xl font-semibold leading-none text-gray-800">
+              <h3>
                 {data.title}
               </h3>
               <div className="mb-5">

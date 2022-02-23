@@ -7,7 +7,7 @@ export default function Custom500() {
     <div className="flex h-screen w-screen items-center justify-center">
       <article className="text-center">
         <h1 className="text-9xl font-bold text-gray-700">500</h1>
-        <p className="text-3xl font-bold text-teal-600">Ooops!</p>
+        <p className="text-3xl font-bold text-primary-base">Ooops!</p>
         <p className="mt-2 text-lg font-medium text-gray-700">
           En intern serverfeil har oppstått
         </p>

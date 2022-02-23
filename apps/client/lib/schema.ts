@@ -177,11 +177,11 @@ export interface Frontpage extends SanityDocument {
   _type: 'frontpage'
 
   /**
-   * Introseksjon — `hero`
+   * Introseksjon — `heroSection`
    *
    *
    */
-  introSection?: Hero
+  introSection?: HeroSection
 }
 
 /**
@@ -339,7 +339,9 @@ export interface Page extends SanityDocument {
    *
    */
   content?: Array<
-    SanityKeyed<Hero> | SanityKeyed<ImageSection> | SanityKeyed<TextSection>
+    | SanityKeyed<HeroSection>
+    | SanityKeyed<ImageSection>
+    | SanityKeyed<TextSection>
   >
 
   /**
@@ -475,8 +477,6 @@ export type Link = {
   href?: string
 }
 
-export type PortableHeader = Array<SanityKeyed<SanityBlock>>
-
 export type PortableText = Array<SanityKeyed<SanityBlock> | SanityKeyed<Figure>>
 
 export type Cta = {
@@ -486,7 +486,7 @@ export type Cta = {
    *
    *
    */
-  title?: string
+  title: string
 
   /**
    * Internal link — `reference`
@@ -505,14 +505,66 @@ export type Cta = {
 
 export type SimplePortableText = Array<SanityKeyed<SanityBlock>>
 
-export type Hero = {
-  _type: 'hero'
+export type HeroSection = {
+  _type: 'heroSection'
   /**
-   * Heading — `portableHeader`
+   * Overskrift — `string`
    *
    *
    */
-  heading?: PortableHeader
+  heading?: string
+
+  /**
+   * Innhold — `simplePortableText`
+   *
+   *
+   */
+  content: SimplePortableText
+
+  /**
+   * Tekstplassering — `string`
+   *
+   *
+   */
+  contentAlignment: 'left' | 'center' | 'right'
+
+  /**
+   * Sentrer tekst på små skjermstørrelser — `boolean`
+   *
+   *
+   */
+  centerTextOnMobile: boolean
+
+  /**
+   * Bilde — `altImage`
+   *
+   *
+   */
+  image: AltImage
+
+  /**
+   * cta — `cta`
+   *
+   *
+   */
+  cta?: Cta
+}
+
+export type ImageSection = {
+  _type: 'imageSection'
+  /**
+   * Overskrift — `string`
+   *
+   *
+   */
+  heading?: string
+
+  /**
+   * Innhold — `simplePortableText`
+   *
+   *
+   */
+  content: SimplePortableText
 
   /**
    * Skjul bildet på små skjermstørrelser — `boolean`
@@ -522,66 +574,28 @@ export type Hero = {
   hideImageOnMobile: boolean
 
   /**
-   * Sentrer text på små skjermstørrelser — `boolean`
+   * Sentrer tekst på små skjermstørrelser — `boolean`
    *
    *
    */
   centerTextOnMobile: boolean
 
   /**
-   * Tagline — `simplePortableText`
+   * Bildeplassering — `string`
    *
    *
    */
-  tagline?: SimplePortableText
+  imageAlignment: 'left' | 'right'
 
   /**
-   * Bakgrunnsbilde — `altImage`
+   * Bilde — `altImage`
    *
    *
    */
-  backgroundImage?: AltImage
+  image: AltImage
 
   /**
-   * Call to actions — `array`
-   *
-   *
-   */
-  ctas?: Array<SanityKeyed<Cta>>
-}
-
-export type ImageSection = {
-  _type: 'imageSection'
-  /**
-   * Heading — `string`
-   *
-   *
-   */
-  heading?: string
-
-  /**
-   * Label — `string`
-   *
-   *
-   */
-  label?: string
-
-  /**
-   * Text — `simplePortableText`
-   *
-   *
-   */
-  text?: SimplePortableText
-
-  /**
-   * Image — `figure`
-   *
-   *
-   */
-  image?: Figure
-
-  /**
-   * Call to action — `cta`
+   * cta — `cta`
    *
    *
    */
@@ -591,25 +605,18 @@ export type ImageSection = {
 export type TextSection = {
   _type: 'textSection'
   /**
-   * Label — `string`
-   *
-   *
-   */
-  label?: string
-
-  /**
-   * Heading — `string`
+   * Overskrift — `string`
    *
    *
    */
   heading?: string
 
   /**
-   * Text — `portableText`
+   * Innhold — `simplePortableText`
    *
    *
    */
-  text?: PortableText
+  content?: SimplePortableText
 }
 
 export type Documents =

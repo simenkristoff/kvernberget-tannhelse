@@ -14,7 +14,7 @@ export default function InputCheckbox(props: InputProps) {
           <label className="relative block pl-6" htmlFor={field.name}>
             <input
               className={classNames(
-                'absolute mt-1 -ml-6 h-5 w-5 rounded-md p-0 checked:bg-teal-600 focus:bg-transparent focus:outline-teal-600 focus:checked:bg-teal-600',
+                'absolute mt-1 -ml-6 h-5 w-5 rounded-md p-0 checked:bg-primary-light  focus:bg-transparent focus:outline-primary-light  focus:checked:bg-primary-light ',
                 { 'border-red-600': fieldState.error }
               )}
               {...field}
@@ -25,7 +25,7 @@ export default function InputCheckbox(props: InputProps) {
             </span>
           </label>
           {fieldState.error && (
-            <span className="ml-6 text-sm text-red-600">
+            <span className="text-red-600 ml-6 text-sm">
               {fieldState.error.message}
             </span>
           )}

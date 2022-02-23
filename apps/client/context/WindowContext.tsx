@@ -39,9 +39,9 @@ export function WindowProvider({ children }: { children: ReactNode }) {
     if (!window) return
 
     if (window.innerWidth > breakpoints.md) {
-      setIsMobile(true)
-    } else {
       setIsMobile(false)
+    } else {
+      setIsMobile(true)
     }
   }
 

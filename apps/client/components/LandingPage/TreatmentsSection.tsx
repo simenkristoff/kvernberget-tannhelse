@@ -31,8 +31,8 @@ const treatments: string[] = [
 export function TreatmentCard({ text }: { text: string }) {
   return (
     <div className="w-full p-2 sm:w-1/2">
-      <div className="group flex h-full cursor-pointer items-center rounded border border-gray-200 bg-gray-50 p-4 shadow-sm transition-all duration-500 hover:scale-105 hover:bg-teal-600">
-        <TeethIcon className="mr-4 h-9 w-9 rounded-full bg-teal-600 p-2 duration-500 group-hover:bg-white group-hover:text-teal-600" />
+      <div className="group hover:bg-primary-light flex h-full cursor-pointer items-center rounded border border-gray-200 bg-gray-50 p-4 shadow-sm transition-all duration-500 hover:scale-105">
+        <TeethIcon className="bg-primary-light group-hover:text-primary-light mr-4 h-9 w-9 rounded-full p-2 duration-500 group-hover:bg-white" />
         <span className="title-font font-semibold text-gray-700 duration-500 group-hover:text-white">
           {text}
         </span>

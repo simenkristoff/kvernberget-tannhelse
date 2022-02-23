@@ -1,4 +1,4 @@
-import React from 'react'
+import { MdPalette } from 'react-icons/md'
 export default {
   title: 'Portable Text',
   name: 'portableText',
@@ -20,7 +20,16 @@ export default {
           { title: 'Emphasis', value: 'em' },
           { title: 'Code', value: 'code' }
         ],
-        annotations: [{ type: 'link' }, { type: 'internalLink' }]
+        annotations: [
+          { type: 'link' },
+          { type: 'internalLink' },
+          {
+            name: 'color',
+            title: 'Farge',
+            type: 'color',
+            icon: MdPalette
+          }
+        ]
       }
     },
     { type: 'figure' }

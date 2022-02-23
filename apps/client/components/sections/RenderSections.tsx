@@ -2,13 +2,12 @@ import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { upperFirst } from 'lodash'
 
-import * as SectionComponents from './sections'
+import * as SectionComponents from '.'
 
 function resolveSections(section: any) {
   // eslint-disable-next-line import/namespace
   const SectionComps = SectionComponents as any
   const Section = SectionComps[upperFirst(section._type as any)]
-
   if (Section) {
     return Section
   }
@@ -17,9 +16,12 @@ function resolveSections(section: any) {
   return null
 }
 
-function RenderSections(props: any) {
-  const { sections } = props
+interface RenderSectionsProps {
+  sections: any
+  title: string
+}
 
+function RenderSections({ sections, title }: RenderSectionsProps) {
   if (!sections) {
     console.error('Missing section')
     return <div>Missing sections</div>
@@ -27,12 +29,18 @@ function RenderSections(props: any) {
 
   return (
     <Fragment>
-      {sections.map((section: any) => {
+      {sections.map((section: any, i: number) => {
         const SectionComponent = resolveSections(section)
         if (!SectionComponent) {
           return <div>Missing section {section._type}</div>
         }
-        return <SectionComponent {...section} key={section._key} />
+        return (
+          <SectionComponent
+            data={section}
+            title={i === 0 ? title : undefined}
+            key={section._key}
+          />
+        )
       })}
     </Fragment>
   )

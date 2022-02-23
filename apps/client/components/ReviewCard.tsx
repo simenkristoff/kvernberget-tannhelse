@@ -30,7 +30,7 @@ export default function ReviewCard({
           'relative flex basis-full cursor-move flex-col rounded-md border border-gray-200 bg-white py-2 px-4'
         )}
       >
-        <ChatIcon className="absolute top-0 right-0 h-12 w-12 text-teal-600" />
+        <ChatIcon className="absolute top-0 right-0 h-12 w-12 text-primary-light " />
         <ReactStars
           className="w-full"
           count={5}

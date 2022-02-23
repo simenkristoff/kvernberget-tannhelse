@@ -21,13 +21,13 @@ export default function InputText(props: InputProps) {
               {...field}
               type="text"
               className={classNames(
-                'block w-full rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 placeholder:text-gray-600 focus:border-cyan-600 focus:ring-teal-600 active:border-teal-600 active:ring-teal-600',
+                'focus:border-cyan-600 block w-full rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 placeholder:text-gray-600 focus:ring-primary-light  active:border-primary-light  active:ring-primary-light ',
                 { 'border-red-600': fieldState.error }
               )}
             />
           </label>
           {fieldState.error && (
-            <span className="text-sm text-red-600">
+            <span className="text-red-600 text-sm">
               {fieldState.error.message}
             </span>
           )}

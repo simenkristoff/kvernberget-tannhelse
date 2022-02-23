@@ -6,9 +6,10 @@
 @tailwind utilities;
 
 @layer base {
+  a,
   p,
-  a {
-    @apply font-medium text-gray-800;
+  span {
+    @apply font-sans tracking-wide text-gray-800;
   }
 
   h1,
@@ -17,17 +18,41 @@
   h4,
   h5,
   h6 {
-    @apply font-heading;
+    @apply mb-2 font-heading font-medium text-gray-700;
   }
 
   h1 {
-    @apply mb-8 text-5xl font-bold text-gray-700;
+    @apply text-5xl;
+  }
+
+  h2 {
+    @apply text-4xl;
+  }
+
+  h3 {
+    @apply text-3xl;
+  }
+
+  h4 {
+    @apply text-2xl;
+  }
+
+  h5 {
+    @apply text-xl;
+  }
+
+  h6 {
+    @apply text-lg;
   }
 }
 
 @layer components {
   .wrapper {
     @apply mx-auto w-full max-w-7xl px-4 lg:px-6;
+  }
+
+  .override-white > * {
+    @apply text-white;
   }
 
   .wrapper-full {
@@ -43,15 +68,15 @@
   }
 
   .section-title {
-    @apply float-left mb-8 inline text-4xl font-medium text-gray-700;
+    @apply float-left inline;
   }
 
   .nav-item {
-    @apply inline-flex items-center p-2 align-middle text-base text-gray-700 outline-teal-500 transition-colors duration-300 hover:text-teal-700;
+    @apply inline-flex items-center p-2 align-middle text-base text-gray-700 outline-primary-accent transition-colors duration-300 hover:text-primary-base dark:text-gray-200;
   }
 
   .nav-item.active {
-    @apply border-b-2 border-b-teal-600;
+    @apply border-b-2 border-b-primary-light;
   }
 
   .nav-dropdown .nav-item {
@@ -63,6 +88,24 @@
   }
 
   .btn-primary {
-    @apply border border-teal-700 bg-teal-600 text-white hover:bg-teal-700;
+    @apply border border-primary-base  bg-primary-light  text-white hover:bg-primary-base;
+  }
+
+  .block-content div > p,
+  div > ul,
+  div > blockquote {
+    @apply mb-8;
+  }
+
+  .block-content ul {
+    @apply ml-5 list-disc marker:text-primary-base;
+  }
+
+  .block-content ul > li {
+    @apply mb-2;
+  }
+
+  .block-content blockquote {
+    @apply border-l-4 border-gray-400 p-4 italic text-gray-600 after:contents;
   }
 }
