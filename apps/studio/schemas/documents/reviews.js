@@ -1,5 +1,3 @@
-import { Rule } from '@sanity/types'
-
 export default {
   name: 'reviews',
   title: 'Omtaler',
@@ -9,13 +7,15 @@ export default {
       name: 'title',
       title: 'Tittel',
       type: 'string',
-      validation: (rule: Rule) => rule.required()
+      codegen: { required: true },
+      validation: (rule) => [rule.required()]
     },
     {
       title: 'Rangering',
       name: 'rating',
       type: 'rating',
-      validation: (rule: Rule) => rule.required(),
+      codegen: { required: true },
+      validation: (rule) => [rule.required()],
       options: {
         stars: 5
       }
@@ -24,7 +24,8 @@ export default {
       title: 'Omtale',
       name: 'content',
       type: 'text',
-      validation: (rule: Rule) => rule.required()
+      codegen: { required: true },
+      validation: (rule) => [rule.required()]
     },
     {
       title: 'Kilde',

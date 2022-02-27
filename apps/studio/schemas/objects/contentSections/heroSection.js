@@ -1,9 +1,7 @@
-import { Rule } from '@sanity/types'
-
 export default {
   type: 'object',
-  name: 'imageSection',
-  title: 'Bildeseksjon',
+  name: 'heroSection',
+  title: 'Introseksjon',
   groups: [
     {
       name: 'general',
@@ -31,29 +29,38 @@ export default {
       title: 'Innhold',
       group: 'general',
       codegen: { required: true },
-      validation: (rule: Rule) => [rule.required()]
+      validation: (rule) => [rule.required()]
     },
     {
-      name: 'hideImageOnMobile',
-      type: 'boolean',
-      title: 'Skjul bildet på små skjermstørrelser',
+      name: 'textColor',
+      type: 'string',
+      title: 'Tekstfarge',
+      description:
+        'Det er viktig at teksten er synlig gitt fargene på bakgrunnsbildet. Her burde du velge den tekstfargen som gir størst kontrast.',
+      options: {
+        list: [
+          { title: 'Svart', value: 'dark' },
+          { title: 'Hvit', value: 'light' }
+        ]
+      },
       group: 'general',
       codegen: { required: true },
-      validation: (rule: Rule) => [rule.required()]
+      validation: (rule) => [rule.required()]
     },
     {
-      name: 'imageAlignment',
+      name: 'contentAlignment',
       type: 'string',
-      title: 'Bildeplassering',
+      title: 'Tekstplassering',
       options: {
         list: [
           { title: 'Venstre', value: 'left' },
+          { title: 'Midten', value: 'center' },
           { title: 'Høyre', value: 'right' }
         ]
       },
       group: 'general',
       codegen: { required: true },
-      validation: (rule: Rule) => [rule.required()]
+      validation: (rule) => [rule.required()]
     },
     {
       name: 'image',
@@ -61,7 +68,7 @@ export default {
       title: 'Bilde',
       group: 'imageSettings',
       codegen: { required: true },
-      validation: (rule: Rule) => [rule.required()],
+      validation: (rule) => [rule.required()],
       options: {
         hotspot: true
       }
@@ -73,8 +80,9 @@ export default {
     }
   ],
   initialValue: {
-    hideImageOnMobile: false,
-    imageAlignment: 'right'
+    centerTextOnMobile: true,
+    textColor: 'light',
+    contentAlignment: 'center'
   },
   preview: {
     select: {
@@ -84,7 +92,7 @@ export default {
     prepare({ title, media }) {
       return {
         title,
-        subtitle: 'Bildeseksjon',
+        subtitle: 'Introseksjon',
         media
       }
     }

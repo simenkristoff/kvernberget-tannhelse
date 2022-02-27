@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import Link from 'next/link'
-import { HTMLProps, ReactNode } from 'react'
+import { HTMLProps } from 'react'
 
 export interface ButtonProps extends HTMLProps<any> {
   href?: string

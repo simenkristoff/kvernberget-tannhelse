@@ -1,8 +1,7 @@
 import React from 'react'
 
-const InternalLinkRender = ({ children }: { children: React.ReactNode }) => (
-  <span>{children} 🔗</span>
-)
+// eslint-disable-next-line react/prop-types
+const InternalLinkRender = ({ children }) => <span>{children} 🔗</span>
 
 export default {
   title: 'Internal link to another document',

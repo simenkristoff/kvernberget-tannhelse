@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.4.3",
-    "@heroicons/react": "^1.0.5",
     "classnames": "^2.3.1",
     "next": "latest",
     "next-sanity": "^0.4.0",
@@ -23,6 +22,7 @@
     "react": "latest",
     "react-dom": "latest",
     "react-hook-form": "^7.27.0",
+    "react-icons": "^4.3.1",
     "react-stars": "^2.2.5",
     "react-tooltip": "^4.2.21",
     "sharp": "^0.30.1"

@@ -1,5 +1,5 @@
 import { Popover, Transition } from '@headlessui/react'
-import { MenuIcon } from '@heroicons/react/outline'
+import { HiOutlineMenu } from 'react-icons/hi'
 import classNames from 'classnames'
 import { useWindow } from 'context/WindowContext'
 import { Fragment, ReactFragment, useEffect, useState } from 'react'
@@ -38,7 +38,7 @@ function Nav({ fixed, className, children }: NavProps) {
       <Fragment>
         <Popover.Button className="md:hidden">
           <span className="sr-only">Toggle menu</span>
-          <MenuIcon
+          <HiOutlineMenu
             className={classNames(
               'h-10 w-10 rounded-md border-2 border-primary-light  text-primary-light  transition-all duration-300 hover:border-primary-base  hover:text-primary-base ',
               { '-rotate-90': toggle }

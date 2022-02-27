@@ -1,4 +1,4 @@
-import { ChevronDoubleUpIcon } from '@heroicons/react/outline'
+import { HiOutlineChevronDoubleUp } from 'react-icons/hi'
 import { SiteSettings } from '@lib/schema'
 import { useWindow } from 'context/WindowContext'
 
@@ -30,7 +30,7 @@ export default function Layout({ settings, children }: LayoutProps) {
           onClick={() => scrollToTop()}
           className="group fixed bottom-2 right-2 z-50 p-2 transition-all duration-300 hover:bottom-4 active:bottom-4"
         >
-          <ChevronDoubleUpIcon className="h-6 w-6" />
+          <HiOutlineChevronDoubleUp className="h-6 w-6" />
         </Button>
       )}
 

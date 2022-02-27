@@ -1,7 +1,7 @@
-import SanityImage from '@components/Image'
-import { PortableText, urlFor } from '@lib/sanity'
+import client, { PortableText } from '@lib/sanity'
 import { HeroSection as HeroSectionSchema } from '@lib/schema'
 import classNames from 'classnames'
+import { useNextSanityImage } from 'next-sanity-image'
 
 import CtaButton from '../CtaButton'
 
@@ -16,18 +16,15 @@ export default function HeroSection({
   ...htmlProps
 }: HeroSectionProps) {
   if (!data) return null
-  const { heading, content, image, contentAlignment, cta } = data
+  const { heading, content, textColor, image, contentAlignment, cta } = data
+
+  const isLight = textColor === 'light'
+
   return (
-    <div
-      {...htmlProps}
-      className={classNames(
-        'relative mx-auto flex overflow-hidden bg-primary-base pb-16',
-        className
-      )}
-    >
+    <div {...htmlProps} className={classNames('wrapper mx-auto')}>
       <div
         className={classNames(
-          'wrapper flex flex-col bg-cover bg-center bg-no-repeat pt-16 pb-24',
+          '-mx-4 mb-10 flex flex-col bg-cover bg-center bg-no-repeat py-16 px-4 sm:mx-0',
           {
             'items-start justify-start': contentAlignment === 'left',
             'items-center justify-center text-center':
@@ -35,29 +32,32 @@ export default function HeroSection({
             'items-end justify-end': contentAlignment === 'right'
           }
         )}
+        style={{
+          backgroundImage: `url(${
+            useNextSanityImage(client, image.image || '').src
+          })`
+        }}
       >
         <div className="z-10">
-          {(title && <h1 className="!text-white">{title}</h1>) || (
-            <h2 className="!text-white">{heading}</h2>
+          {(title && (
+            <h1 className={classNames({ '!text-white': isLight })}>{title}</h1>
+          )) || (
+            <h2 className={classNames({ '!text-white': isLight })}>
+              {heading}
+            </h2>
           )}
 
           {content.length > 0 && (
-            <div className={classNames('override-white mb-8 max-w-2xl')}>
+            <div
+              className={classNames('group block-content mb-8 max-w-2xl', {
+                'override-default-text': isLight
+              })}
+            >
               <PortableText blocks={content} />
             </div>
           )}
           {cta && <CtaButton data={cta} />}
         </div>
-        <svg
-          className="absolute bottom-0 left-0 -mt-5 h-6 w-full text-white sm:-mt-10 sm:h-16"
-          preserveAspectRatio="none"
-          viewBox="0 0 1440 54"
-        >
-          <path
-            fill="currentColor"
-            d="M0 22L120 16.7C240 11 480 1.00001 720 0.700012C960 1.00001 1200 11 1320 16.7L1440 22V54H1320C1200 54 960 54 720 54C480 54 240 54 120 54H0V22Z"
-          />
-        </svg>
       </div>
     </div>
   )

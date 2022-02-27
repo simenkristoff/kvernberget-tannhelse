@@ -5,7 +5,7 @@ import client from 'part:@sanity/base/client'
 export default {
   name: 'route',
   type: 'document',
-  title: 'Route',
+  title: 'Lenker',
   icon: MdLink,
   fields: [
     {
@@ -14,7 +14,7 @@ export default {
       type: 'slug',
       options: {
         isUnique: isUniqueAcrossAllDocuments,
-        source: async (doc: any) => {
+        source: async (doc) => {
           const params = {
             ref: doc.page._ref
           }

@@ -2,8 +2,8 @@ import { Rule } from '@sanity/types'
 
 export default {
   type: 'object',
-  name: 'heroSection',
-  title: 'Introseksjon',
+  name: 'imageSection',
+  title: 'Bildeseksjon',
   groups: [
     {
       name: 'general',
@@ -31,30 +31,29 @@ export default {
       title: 'Innhold',
       group: 'general',
       codegen: { required: true },
-      validation: (rule: Rule) => [rule.required()]
+      validation: (rule) => [rule.required()]
     },
     {
-      name: 'contentAlignment',
+      name: 'hideImageOnMobile',
+      type: 'boolean',
+      title: 'Skjul bildet på små skjermstørrelser',
+      group: 'general',
+      codegen: { required: true },
+      validation: (rule) => [rule.required()]
+    },
+    {
+      name: 'imageAlignment',
       type: 'string',
-      title: 'Tekstplassering',
+      title: 'Bildeplassering',
       options: {
         list: [
           { title: 'Venstre', value: 'left' },
-          { title: 'Midten', value: 'center' },
           { title: 'Høyre', value: 'right' }
         ]
       },
       group: 'general',
       codegen: { required: true },
-      validation: (rule: Rule) => [rule.required()]
-    },
-    {
-      name: 'centerTextOnMobile',
-      type: 'boolean',
-      title: 'Sentrer tekst på små skjermstørrelser',
-      group: 'general',
-      codegen: { required: true },
-      validation: (rule: Rule) => [rule.required()]
+      validation: (rule) => [rule.required()]
     },
     {
       name: 'image',
@@ -62,7 +61,7 @@ export default {
       title: 'Bilde',
       group: 'imageSettings',
       codegen: { required: true },
-      validation: (rule: Rule) => [rule.required()],
+      validation: (rule) => [rule.required()],
       options: {
         hotspot: true
       }
@@ -74,8 +73,8 @@ export default {
     }
   ],
   initialValue: {
-    centerTextOnMobile: true,
-    contentAlignment: 'center'
+    hideImageOnMobile: false,
+    imageAlignment: 'right'
   },
   preview: {
     select: {
@@ -85,7 +84,7 @@ export default {
     prepare({ title, media }) {
       return {
         title,
-        subtitle: 'Introseksjon',
+        subtitle: 'Bildeseksjon',
         media
       }
     }

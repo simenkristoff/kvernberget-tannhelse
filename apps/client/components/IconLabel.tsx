@@ -48,12 +48,10 @@ export default function IconLabel({
       )}
     >
       <icon.type
-        className={classNames('absolute -left-7 top-0 duration-300 ', {
+        className={classNames('absolute -left-7 top-0 h-6 w-6 duration-300', {
           'text-primary-base  group-hover:text-primary-dark ': mode === 'light',
           'text-gray-100 group-hover:text-gray-200': mode === 'dark'
         })}
-        height={24}
-        width={24}
       />
       <p
         className={classNames(' duration-300 ', {

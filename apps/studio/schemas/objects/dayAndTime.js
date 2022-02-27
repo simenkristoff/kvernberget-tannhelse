@@ -1,10 +1,7 @@
 import { MdSchedule } from 'react-icons/md'
-import { Rule } from '@sanity/types'
 
-// 1. Import the TimeInput react component
 import TimeInput from '../../components/TimeInput'
 
-// 2. List of days the editor may choose from
 const days = [
   'Mandag',
   'Tirsdag',
@@ -15,8 +12,7 @@ const days = [
   'Søndag'
 ]
 
-// 3. Validate function which is invoked on user input
-const verifyInput = (dayAndTime: any) => {
+const verifyInput = (dayAndTime) => {
   const { day, closed, opensAt, closesAt } = dayAndTime
   if (!day) {
     return 'Vennligst velg en dag'
@@ -45,12 +41,10 @@ export default {
     closesAt: '16:00'
   },
 
-  // 4. Perform validation
-  validation: (rule: Rule) => [rule.custom(verifyInput)],
+  validation: (rule) => [rule.custom(verifyInput)],
 
   fields: [
     {
-      // 5. Enable editors to input a string from a predefined list (days)
       name: 'day',
       title: 'Day',
       type: 'string',
@@ -67,7 +61,6 @@ export default {
       initialValue: false
     },
     {
-      // 6. Enable editors to input a point in time using a custom input component
       name: 'opensAt',
       title: 'Opens at',
       type: 'string',
@@ -76,7 +69,6 @@ export default {
       hidden: ({ parent }) => parent?.closed
     },
     {
-      // 7. Same time input as above, but assigned to a different field
       name: 'closesAt',
       title: 'Closes at',
       type: 'string',
@@ -85,8 +77,6 @@ export default {
       hidden: ({ parent }) => parent?.closed
     }
   ],
-
-  // 8. Define how the dayAndTime object will render in the Studio
   preview: {
     select: {
       day: 'day',

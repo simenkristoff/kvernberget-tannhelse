@@ -177,11 +177,46 @@ export interface Frontpage extends SanityDocument {
   _type: 'frontpage'
 
   /**
-   * Introseksjon — `heroSection`
+   * Introseksjon — `introSection`
    *
    *
    */
-  introSection?: HeroSection
+  introSection?: IntroSection
+
+  /**
+   * Behandlinger — `treatmentsSection`
+   *
+   *
+   */
+  treatmentsSection?: TreatmentsSection
+
+  /**
+   * Omtaler — `reviewsSection`
+   *
+   *
+   */
+  reviewsSection?: ReviewsSection
+
+  /**
+   * Nyheter — `blogSection`
+   *
+   *
+   */
+  blogSection?: BlogSection
+
+  /**
+   * Kontaktseksjon — `contactSection`
+   *
+   *
+   */
+  contactSection?: ContactSection
+
+  /**
+   * Ansatte — `employeeSection`
+   *
+   *
+   */
+  employeeSection?: EmployeeSection
 }
 
 /**
@@ -352,16 +387,6 @@ export interface Page extends SanityDocument {
   meta?: SeoMetaData
 }
 
-export type BlockContent = Array<
-  | SanityKeyed<SanityBlock>
-  | SanityKeyed<{
-      _type: 'image'
-      asset: SanityReference<SanityImageAsset>
-      crop?: SanityImageCrop
-      hotspot?: SanityImageHotspot
-    }>
->
-
 export type SeoMetaData = {
   _type: 'seoMetaData'
   /**
@@ -477,8 +502,6 @@ export type Link = {
   href?: string
 }
 
-export type PortableText = Array<SanityKeyed<SanityBlock> | SanityKeyed<Figure>>
-
 export type Cta = {
   _type: 'cta'
   /**
@@ -503,6 +526,42 @@ export type Cta = {
   link?: string
 }
 
+export type Service = {
+  _type: 'service'
+  /**
+   * Tittel — `string`
+   *
+   *
+   */
+  title: string
+
+  /**
+   * Beskrivelse — `text`
+   *
+   *
+   */
+  description: string
+
+  /**
+   * Ikon — `iconPicker`
+   *
+   *
+   */
+  icon: IconPicker
+}
+
+export type BlockContent = Array<
+  | SanityKeyed<SanityBlock>
+  | SanityKeyed<{
+      _type: 'image'
+      asset: SanityReference<SanityImageAsset>
+      crop?: SanityImageCrop
+      hotspot?: SanityImageHotspot
+    }>
+>
+
+export type PortableText = Array<SanityKeyed<SanityBlock> | SanityKeyed<Figure>>
+
 export type SimplePortableText = Array<SanityKeyed<SanityBlock>>
 
 export type HeroSection = {
@@ -520,6 +579,13 @@ export type HeroSection = {
    *
    */
   content: SimplePortableText
+
+  /**
+   * Tekstfarge — `string`
+   *
+   * Det er viktig at teksten er synlig gitt fargene på bakgrunnsbildet
+   */
+  textColor: 'dark' | 'light'
 
   /**
    * Tekstplassering — `string`
@@ -574,13 +640,6 @@ export type ImageSection = {
   hideImageOnMobile: boolean
 
   /**
-   * Sentrer tekst på små skjermstørrelser — `boolean`
-   *
-   *
-   */
-  centerTextOnMobile: boolean
-
-  /**
    * Bildeplassering — `string`
    *
    *
@@ -619,6 +678,80 @@ export type TextSection = {
   content?: SimplePortableText
 }
 
+export type IntroSection = {
+  _type: 'introSection'
+  /**
+   * Velkomstmelding — `text`
+   *
+   *
+   */
+  introText: string
+
+  /**
+   * Salgspunkter — `array`
+   *
+   *
+   */
+  services?: Array<SanityKeyed<Service>>
+}
+
+export type TreatmentsSection = {
+  _type: 'treatmentsSection'
+  /**
+   * Vis seksjon — `boolean`
+   *
+   *
+   */
+  showTreatmentsSection: boolean
+}
+
+export type ReviewsSection = {
+  _type: 'reviewsSection'
+  /**
+   * Vis seksjon — `boolean`
+   *
+   *
+   */
+  showReviewsSection: boolean
+}
+
+export type BlogSection = {
+  _type: 'blogSection'
+  /**
+   * Vis seksjon — `boolean`
+   *
+   *
+   */
+  showBlogSection: boolean
+
+  /**
+   * Festet innlegg — `reference`
+   *
+   * Hvis dette feltet står tomt vil det nyeste innlegget vises på forsiden
+   */
+  pinnedPost?: SanityReference<Post>
+}
+
+export type ContactSection = {
+  _type: 'contactSection'
+  /**
+   * Vis seksjon — `boolean`
+   *
+   *
+   */
+  showContactSection: boolean
+}
+
+export type EmployeeSection = {
+  _type: 'employeeSection'
+  /**
+   * Vis seksjon — `boolean`
+   *
+   *
+   */
+  showEmployeeSection: boolean
+}
+
 export type Documents =
   | Route
   | Reviews
@@ -634,3 +767,10 @@ export type Documents =
  * sanity-codegen will let you type this explicity.
  */
 type Rating = any
+
+/**
+ * This interface is a stub. It was referenced in your sanity schema but
+ * the definition was not actually found. Future versions of
+ * sanity-codegen will let you type this explicity.
+ */
+type IconPicker = any

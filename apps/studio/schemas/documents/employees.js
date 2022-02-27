@@ -1,7 +1,3 @@
-import { Rule } from '@sanity/types'
-
-const foo = 'hello'
-
 export default {
   name: 'employees',
   title: 'Ansatte',
@@ -19,19 +15,22 @@ export default {
       name: 'name',
       title: 'Navn',
       type: 'object',
-      validation: (rule: Rule) => rule.required(),
+      codegen: { required: true },
+      validation: (rule) => [rule.required()],
       fields: [
         {
           name: 'firstName',
           title: 'Fornavn',
           type: 'string',
-          validation: (rule: Rule) => rule.required()
+          codegen: { required: true },
+          validation: (rule) => [rule.required()]
         },
         {
           name: 'lastName',
           title: 'Etternavn',
           type: 'string',
-          validation: (rule: Rule) => rule.required()
+          codegen: { required: true },
+          validation: (rule) => [rule.required()]
         }
       ]
     },
@@ -39,7 +38,8 @@ export default {
       name: 'jobTitle',
       type: 'string',
       title: 'Stilling',
-      validation: (rule: Rule) => rule.required()
+      codegen: { required: true },
+      validation: (rule) => [rule.required()]
     },
     {
       name: 'description',

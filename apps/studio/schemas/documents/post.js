@@ -1,7 +1,6 @@
-import { Rule } from '@sanity/types'
 import chain, { map, reduce } from 'lodash'
 
-const verifyBlockLength = (blockContent: any, maxLen: number) => {
+const verifyBlockLength = (blockContent, maxLen) => {
   const count = chain(blockContent)
     .map((item) => map(item.children, (child) => child.text))
     .reduce((prev, curr) => {
@@ -19,7 +18,7 @@ const verifyBlockLength = (blockContent: any, maxLen: number) => {
 
 export default {
   name: 'post',
-  title: 'Post',
+  title: 'Innlegg',
   type: 'document',
   fields: [
     {
@@ -53,7 +52,7 @@ export default {
       name: 'excerpt',
       title: 'Utdrag',
       type: 'blockContent',
-      validation: (rule: Rule) => [
+      validation: (rule) => [
         rule.required(),
         rule.custom((value) => verifyBlockLength(value, 250))
       ]

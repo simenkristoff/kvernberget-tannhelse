@@ -1,20 +1,24 @@
 import Button from '@components/Button'
 import SanityImage from '@components/Image'
-import { NewspaperIcon } from '@heroicons/react/outline'
+import { HiOutlineNewspaper } from 'react-icons/hi'
 import { PortableText } from '@lib/sanity'
-import { Post } from '@lib/schema'
+import { BlogSection as BlogSectionSchema, Post } from '@lib/schema'
 
 import SectionTitle from './utils/SectionTitle'
 
-interface BlogSectionProps {
-  data: Post
+interface BlogSectionProps extends BlogSectionSchema {
+  data?: Post
 }
 
-export default function BlogSection({ data }: BlogSectionProps) {
+export default function BlogSection({ data, ...props }: BlogSectionProps) {
+  if (!props.showBlogSection || !(data && props.pinnedPost)) return null
   return (
     <section className="content-section">
       <div className="wrapper">
-        <SectionTitle title="Siste nytt fra oss" icon={<NewspaperIcon />} />
+        <SectionTitle
+          title="Siste nytt fra oss"
+          icon={<HiOutlineNewspaper />}
+        />
         <div className="mx-auto flex max-w-3xl flex-col items-center space-y-5 md:flex-row md:space-x-10">
           <SanityImage
             className="img-round-shadow md:1/2 aspect-square lg:w-2/5"

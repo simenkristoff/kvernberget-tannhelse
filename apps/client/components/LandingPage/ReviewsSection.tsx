@@ -1,17 +1,23 @@
 import ReviewSlider from '@components/ReviewSlider'
-import { SparklesIcon, StarIcon } from '@heroicons/react/outline'
+import { HiOutlineSparkles } from 'react-icons/hi'
 import { Review } from '@lib/queries/getReviews'
+import { ReviewsSection as ReviewsSectionSchema } from '@lib/schema'
 import Image from 'next/image'
 
 import reviewsIllustration from '../../public/assets/reviews-illustration.png'
 
 import SectionTitle from './utils/SectionTitle'
 
-interface ReviewsSectionProps {
+interface ReviewsSectionProps extends ReviewsSectionSchema {
   data: Review[]
 }
 
-export default function ReviewsSection({ data }: ReviewsSectionProps) {
+export default function ReviewsSection({
+  data,
+  ...props
+}: ReviewsSectionProps) {
+  if (!props.showReviewsSection || data.length === 0) return null
+
   return (
     <section className="content-section bg-gradient-to-b from-secondary-50 via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="wrapper relative flex min-h-[10rem] w-full flex-1 items-center justify-center px-0">
@@ -25,7 +31,7 @@ export default function ReviewsSection({ data }: ReviewsSectionProps) {
         <div className="block w-full max-w-sm py-8 sm:max-w-md lg:py-0">
           <SectionTitle
             title="Våre omtaler"
-            icon={<SparklesIcon />}
+            icon={<HiOutlineSparkles />}
             iconAlign="right"
             textAlign="left"
             className="mb-1"

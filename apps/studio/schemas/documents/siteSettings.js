@@ -1,7 +1,7 @@
 import { Rule } from '@sanity/types'
 import { chain } from 'lodash'
 
-const verifyOpeningHours = (openingHours: any) => {
+const verifyOpeningHours = (openingHours) => {
   const nonUniq = chain(openingHours)
     .groupBy('day')
     .pickBy((x) => x.length > 1)
@@ -53,21 +53,21 @@ export default {
       name: 'address',
       title: 'Address',
       codegen: { required: true },
-      validation: (rule: Rule) => [rule.required()]
+      validation: (rule) => [rule.required()]
     },
     {
       type: 'string',
       name: 'email',
       title: 'Email',
       codegen: { required: true },
-      validation: (rule: Rule) => [rule.required(), rule.email()]
+      validation: (rule) => [rule.required(), rule.email()]
     },
     {
       type: 'string',
       name: 'phone',
       title: 'Phone number',
       codegen: { required: true },
-      validation: (rule: Rule) => [rule.required(), rule.regex(/^\d{8}$/)]
+      validation: (rule) => [rule.required(), rule.regex(/^\d{8}$/)]
     },
     {
       title: 'Åpningstider',
@@ -75,7 +75,7 @@ export default {
       type: 'array',
       of: [{ type: 'dayAndTime' }],
       group: 'availability',
-      validation: (rule: Rule) => [rule.custom(verifyOpeningHours)]
+      validation: (rule) => [rule.custom(verifyOpeningHours)]
     }
   ],
   initialValue: {

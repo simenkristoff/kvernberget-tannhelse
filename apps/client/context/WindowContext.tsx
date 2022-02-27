@@ -3,7 +3,8 @@ import {
   useContext,
   ReactNode,
   useState,
-  useEffect
+  useEffect,
+  useRef
 } from 'react'
 
 const breakpoints: { [key: string]: number } = {
@@ -17,11 +18,13 @@ const breakpoints: { [key: string]: number } = {
 interface WindowContextProps {
   fixed: boolean
   isMobile: boolean
+  setRef: (ref: HTMLElement) => void
 }
 
 const initial: WindowContextProps = {
   fixed: false,
-  isMobile: false
+  isMobile: false,
+  setRef: () => null
 }
 
 const WindowContext = createContext<WindowContextProps>(initial)
@@ -29,13 +32,20 @@ const WindowContext = createContext<WindowContextProps>(initial)
 export function WindowProvider({ children }: { children: ReactNode }) {
   const [isMobile, setIsMobile] = useState<boolean>(false)
   const [fixed, setFixed] = useState<boolean>(false)
+  const [headerHeight, setHeaderHeight] = useState<number>(0)
+  const ctxRef = useRef<HTMLElement>()
 
-  const checkScrollConstraints = () => {
-    if (!window) return
-    setFixed(window.scrollY > 200)
+  const setRef = (ref: HTMLElement) => {
+    ctxRef.current = ref
+    setHeaderHeight(ctxRef.current?.clientHeight)
   }
 
-  const checkWidthConstraints = () => {
+  const onScroll = () => {
+    if (!window) return
+    setFixed(window.scrollY > window.innerHeight - headerHeight)
+  }
+
+  const onResize = () => {
     if (!window) return
 
     if (window.innerWidth > breakpoints.md) {
@@ -43,16 +53,19 @@ export function WindowProvider({ children }: { children: ReactNode }) {
     } else {
       setIsMobile(true)
     }
+    if (ctxRef.current) {
+      setHeaderHeight(ctxRef.current.clientHeight)
+    }
   }
 
   useEffect(() => {
-    checkWidthConstraints()
-    window.addEventListener('resize', checkWidthConstraints)
-    window.addEventListener('scroll', checkScrollConstraints)
+    onResize()
+    window.addEventListener('resize', onResize)
+    window.addEventListener('scroll', onScroll)
 
     return () => {
-      window.removeEventListener('resize', checkWidthConstraints)
-      window.removeEventListener('scroll', checkScrollConstraints)
+      window.removeEventListener('resize', onResize)
+      window.removeEventListener('scroll', onScroll)
     }
   }, [])
 
@@ -60,7 +73,8 @@ export function WindowProvider({ children }: { children: ReactNode }) {
     <WindowContext.Provider
       value={{
         fixed,
-        isMobile
+        isMobile,
+        setRef
       }}
     >
       {children}

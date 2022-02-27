@@ -56,10 +56,6 @@
     @apply mx-auto w-full max-w-7xl px-4 lg:px-6;
   }
 
-  .override-white > * {
-    @apply text-white;
-  }
-
   .wrapper-full {
     @apply h-auto w-screen;
   }
@@ -104,6 +100,10 @@
   div > ul,
   div > blockquote {
     @apply mb-8;
+  }
+
+  .block-content.override-default-text > * {
+    @apply text-white;
   }
 
   .block-content ul {

@@ -1,17 +1,13 @@
-import { Rule } from '@sanity/types'
-
 export default {
   title: 'CTA',
   name: 'cta',
   type: 'object',
   description:
     'CTA står for Call-to-Action, og benyttes hyppig innen markedsføring. CTA kan på norsk oversettes til «oppfordring til handling», siden du oppfordrer besøkende på nettsiden til å gjøre noe. Helt konkret er en CTA en klikkbar lenke, et bilde eller en knapp som oppfordrer til en handling',
-  validation: (rule: Rule) =>
+  validation: (rule) =>
     rule.custom(
-      (fields = {} as any) =>
-        !(fields as any).route ||
-        !(fields as any).link ||
-        'Only one link type is allowed'
+      (fields = {}) =>
+        !fields.route || !fields.link || 'Only one link type is allowed'
     ),
   fieldsets: [
     {
@@ -25,7 +21,7 @@ export default {
       name: 'title',
       type: 'string',
       codegen: { required: true },
-      validation: (rule: Rule) => [rule.required()]
+      validation: (rule) => [rule.required()]
     },
     {
       title: 'Internal link',

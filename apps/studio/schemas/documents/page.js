@@ -3,7 +3,7 @@ import { isUniqueAcrossAllDocuments } from '../../lib/isUniqueAcrossAllDocuments
 export default {
   name: 'page',
   type: 'document',
-  title: 'Page',
+  title: 'Sider',
   fieldsets: [
     {
       title: 'SEO',

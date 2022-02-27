@@ -1,11 +1,36 @@
 {
   "compilerOptions": {
     "jsx": "react",
-    "esModuleInterop": true,
+    "esModuleInterop": true
   },
   "include": [
     "../../node_modules/@sanity/base/types/**/*.ts",
     "./**/*.ts",
-    "./**/*.tsx"
+    "./**/*.tsx",
+    "schemas/objects/frontpageSections/introSection.js",
+    "schemas/objects/frontpageSections/treatmentsSection.js",
+    "schemas/objects/seoMetaData.js",
+    "schemas/objects/link.js",
+    "schemas/objects/internalLink.js",
+    "schemas/objects/figure.js",
+    "schemas/objects/dayAndTime.js",
+    "schemas/objects/cta.js",
+    "schemas/objects/altImage.js",
+    "schemas/objects/frontpageSections/reviewsSection.js",
+    "schemas/objects/frontpageSections/employeeSection.js",
+    "schemas/objects/frontpageSections/contactSection.js",
+    "schemas/objects/frontpageSections/blogSection.js",
+    "schemas/objects/contentSections/textSection.js",
+    "schemas/objects/contentSections/imageSection.js",
+    "schemas/objects/contentSections/heroSection.js",
+    "schemas/objects/blockContent/simplePortableText.js",
+    "schemas/objects/blockContent/portableText.js",
+    "schemas/documents/siteSettings.js",
+    "schemas/documents/reviews.js",
+    "schemas/documents/post.js",
+    "schemas/documents/page.js",
+    "schemas/documents/frontpage.js",
+    "schemas/documents/employees.js",
+    "schemas/documents/route.js"
   ]
 }

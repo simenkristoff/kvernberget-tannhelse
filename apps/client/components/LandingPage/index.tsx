@@ -1,5 +1,5 @@
 import { GetEmployeesQueryResult } from '@lib/queries/getEmployees'
-import { Frontpage } from '@lib/queries/getLandingPage'
+import { FrontpageSettings } from '@lib/queries/getFrontpageSettings'
 import { GetLatestPostQueryResult } from '@lib/queries/getLatestPost'
 import { Review } from '@lib/queries/getReviews'
 import { SiteSettings } from '@lib/schema'
@@ -12,17 +12,8 @@ import IntroSection from './IntroSection'
 import ReviewsSection from './ReviewsSection'
 import TreatmentsSection from './TreatmentsSection'
 
-const treatments: string[] = [
-  'Fyllinger',
-  'Tannbleking',
-  'Tannregulering',
-  'Krone og bro',
-  'Implantater',
-  'Visdomstenner'
-]
-
 export interface LandingPageProps {
-  frontpage: Frontpage
+  frontpageSettings: FrontpageSettings
   settings: SiteSettings
   latestPost: GetLatestPostQueryResult
   reviews: Review[]
@@ -30,25 +21,35 @@ export interface LandingPageProps {
 }
 
 export default function LandingPage({
-  frontpage,
+  frontpageSettings,
   settings,
   latestPost,
   reviews,
   employees
 }: LandingPageProps) {
+  const {
+    introSection,
+    treatmentsSection,
+    reviewsSection,
+    blogSection,
+    contactSection,
+    employeeSection
+  } = frontpageSettings
   return (
     <React.Fragment>
-      {frontpage.introSection && <IntroSection />}
+      {introSection && <IntroSection {...introSection} />}
 
-      {treatments.length > 0 && <TreatmentsSection />}
+      {treatmentsSection && <TreatmentsSection {...treatmentsSection} />}
 
-      <ReviewsSection data={reviews} />
+      {reviewsSection && <ReviewsSection data={reviews} {...reviewsSection} />}
 
-      {latestPost && <BlogSection data={latestPost} />}
+      {blogSection && <BlogSection data={latestPost} {...blogSection} />}
 
-      <ContactSection data={settings} />
+      {contactSection && <ContactSection data={settings} {...contactSection} />}
 
-      {employees.length > 0 && <EmployeesSection data={employees} />}
+      {employeeSection && (
+        <EmployeesSection data={employees} {...employeeSection} />
+      )}
     </React.Fragment>
   )
 }

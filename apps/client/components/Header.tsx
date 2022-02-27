@@ -1,14 +1,8 @@
-import client from '@lib/sanity'
-import Image from 'next/image'
-import { useNextSanityImage } from 'next-sanity-image'
 import classNames from 'classnames'
 import { useWindow } from 'context/WindowContext'
-import {
-  LocationMarkerIcon,
-  PhoneIcon,
-  MailIcon
-} from '@heroicons/react/outline'
+import { HiOutlinePhone, HiOutlineMail } from 'react-icons/hi'
 import { SiteSettings } from '@lib/schema'
+import { useEffect, useRef } from 'react'
 
 import formatPhoneNumber from '../utils/formatPhoneNumber'
 
@@ -22,10 +16,16 @@ interface HeaderProps {
 }
 
 export default function Header({ settings }: HeaderProps) {
-  const { fixed } = useWindow()
+  const ref = useRef<HTMLElement>(null)
+  const { fixed, setRef } = useWindow()
+
+  useEffect(() => {
+    if (ref.current) setRef(ref.current)
+  }, [])
 
   return (
     <header
+      ref={ref}
       className={classNames(
         'wrapper-full z-50 bg-white shadow-md dark:bg-gray-900',
         {
@@ -70,13 +70,13 @@ export default function Header({ settings }: HeaderProps) {
               })}
             >
               <IconLabel
-                icon={<PhoneIcon />}
+                icon={<HiOutlinePhone />}
                 href={`tel: ${settings.phone}`}
                 text="Telefon"
                 small={`(+47) ${formatPhoneNumber(settings.phone)}`}
               />
               <IconLabel
-                icon={<MailIcon />}
+                icon={<HiOutlineMail />}
                 href={`mailto: ${settings.email}`}
                 text="Email"
                 small={settings.email}

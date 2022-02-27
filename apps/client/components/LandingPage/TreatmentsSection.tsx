@@ -1,7 +1,8 @@
 import Button from '@components/Button'
 import Icon from '@components/Icon'
-import { CogIcon } from '@heroicons/react/outline'
+import { HiOutlineCog } from 'react-icons/hi'
 import classNames from 'classnames'
+import { TreatmentsSection as TreatmentsSectionSchema } from '@lib/schema'
 
 import SectionTitle from './utils/SectionTitle'
 
@@ -48,13 +49,17 @@ export function TreatmentCard({ text }: { text: string }) {
   )
 }
 
-export default function TreatmentsSection() {
+export type TreatmentsSectionProps = TreatmentsSectionSchema
+
+export default function TreatmentsSection(props: TreatmentsSectionSchema) {
+  if (!props.showTreatmentsSection) return null
+
   return (
     <section className="content-section text-gray-600 dark:bg-gray-900">
       <div className="wrapper">
         <SectionTitle
           title="Behandlinger"
-          icon={<CogIcon />}
+          icon={<HiOutlineCog />}
           iconAlign="right"
           small="Vi utfører både spesialist- og allmennbehandling!"
           textAlign="center"

@@ -1,8 +1,8 @@
 import {
-  LocationMarkerIcon,
-  PhoneIcon,
-  MailIcon
-} from '@heroicons/react/outline'
+  HiOutlineLocationMarker,
+  HiOutlinePhone,
+  HiOutlineMail
+} from 'react-icons/hi'
 import { SiteSettings } from '@lib/schema'
 
 import formatPhoneNumber from '../utils/formatPhoneNumber'
@@ -48,21 +48,21 @@ export default function Footer({ settings }: FooterProps) {
               </h3>
               <div className="ml-7 mt-2">
                 <IconLabel
-                  icon={<LocationMarkerIcon />}
+                  icon={<HiOutlineLocationMarker />}
                   mode="dark"
                   href="#"
                   text="Addresse"
                   small={settings.address}
                 />
                 <IconLabel
-                  icon={<PhoneIcon />}
+                  icon={<HiOutlinePhone />}
                   mode="dark"
                   href={`tel: ${settings.phone}`}
                   text="Telefon"
                   small={`(+47) ${formatPhoneNumber(settings.phone)}`}
                 />
                 <IconLabel
-                  icon={<MailIcon />}
+                  icon={<HiOutlineMail />}
                   mode="dark"
                   href={`mailto: ${settings.email}`}
                   text="Email"

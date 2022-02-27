@@ -1,17 +1,25 @@
-import { Dialog, Popover, Transition } from '@headlessui/react'
-import { MapIcon, MenuIcon } from '@heroicons/react/outline'
-import { SiteSettings } from '@lib/schema'
+import { Popover, Transition } from '@headlessui/react'
+import { HiOutlineMap, HiOutlineMenu } from 'react-icons/hi'
+import {
+  ContactSection as ContactSectionSchema,
+  SiteSettings
+} from '@lib/schema'
 import classNames from 'classnames'
 import { useWindow } from 'context/WindowContext'
 import { Fragment, useEffect, useState } from 'react'
 
 import SectionTitle from './utils/SectionTitle'
 
-interface ContactSectionProps {
+interface ContactSectionProps extends ContactSectionSchema {
   data: SiteSettings
 }
 
-export default function ContactSection({ data }: ContactSectionProps) {
+export default function ContactSection({
+  data,
+  ...props
+}: ContactSectionProps) {
+  if (!props.showContactSection) return null
+
   const [toggle, setToggle] = useState<boolean>(false)
   const { isMobile } = useWindow()
 
@@ -45,7 +53,7 @@ export default function ContactSection({ data }: ContactSectionProps) {
               'group absolute -right-1 top-4 -translate-x-1/2 border border-gray-200 bg-gray-100 shadow-md'
             )}
           >
-            <MenuIcon
+            <HiOutlineMenu
               className="h-10 w-10 text-gray-500 duration-300 group-hover:text-gray-600"
               aria-hidden="true"
               onClick={() => setToggle(!toggle)}
@@ -70,7 +78,7 @@ export default function ContactSection({ data }: ContactSectionProps) {
                     className="items-start"
                     centerOnMobile={false}
                     margin={false}
-                    icon={<MapIcon />}
+                    icon={<HiOutlineMap />}
                     iconAlign="right"
                     bordered={false}
                     textAlign="left"

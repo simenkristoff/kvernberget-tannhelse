@@ -1,5 +1,5 @@
 import { Popover, Transition } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/outline'
+import { HiOutlineChevronDown } from 'react-icons/hi'
 import classNames from 'classnames'
 import { Fragment, ReactFragment } from 'react'
 
@@ -15,7 +15,7 @@ export default function NavDropdown({ label, children }: NavDropdownProps) {
         <Fragment>
           <Popover.Button className={classNames('nav-item', { open: open })}>
             {label}
-            <ChevronDownIcon
+            <HiOutlineChevronDown
               className={classNames(
                 'h-5 w-5 transition-transform duration-300',
                 { 'rotate-180': open }

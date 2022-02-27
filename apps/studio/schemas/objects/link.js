@@ -1,8 +1,7 @@
 import React from 'react'
 
-const LinkRender = ({ children }: { children: React.ReactNode }) => (
-  <span>{children} 🌍</span>
-)
+// eslint-disable-next-line react/prop-types
+const LinkRender = ({ children }) => <span>{children} 🌍</span>
 
 export default {
   title: 'URL',
@@ -13,8 +12,8 @@ export default {
       title: 'URL',
       name: 'href',
       type: 'url',
-      validation: (Rule) =>
-        Rule.uri({
+      validation: (rule) =>
+        rule.uri({
           allowRelative: true,
           scheme: ['https', 'http', 'mailto', 'tel']
         })

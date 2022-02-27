@@ -1,7 +1,10 @@
 import SanityImage from '@components/Image'
-import { UserGroupIcon } from '@heroicons/react/outline'
+import { HiOutlineUserGroup } from 'react-icons/hi'
 import { GetEmployeesQueryResult } from '@lib/queries/getEmployees'
-import { Employees } from '@lib/schema'
+import {
+  Employees,
+  EmployeeSection as EmployeeSectionSchema
+} from '@lib/schema'
 import { DetailedHTMLProps, HTMLAttributes } from 'react'
 
 import SectionTitle from './utils/SectionTitle'
@@ -30,17 +33,22 @@ export function EmployeeCard({ data }: EmployeeCardProps) {
   )
 }
 
-export interface EmployeeSectionProps {
+export interface EmployeeSectionProps extends EmployeeSectionSchema {
   data: GetEmployeesQueryResult
 }
 
-export default function EmployeesSection({ data }: EmployeeSectionProps) {
+export default function EmployeesSection({
+  data,
+  ...props
+}: EmployeeSectionProps) {
+  if (!props.showEmployeeSection || data.length === 0) return null
+
   return (
     <section className="content-section">
       <div className="wrapper">
         <SectionTitle
           title="Våre ansatte"
-          icon={<UserGroupIcon />}
+          icon={<HiOutlineUserGroup />}
           iconAlign="left"
         />
         <div className="flex w-full flex-wrap justify-center">
