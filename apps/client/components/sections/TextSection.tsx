@@ -1,5 +1,6 @@
 import { PortableText } from '@lib/sanity'
 import { TextSection as TextSectionSchema } from '@lib/schema'
+import classNames from 'classnames'
 
 import { ContentSection } from './interface'
 
@@ -13,7 +14,7 @@ function TextSection({
 }: TextSectionProps) {
   const { heading, content } = data
   return (
-    <div className="wrapper mx-auto">
+    <div {...htmlProps} className={classNames('wrapper mx-auto', className)}>
       <div className="mb-10 flex w-full flex-row items-center justify-center px-4">
         <div className="md:max-w-2xl lg:max-w-full">
           {(title && <h1>{title}</h1>) || <h2>{heading}</h2>}

@@ -21,7 +21,7 @@ export default function HeroSection({
   const isLight = textColor === 'light'
 
   return (
-    <div {...htmlProps} className={classNames('wrapper mx-auto')}>
+    <div {...htmlProps} className={classNames('wrapper mx-auto', className)}>
       <div
         className={classNames(
           '-mx-4 mb-10 flex flex-col rounded-b-md bg-cover bg-center bg-no-repeat py-16 px-4 drop-shadow-md sm:mx-0',

@@ -7,14 +7,6 @@ import { Fragment, ReactFragment, useEffect, useState } from 'react'
 import NavDropdown from './NavDropdown'
 import NavItem from './NavItem'
 
-const breakpoints: { [key: string]: number } = {
-  sm: 640,
-  md: 768,
-  lg: 1024,
-  xl: 1280,
-  '2xl': 1536
-}
-
 export interface NavProps {
   fixed: boolean
   className?: string
@@ -44,6 +36,7 @@ function Nav({ fixed, className, children }: NavProps) {
               { '-rotate-90': toggle }
             )}
             aria-hidden="true"
+            aria-label="Åpne/lukk navigasjonsmeny"
             onClick={() => setToggle(!toggle)}
           />
         </Popover.Button>

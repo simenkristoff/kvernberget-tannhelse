@@ -28,7 +28,7 @@ function ImageSection({
   }, [isMobile])
 
   return (
-    <div className="wrapper mx-auto">
+    <div {...htmlProps} className={classNames('wrapper mx-auto', className)}>
       <div className="mb-10 flex w-full flex-col items-center justify-between px-4 lg:flex-row">
         <div
           className={classNames('md:max-w-2xl lg:max-w-xl', {

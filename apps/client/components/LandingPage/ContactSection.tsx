@@ -20,7 +20,6 @@ export default function ContactSection({
   ...props
 }: ContactSectionProps) {
   if (!props.showContactSection) return null
-
   const [toggle, setToggle] = useState<boolean>(false)
   const { isMobile } = useWindow()
 
@@ -47,6 +46,7 @@ export default function ContactSection({
             <HiOutlineMenu
               className="h-10 w-10 text-gray-500 duration-300 group-hover:text-gray-600"
               aria-hidden="true"
+              aria-label="Åpne/lukk kontaktinformasjon"
               onClick={() => setToggle(!toggle)}
             />
           </Popover.Button>

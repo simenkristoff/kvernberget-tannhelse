@@ -1,4 +1,3 @@
-import { groq } from 'next-sanity'
 import { useRouter } from 'next/router'
 import { getClient, usePreviewSubscription } from '@lib/sanity'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
