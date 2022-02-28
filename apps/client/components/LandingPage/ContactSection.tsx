@@ -42,11 +42,11 @@ export default function ContactSection({
             className={classNames(
               'group absolute -right-1 top-4 -translate-x-1/2 border border-gray-200 bg-gray-100 shadow-md'
             )}
+            aria-label="Åpne/lukk kontaktinformasjon"
           >
             <HiOutlineMenu
               className="h-10 w-10 text-gray-500 duration-300 group-hover:text-gray-600"
               aria-hidden="true"
-              aria-label="Åpne/lukk kontaktinformasjon"
               onClick={() => setToggle(!toggle)}
             />
           </Popover.Button>

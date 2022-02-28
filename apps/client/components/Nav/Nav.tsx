@@ -28,15 +28,16 @@ function Nav({ fixed, className, children }: NavProps) {
   return (
     <Popover className={classNames(className)}>
       <Fragment>
-        <Popover.Button className="md:hidden">
-          <span className="sr-only">Toggle menu</span>
+        <Popover.Button
+          className="md:hidden"
+          aria-label="Åpne/lukk navigasjonsmeny"
+        >
           <HiOutlineMenu
             className={classNames(
               'h-10 w-10 rounded-md border-2 border-primary-light  text-primary-light  transition-all duration-300 hover:border-primary-base  hover:text-primary-base ',
               { '-rotate-90': toggle }
             )}
             aria-hidden="true"
-            aria-label="Åpne/lukk navigasjonsmeny"
             onClick={() => setToggle(!toggle)}
           />
         </Popover.Button>
