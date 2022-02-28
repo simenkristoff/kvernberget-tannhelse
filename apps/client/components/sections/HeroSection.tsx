@@ -24,7 +24,7 @@ export default function HeroSection({
     <div {...htmlProps} className={classNames('wrapper mx-auto')}>
       <div
         className={classNames(
-          '-mx-4 mb-10 flex flex-col bg-cover bg-center bg-no-repeat py-16 px-4 sm:mx-0',
+          '-mx-4 mb-10 flex flex-col rounded-b-md bg-cover bg-center bg-no-repeat py-16 px-4 drop-shadow-md sm:mx-0',
           {
             'items-start justify-start': contentAlignment === 'left',
             'items-center justify-center text-center':

@@ -74,12 +74,14 @@ export default function Header({ settings }: HeaderProps) {
                 href={`tel: ${settings.phone}`}
                 text="Telefon"
                 small={`(+47) ${formatPhoneNumber(settings.phone)}`}
+                transition="none"
               />
               <IconLabel
                 icon={<HiOutlineMail />}
                 href={`mailto: ${settings.email}`}
                 text="Email"
                 small={settings.email}
+                transition="none"
               />
             </div>
           </div>

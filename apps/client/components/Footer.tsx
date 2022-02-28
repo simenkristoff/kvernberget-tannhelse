@@ -53,6 +53,7 @@ export default function Footer({ settings }: FooterProps) {
                   href="#"
                   text="Addresse"
                   small={settings.address}
+                  transition="none"
                 />
                 <IconLabel
                   icon={<HiOutlinePhone />}
@@ -60,6 +61,7 @@ export default function Footer({ settings }: FooterProps) {
                   href={`tel: ${settings.phone}`}
                   text="Telefon"
                   small={`(+47) ${formatPhoneNumber(settings.phone)}`}
+                  transition="none"
                 />
                 <IconLabel
                   icon={<HiOutlineMail />}
@@ -67,6 +69,7 @@ export default function Footer({ settings }: FooterProps) {
                   href={`mailto: ${settings.email}`}
                   text="Email"
                   small={settings.email}
+                  transition="none"
                 />
               </div>
             </div>

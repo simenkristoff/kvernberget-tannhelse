@@ -31,21 +31,20 @@ function ImageSection({
     <div className="wrapper mx-auto">
       <div className="mb-10 flex w-full flex-col items-center justify-between px-4 lg:flex-row">
         <div
-          className={classNames('mb-16 md:max-w-2xl lg:mb-0 lg:max-w-xl', {
+          className={classNames('md:max-w-2xl lg:max-w-xl', {
             'order-2 lg:pl-5': imageAlignment === 'left',
             'order-2 lg:order-1 lg:pr-5': imageAlignment === 'right'
           })}
         >
-          <div className="mb-6">
-            {(title && <h1>{title}</h1>) || <h2>{heading}</h2>}
-            {content.length > 0 && (
-              <div className={classNames('block-content mb-8')}>
-                <PortableText blocks={content} />
-              </div>
-            )}
-            {cta && <CtaButton data={cta} />}
-          </div>
+          {(title && <h1>{title}</h1>) || <h2>{heading}</h2>}
+          {content.length > 0 && (
+            <div className={classNames('block-content mb-4')}>
+              <PortableText blocks={content} />
+            </div>
+          )}
+          {cta && <CtaButton data={cta} />}
         </div>
+
         {!hideImage && (
           <div
             className={classNames(

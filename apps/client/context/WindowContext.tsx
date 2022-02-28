@@ -1,3 +1,4 @@
+import { throttle } from 'lodash'
 import {
   createContext,
   useContext,
@@ -60,12 +61,14 @@ export function WindowProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     onResize()
-    window.addEventListener('resize', onResize)
-    window.addEventListener('scroll', onScroll)
 
+    const scrollThrottler = throttle(onScroll, 300)
+
+    window.addEventListener('resize', onResize)
+    window.addEventListener('scroll', scrollThrottler)
     return () => {
       window.removeEventListener('resize', onResize)
-      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('scroll', scrollThrottler)
     }
   }, [])
 

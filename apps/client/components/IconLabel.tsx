@@ -49,14 +49,16 @@ export default function IconLabel({
     >
       <icon.type
         className={classNames('absolute -left-7 top-0 h-6 w-6 duration-300', {
-          'text-primary-base  group-hover:text-primary-dark ': mode === 'light',
-          'text-gray-100 group-hover:text-gray-200': mode === 'dark'
+          'text-primary-base  group-hover:text-primary-light ':
+            mode === 'light',
+          'text-gray-200 group-hover:text-gray-300': mode === 'dark'
         })}
       />
       <p
         className={classNames(' duration-300 ', {
-          'text-primary-base  group-hover:text-primary-dark ': mode === 'light',
-          'text-gray-100 group-hover:text-gray-200': mode === 'dark',
+          'text-primary-base  group-hover:text-primary-light ':
+            mode === 'light',
+          'text-gray-200 group-hover:text-gray-300': mode === 'dark',
           'font-bold': fontWeight === 'bold',
           'font-semibold': fontWeight === 'semibold',
           'font-medium': fontWeight === 'medium'
@@ -68,8 +70,8 @@ export default function IconLabel({
       {small && (
         <p
           className={classNames('mt-1 duration-300', {
-            'group-hover:text-gray-700': mode === 'light',
-            'text-gray-200 group-hover:text-gray-100': mode === 'dark'
+            'group-hover:text-gray-600': mode === 'light',
+            'text-gray-200 group-hover:text-gray-300': mode === 'dark'
           })}
         >
           {small}
