@@ -1,7 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 
-import DeferNextScript from '../utils/DeferNextScript'
-
 export default function Document() {
   return (
     <Html lang="no">
